@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class OrbitingCircles : AbilityBaseClass
 {
-    [SerializeField] protected float orbitSpeed;
-    [SerializeField] protected float orbitSpeedIncreaseAmnt;
+    public float orbitSpeed;
+    public float orbitSpeedIncreaseAmnt;
 
     [SerializeField] GameObject circleObj;
     public List<OrbitCircleObj> circles;
