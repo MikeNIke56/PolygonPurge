@@ -77,7 +77,6 @@ public class ProjectileBaseClass : MonoBehaviour
     {
         return speed;
     }
-
     public Rigidbody2D GetRigidbody()
     {
         return rb;

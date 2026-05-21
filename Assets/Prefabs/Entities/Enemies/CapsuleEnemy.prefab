@@ -181,6 +181,7 @@ MonoBehaviour:
   percentChanceToSpawn: 0
   lowerChance: 0
   upperChance: 0
+  rank: 1
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64

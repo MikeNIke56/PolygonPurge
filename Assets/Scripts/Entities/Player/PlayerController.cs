@@ -52,7 +52,12 @@ public class PlayerController : EntityBaseClass
     //ability pivot
     public GameObject abilityPivotPoint;
 
+    //little buddy pivot
+    public GameObject littleBuddyPivotPoint;
+
     public GameObject w;
+
+    private SpectreRounds spectreRounds;
 
     public static PlayerController i { get; private set; }
 
@@ -114,7 +119,7 @@ public class PlayerController : EntityBaseClass
         if (shootAction.IsPressed() && primaryWeapon && primaryWeapon is AR)
             Shoot();
         //tap fire if anything else
-        else if(shootAction.WasPressedThisFrame() && primaryWeapon)
+        else if (shootAction.WasPressedThisFrame() && primaryWeapon)
             Shoot();
 
         if (dodgeAction.WasPressedThisFrame() && !currentPlayerStates.Contains(PlayerStates.Dodging) &&
@@ -167,11 +172,11 @@ public class PlayerController : EntityBaseClass
 
     public void Dodge()
     {
-        if(UpgradesManager.i.currentAbilities.Count == 0)
+        if (UpgradesManager.i.currentAbilities.Count == 0)
             UpgradesManager.i.SpawnAbility(w);
         else
             UpgradesManager.i.UpgradeAbility(UpgradesManager.i.
-                currentAbilities[0]);
+              currentAbilities[0]);
 
         if (!currentPlayerStates.Contains(PlayerStates.Dodging))
         {
@@ -193,13 +198,57 @@ public class PlayerController : EntityBaseClass
                 primaryWeapon.Fire();
             }
             StartCoroutine(StartFireCooldown());
+
+            if (spectreRounds)
+                StartCoroutine(ShootSpectreRounds(primaryWeapon));
         }
         else if(primaryWeapon is Shotgun == false &&
             primaryWeapon.canFire == true)
         {
             primaryWeapon.Fire();
             StartCoroutine(StartFireCooldown());
+
+            if (spectreRounds)
+                StartCoroutine(ShootSpectreRounds(primaryWeapon));
         }
+    }
+
+    private IEnumerator ShootSpectreRounds(WeaponBaseClass weapon)
+    {
+        yield return new WaitForSecondsRealtime(spectreRounds.
+            delayAfterFirstShot);
+
+        switch (weapon)
+        {
+            case Pistol:
+                if(spectreRounds.GetCurrentLevel() >= 1)
+                    weapon.Fire();
+                break;
+            case Shotgun:
+                if (spectreRounds.GetCurrentLevel() >= 2)
+                    for (int i = 0; i < weapon.gameObject.
+                        GetComponent<Shotgun>().rounds; i++)
+                    {
+                        weapon.Fire();
+                    }
+                break;
+            case Sniper:
+                if (spectreRounds.GetCurrentLevel() >= 3)
+                    weapon.Fire();
+                break;
+            case AR:
+                if (spectreRounds.GetCurrentLevel() >= 4)
+                    weapon.Fire();
+                break;
+            case RPG:
+                if (spectreRounds.GetCurrentLevel() >= 5)
+                    weapon.Fire();
+                break;
+            default:
+                Debug.Log("not valid weapon");
+                break;
+        }
+
     }
 
     private IEnumerator StartFireCooldown()
@@ -275,5 +324,9 @@ public class PlayerController : EntityBaseClass
     public void SetMaxHealthRegenTime(float regenTime)
     {
         maxHealthRegenTime = regenTime;
+    }
+    public void SetSpectreRounds(SpectreRounds spectreRounds)
+    {
+        this.spectreRounds = spectreRounds;
     }
 }

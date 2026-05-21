@@ -31,6 +31,7 @@ public class EnemyBaseClass : EntityBaseClass
     [SerializeField] protected int percentChanceToSpawn;
     [SerializeField] protected int lowerChance;
     [SerializeField] protected int upperChance;
+    [SerializeField] protected int rank;
 
     private float curCollisionAttackCooldown;
     private float curProjectileCooldown;
@@ -225,6 +226,10 @@ public class EnemyBaseClass : EntityBaseClass
     public int GetUpperChance()
     {
         return upperChance;
+    }
+    public int GetRank()
+    {
+        return rank;
     }
 
     public void SetLowerChance(int chance)

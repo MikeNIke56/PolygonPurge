@@ -413,6 +413,7 @@ MonoBehaviour:
   percentChanceToSpawn: 15
   lowerChance: 25
   upperChance: 40
+  rank: 3
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64

@@ -224,13 +224,22 @@ public class UpgradesManager : MonoBehaviour
          * to a persistent (Dont Destroy On Load) object
          */
         GameObject abilityObjCopy = Instantiate(ability);
-        Transform playerTrans = PlayerController.i.abilityPivotPoint.transform;
 
-        abilityObjCopy.transform.SetParent(playerTrans);
-        abilityObjCopy.transform.localPosition = Vector3.zero;
+        Transform playerParentTrans;
+        if (ability.GetComponent<AbilityBaseClass>() is LittleBuddy == false)
+        {
+            playerParentTrans = PlayerController.i.
+                abilityPivotPoint.transform;
+            abilityObjCopy.transform.SetParent(playerParentTrans);
+            abilityObjCopy.transform.localPosition = Vector3.zero;
+        }
 
         abilityObjCopy.GetComponent<AbilityBaseClass>().SetUp();
         currentAbilities.Add(abilityObjCopy.GetComponent<AbilityBaseClass>());
+
+        if (ability.GetComponent<AbilityBaseClass>() is SpectreRounds)
+            PlayerController.i.SetSpectreRounds(
+                abilityObjCopy.GetComponent<SpectreRounds>());
     }
 
     /**

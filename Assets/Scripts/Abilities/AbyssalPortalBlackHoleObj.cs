@@ -52,6 +52,9 @@ public class AbyssalPortalBlackHoleObj : MonoBehaviour
             ObjectPoolingManager.PoolType.Ability);
     }
 
+    /**
+     * pulls in enemies towards center of the object
+     */
     private void PullIn(EnemyBaseClass enemy)
     {
         Vector2 direction = (transform.position -
