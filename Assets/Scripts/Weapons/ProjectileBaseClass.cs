@@ -20,7 +20,7 @@ public class ProjectileBaseClass : MonoBehaviour
 
     //bullet's previous velocity to restore back to after colliding with 
     //an object
-    private Vector3 savedVelocity;
+    protected Vector3 savedVelocity;
 
     protected void Awake()
     {

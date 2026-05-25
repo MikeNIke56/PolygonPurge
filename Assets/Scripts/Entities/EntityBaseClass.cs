@@ -51,6 +51,10 @@ public class EntityBaseClass : MonoBehaviour, IDamageable
     {
         return moveSpeed;
     }
+    public Rigidbody2D GetRigidbody()
+    {
+        return rb;
+    }
 
     public void SetMaxHealth(float health)
     {

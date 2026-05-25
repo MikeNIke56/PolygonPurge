@@ -50,12 +50,12 @@ public class LittleBuddy : AbilityBaseClass
     {
         BobUpDown();
 
-        if (targetedEnemy)
+        if (targetedEnemy.gameObject.activeSelf)
             LookAt(targetedEnemy.transform.position, lookOffset);
         else
             targetedEnemy = GetTargetEnemy();
 
-        if (targetedEnemy && isOnFireCooldown == false)
+        if (targetedEnemy.gameObject.activeSelf && isOnFireCooldown == false)
             StartCoroutine(Shoot());
     }
 
@@ -138,7 +138,7 @@ public class LittleBuddy : AbilityBaseClass
         //first get all enemies within range
         foreach (EnemyBaseClass enemy in allEnemies)
         {
-            if(enemy.isActiveAndEnabled)
+            if(enemy.gameObject.activeSelf)
             {
                 if (Vector2.Distance(transform.position, enemy.transform.position) <=
                 range)

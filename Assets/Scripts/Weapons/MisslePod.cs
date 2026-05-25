@@ -1,10 +1,16 @@
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
-public class RPGRocket : ProjectileBaseClass
+public class MisslePod :ProjectileBaseClass
 {
+    private MisslePods misslePods;
+
+    private void OnDisable()
+    {
+        misslePods.curMisslesActive--;
+    }
+
     public float damageRadius;
 
     protected override void OnCollisionEnter2D(Collision2D collision)
@@ -79,4 +85,9 @@ public class RPGRocket : ProjectileBaseClass
         // Draw the sphere.
         Gizmos.DrawSphere(transform.position, damageRadius);
     }*/
+
+    public void SetMisslePodsParent(MisslePods misslePods)
+    {
+        this.misslePods = misslePods;
+    }
 }

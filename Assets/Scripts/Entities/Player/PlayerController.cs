@@ -55,6 +55,9 @@ public class PlayerController : EntityBaseClass
     //little buddy pivot
     public GameObject littleBuddyPivotPoint;
 
+    //arc pylon pivot
+    public GameObject arcPylonPivotPoint;
+
     public GameObject w;
 
     private SpectreRounds spectreRounds;

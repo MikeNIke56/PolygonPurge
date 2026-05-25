@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.43, y: 0.7}
+  m_AnchoredPosition: {x: -1.45, y: 0.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4740959745081382547
@@ -197,6 +197,41 @@ Transform:
   - {fileID: 7888543744227533729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5364521466613150582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247733110127702714}
+  m_Layer: 0
+  m_Name: arcPylonPivotPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &247733110127702714
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5364521466613150582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7035597701394092788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.45, y: 0.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5550900995813922952
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +269,7 @@ RectTransform:
   - {fileID: 1628917596797945187}
   - {fileID: 7693551722929533319}
   - {fileID: 3203360467744271680}
+  - {fileID: 247733110127702714}
   m_Father: {fileID: 9170750593587358215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -321,11 +357,12 @@ MonoBehaviour:
   dodgeDecaySpeed: 48
   maxHealthRegenTime: 5
   healthRegenSpeed: 1
-  primaryWeaponGameObject: {fileID: 1713568026923195306, guid: 9e744153f1290a3449cbdf81a150d875, type: 3}
+  primaryWeaponGameObject: {fileID: 3850022347616916355, guid: 8ead973cb23f9c94ca4c5cb2d8560bed, type: 3}
   weaponPivotPoint: {fileID: 2183233569898698503}
   abilityPivotPoint: {fileID: 8059392899222047222}
   littleBuddyPivotPoint: {fileID: 1657053679628106637}
-  w: {fileID: 1423081913062245003, guid: 65955ca9af98b92459f5098591769677, type: 3}
+  arcPylonPivotPoint: {fileID: 5364521466613150582}
+  w: {fileID: 5704045586934597577, guid: 4db17452d7ffd7b409a759a355b31b22, type: 3}
 --- !u!222 &1218563828118647351
 CanvasRenderer:
   m_ObjectHideFlags: 0

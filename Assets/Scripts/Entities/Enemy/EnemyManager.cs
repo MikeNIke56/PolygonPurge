@@ -17,9 +17,15 @@ public class EnemyManager : MonoBehaviour
     public float spawnDelay;
     public float minSpawnDistance;
     public float maxSpawnDistance;
+
     [SerializeField] private bool isNextWaveOnCooldown;
     private float roundTimer;
     [SerializeField] private float maxRoundTimer;
+
+    public List<List<EnemyBaseClass>> enemyBatchLists;
+    private int curEnemyBatch = 0;
+    private int curEnemyBatchToTickBehavior = 0;
+    private int curEnemyBatchToTickMovement = 0;
 
     //list of enemy class objects
     public List<EnemyBaseClass> enemyList;
@@ -54,6 +60,13 @@ public class EnemyManager : MonoBehaviour
         spatialGrid.SetGrid(separationDistance);
         player = FindAnyObjectByType<PlayerController>();
 
+        enemyBatchLists = new List<List<EnemyBaseClass>>();
+        for(int i = 0; i < maxNumOfEnemies/maxNumOfEnemiesPerRound; i++)
+        {
+            List<EnemyBaseClass> innerList = new List<EnemyBaseClass>();
+            enemyBatchLists.Add(innerList);
+        }
+
         isNextWaveOnCooldown = false;
         roundTimer = maxRoundTimer;
 
@@ -72,56 +85,69 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateAllEnemiesBehavior();
+        UpdateBatchedEnemiesBehavior();
         HandleRounds();
     }
 
     private void FixedUpdate()
     {
-        UpdateAllEnemiesMovement();
+        UpdateBatchedEnemiesMovement();
     }
 
     /**
      * updates enemy behavior logic (state changes, triggers, etc.)- to be ran in Update
      */
-    private void UpdateAllEnemiesBehavior()
+    private void UpdateBatchedEnemiesBehavior()
     {
-        foreach (EnemyBaseClass enemy in enemyList)
+        //only tick a batch of enemies at a time
+        List<EnemyBaseClass> bucket = enemyBatchLists[curEnemyBatchToTickBehavior];
+
+        for (int i = 0; i < enemyBatchLists[curEnemyBatchToTickBehavior].Count;
+            i++)
         {
-            if(enemy && enemy.gameObject.activeSelf == true)
+            if (bucket[i] && bucket[i].gameObject.activeSelf == true)
             {
-                if (enemy.GetCurHealth() > 0)
-                    enemy.RunBehavior();
+                if (bucket[i].GetCurHealth() > 0)
+                    bucket[i].RunBehavior();
             }      
         }
+
+        if (curEnemyBatchToTickBehavior < (maxNumOfEnemies / 
+            maxNumOfEnemiesPerRound) - 1)
+            curEnemyBatchToTickBehavior++;
+        else
+            curEnemyBatchToTickBehavior = 0;
     }
 
     /**
      * updates enemy movement, because physics-based- to be ran in FixedUpdate
      */
-    private void UpdateAllEnemiesMovement()
+    private void UpdateBatchedEnemiesMovement()
     {
         //rebuild grid each frame
         spatialGrid.Clear();
         foreach (EnemyBaseClass enemy in enemyList)
             spatialGrid.Insert(enemy);
 
+        List<EnemyBaseClass> bucket = enemyBatchLists[curEnemyBatchToTickMovement];
 
-        //only check nearby enemies and space from them
-        foreach (EnemyBaseClass enemy in enemyList)
+        for (int i = 0; i < enemyBatchLists[curEnemyBatchToTickMovement].Count; i++)
         {
-            if(enemy && enemy.gameObject.activeSelf == true)
+            //only check nearby enemies and space from them
+            if(bucket[i] && bucket[i].gameObject.activeSelf == true)
             {
-                if(enemy.GetCurHealth() > 0)
+                if(bucket[i].GetCurHealth() > 0)
                 {
                     Vector2 separation = Vector2.zero;
-                    List<EnemyBaseClass> neighbors = spatialGrid.GetNeighbors(enemy.transform.position);
+                    List<EnemyBaseClass> neighbors = spatialGrid.GetNeighbors(
+                        bucket[i].transform.position);
 
                     foreach (EnemyBaseClass other in neighbors)
                     {
-                        if (other == enemy) continue;
+                        if (other == bucket[i]) continue;
 
-                        Vector2 diff = enemy.transform.position - other.transform.position;
+                        Vector2 diff = bucket[i].transform.position - 
+                            other.transform.position;
                         float dist = diff.magnitude;
 
                         //closer = stronger push
@@ -129,11 +155,18 @@ public class EnemyManager : MonoBehaviour
                             separation += diff.normalized / dist;
                     }
 
-                    enemy.HandleMovement();
-                    enemy.ApplySeparation(separation.normalized * separationStrength);
+                    bucket[i].HandleMovement();
+                    bucket[i].ApplySeparation(separation.normalized * 
+                        separationStrength);
                 }
             }
         }
+
+        if (curEnemyBatchToTickMovement < (maxNumOfEnemies / 
+            maxNumOfEnemiesPerRound) - 1)
+            curEnemyBatchToTickMovement++;
+        else
+            curEnemyBatchToTickMovement = 0;
     }
 
     /**
@@ -164,13 +197,28 @@ public class EnemyManager : MonoBehaviour
                 EnemyBaseClass enemy = enemyGameObjectCopy.GetComponent<EnemyBaseClass>();
                 enemy.Setup(player);
                 enemyList.Add(enemy);
+                AddEnemyToBucket(enemy, curEnemyBatch);
                 currentNumOfEnemiesSpwnedThisRound++;
                 curNumOfEnemies++;
                 yield return new WaitForSecondsRealtime(spawnDelay);
             }
 
+            if (curEnemyBatch < maxNumOfEnemies / maxNumOfEnemiesPerRound)
+                curEnemyBatch++;
+            else
+                curEnemyBatch = 0;
+
             isNextWaveOnCooldown = true;
         }   
+    }
+
+    /**
+     * adds enemy to buckets to be updated seperately
+     */
+    private void AddEnemyToBucket(EnemyBaseClass enemy, int batch)
+    {
+        if(batch < maxNumOfEnemies / maxNumOfEnemiesPerRound)    
+            enemyBatchLists[curEnemyBatch].Add(enemy);
     }
 
     /**
