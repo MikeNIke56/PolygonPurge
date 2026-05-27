@@ -32,6 +32,7 @@ public class EnemyBaseClass : EntityBaseClass
     [SerializeField] protected int lowerChance;
     [SerializeField] protected int upperChance;
     [SerializeField] protected int rank;
+    [SerializeField] protected int exp;
 
     private float curCollisionAttackCooldown;
     private float curProjectileCooldown;
@@ -134,7 +135,9 @@ public class EnemyBaseClass : EntityBaseClass
     public override void Die()
     {
         Debug.Log(name + " died");
-        ObjectPoolingManager.ReturnObjectToPool(gameObject, ObjectPoolingManager.PoolType.Enemy);
+        LevelSystem.i.AddXP(exp);
+        ObjectPoolingManager.ReturnObjectToPool(gameObject, 
+            ObjectPoolingManager.PoolType.Enemy);
         EnemyManager.i.curNumOfEnemies--;
     }
 

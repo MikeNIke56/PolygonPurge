@@ -118,6 +118,7 @@ MonoBehaviour:
   lowerChance: 65
   upperChance: 100
   rank: 2
+  exp: 1
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64

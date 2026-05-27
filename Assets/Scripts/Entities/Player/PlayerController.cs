@@ -58,7 +58,7 @@ public class PlayerController : EntityBaseClass
     //arc pylon pivot
     public GameObject arcPylonPivotPoint;
 
-    public GameObject w;
+    //public GameObject w;
 
     private SpectreRounds spectreRounds;
 
@@ -175,12 +175,6 @@ public class PlayerController : EntityBaseClass
 
     public void Dodge()
     {
-        if (UpgradesManager.i.currentAbilities.Count == 0)
-            UpgradesManager.i.SpawnAbility(w);
-        else
-            UpgradesManager.i.UpgradeAbility(UpgradesManager.i.
-              currentAbilities[0]);
-
         if (!currentPlayerStates.Contains(PlayerStates.Dodging))
         {
             currentPlayerStates.Add(PlayerStates.Dodging);
@@ -191,6 +185,7 @@ public class PlayerController : EntityBaseClass
 
     public void Shoot()
     {
+        LevelSystem.i.AddXP(5);
         //fire multiple times per press if Shotgun
         if (primaryWeapon is Shotgun && 
             primaryWeapon.canFire == true)

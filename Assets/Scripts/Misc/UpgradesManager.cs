@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /**
@@ -16,15 +17,10 @@ public class UpgradesManager : MonoBehaviour
         MoveSpeed,
         AttackSpeed
     }
-    public enum AbilityUpgrades
-    {
-        OrbitingCircles
-    }
     public enum ItemTypes
     {
         HealthPickup,
-        Bomb,
-        Magnet
+        Bomb
     }
 
     [Header("UpgradesManager Variables")]
@@ -58,6 +54,7 @@ public class UpgradesManager : MonoBehaviour
         statsBuffRecord = new Dictionary<StatsUpgrades, int>();
         currentAbilities = new List<AbilityBaseClass>();
         InitializeStartingStats();
+
     }
 
     /**
