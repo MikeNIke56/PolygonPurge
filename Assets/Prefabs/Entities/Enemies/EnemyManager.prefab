@@ -46,16 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemySpawnList:
-  - {fileID: 2263690994773135237, guid: 40b8ec2cb98aefb4f8e69036e59d7ca4, type: 3}
-  - {fileID: 3320494734956784958, guid: 3748f43cabc17f144b661294a7f62e95, type: 3}
   - {fileID: 5834869345390441621, guid: c64c7cc6cb80e1d4d81495c156e61cd6, type: 3}
+  - {fileID: 3320494734956784958, guid: 3748f43cabc17f144b661294a7f62e95, type: 3}
   - {fileID: 8653881431099390299, guid: 807cb76ea53964046bb92b551c7856a1, type: 3}
-  maxNumOfEnemies: 20
-  maxNumOfEnemiesPerRound: 10
+  - {fileID: 2263690994773135237, guid: 40b8ec2cb98aefb4f8e69036e59d7ca4, type: 3}
+  maxNumOfEnemies: 1
+  maxNumOfEnemiesPerRound: 1
   curNumOfEnemies: 0
   spawnDelay: 0.3
-  minSpawnDistance: 15
-  maxSpawnDistance: 20
+  minSpawnDistance: 32
+  maxSpawnDistance: 40
   isNextWaveOnCooldown: 0
   maxRoundTimer: 5
   enemyList: []

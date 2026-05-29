@@ -15,16 +15,17 @@ public class RPG : WeaponBaseClass
         GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, fireOffset.position,
             fireOffset.rotation, ObjectPoolingManager.PoolType.Bullet);
 
-        //sets the speed and damage of the bullet
+        //sets the stats of the bullet
         ProjectileBaseClass projectile = bulletObjCopy.GetComponent<ProjectileBaseClass>();
-        projectile.SetDamage(attack);
+        projectile.SetAllStats(attack, projectileSpeed, projectileSize,
+            projectilePenetration, projectileLifetime);
 
         RPGRocket rocketProj = projectile as RPGRocket;
         rocketProj.damageRadius = newDamageRadius;
 
         //grab the bullet cone of the weapon and set the bullet's random
         //direction
-        float spread = Random.Range(-bulletSpread, bulletSpread);
+        float spread = Random.Range(-projectileSpread, projectileSpread);
         Vector3 direction = transform.right + transform.up * spread;
 
         //keep consistent speed

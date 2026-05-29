@@ -30,7 +30,6 @@ public class UpgradesManager : MonoBehaviour
     //keeps track of the player's current abilities
     public List<AbilityBaseClass> currentAbilities;
 
-
     public float[] statIncreases = new float[5];
     private const int maxLevel = 5;
 

@@ -95,9 +95,12 @@ public class TriangleEnemy : EnemyBaseClass
         GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, firepoint.position,
             firepoint.localRotation, ObjectPoolingManager.PoolType.Bullet);
 
-        //sets the speed and damage of the bullet
+        //sets the stats of the bullet
         ProjectileBaseClass projectile = bulletObjCopy.GetComponent<ProjectileBaseClass>();
         projectile.SetDamage(projectileAttack);
+        projectile.SetSize(bulletSize);
+        projectile.SetSpeed(bulletSpeed);
+        projectile.SetLifetime(bulletLifetime);
         Vector3 force = firepoint.right * projectile.GetSpeed();
         projectile.GetRigidbody().AddForce(force, ForceMode2D.Impulse);
     }

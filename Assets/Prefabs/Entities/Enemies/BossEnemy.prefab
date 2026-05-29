@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 82695449113759736}
   - component: {fileID: 5206321298265829272}
   - component: {fileID: 3801890815267593202}
-  - component: {fileID: 9071434325338325315}
+  - component: {fileID: 2152005911431458682}
   - component: {fileID: 6460031110638802547}
   m_Layer: 7
-  m_Name: CapsuleEnemy
+  m_Name: BossEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,8 +121,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &9071434325338325315
-CapsuleCollider2D:
+--- !u!58 &2152005911431458682
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,8 +156,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_Radius: 0.5
 --- !u!114 &6460031110638802547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,18 +169,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8595a3bc47f03544958f20d81f75e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleEnemy
-  maxHealth: 0
-  moveSpeed: 0
+  maxHealth: 500
+  moveSpeed: 150
   currentEnemyStates: 
-  collisionAttack: 0
-  projectileAttack: 0
-  hitbox: {fileID: 9071434325338325315}
-  maxCollisionAttackCooldown: 0
-  maxProjectileCooldown: 0
-  percentChanceToSpawn: 0
+  collisionAttack: 20
+  projectileAttack: 15
+  hitbox: {fileID: 2152005911431458682}
+  maxCollisionAttackCooldown: 0.5
+  maxProjectileCooldown: 0.35
+  percentChanceToSpawn: 100
   lowerChance: 0
-  upperChance: 0
+  upperChance: 100
   rank: 1
+  exp: 100
+  bulletSize: 0.5
+  bulletSpeed: 7
+  bulletLifetime: 1.5
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
+  currentMode: 0
+  maxChaseDistance: 30
+  chargeAttackTime: 1
+  chargeAttackCooldown: 1.2
+  chargePower: 30
+  rotateSpeed: 0
+  firepoints: []
+  bulletObj: {fileID: 0}
+  currentAbilities: []

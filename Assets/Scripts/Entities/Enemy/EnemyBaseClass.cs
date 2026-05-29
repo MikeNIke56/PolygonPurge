@@ -33,12 +33,14 @@ public class EnemyBaseClass : EntityBaseClass
     [SerializeField] protected int upperChance;
     [SerializeField] protected int rank;
     [SerializeField] protected int exp;
+    [SerializeField] protected float bulletSize;
+    [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected float bulletLifetime;
 
     private float curCollisionAttackCooldown;
     private float curProjectileCooldown;
 
     protected Vector3 separationForce;
-
 
     //the layers of objects this object is allowed to apply physics to
     public LayerMask bodyCollisionTargetLayers;

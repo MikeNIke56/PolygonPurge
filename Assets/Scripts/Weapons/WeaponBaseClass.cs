@@ -16,7 +16,11 @@ public class WeaponBaseClass : MonoBehaviour
     [SerializeField] protected float primaryWeaponSpawnOffset;
     [SerializeField] protected Transform fireOffset;
     public bool canFire = true;
-    [SerializeField] protected float bulletSpread;
+    [SerializeField] protected float projectileSpread;
+    [SerializeField] protected float projectileSize;
+    [SerializeField] protected int projectilePenetration;
+    [SerializeField] protected float projectileSpeed;
+    [SerializeField] protected float projectileLifetime;
 
     //keeps track of the player's current weapon level
     public int currrentWeaponLevel = 1;
@@ -32,7 +36,7 @@ public class WeaponBaseClass : MonoBehaviour
     /**
     * all initializations to run once a weapon is created
     */
-    public void SetUp()
+    public virtual void SetUp()
     {
         rb = GetComponent<Rigidbody2D>();
         SetWeaponPivotOffset();
@@ -41,16 +45,21 @@ public class WeaponBaseClass : MonoBehaviour
     public virtual void Fire()
     {
         //loads in and fires bullet
-        GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, fireOffset.position,
-            fireOffset.rotation, ObjectPoolingManager.PoolType.Bullet);
+        GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, 
+            fireOffset.position, fireOffset.rotation, 
+            ObjectPoolingManager.PoolType.Bullet);
 
-        //sets the speed and damage of the bullet
-        ProjectileBaseClass projectile = bulletObjCopy.GetComponent<ProjectileBaseClass>();
-        projectile.SetDamage(attack);
+        //sets the stats of the bullet
+        ProjectileBaseClass projectile = bulletObjCopy.GetComponent<
+            ProjectileBaseClass>();
+        projectile.enabled = false;
+        projectile.SetAllStats(attack, projectileSpeed, projectileSize,
+            projectilePenetration, projectileLifetime);
+        projectile.enabled = true;
 
         //grab the bullet cone of the weapon and set the bullet's random
         //direction
-        float spread = Random.Range(-bulletSpread, bulletSpread);
+        float spread = Random.Range(-projectileSpread, projectileSpread);
         Vector3 direction = transform.right + transform.up * spread;
 
         //keep consistent speed

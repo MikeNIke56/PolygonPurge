@@ -172,7 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShotgunBullet
   speed: 18
   lifeTime: 0.65
-  penetrationValue: 2
   targetLayers:
     serializedVersion: 2
     m_Bits: 128

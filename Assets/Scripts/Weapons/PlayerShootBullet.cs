@@ -1,7 +1,7 @@
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class TriangleBullet : ProjectileBaseClass
+public class PlayerShootBullet : ProjectileBaseClass
 {
     
 }

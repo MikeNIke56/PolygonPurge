@@ -120,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &8853973773096178335
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -198,14 +198,17 @@ MonoBehaviour:
   maxCollisionAttackCooldown: 0.5
   maxProjectileCooldown: 0
   percentChanceToSpawn: 25
-  lowerChance: 40
-  upperChance: 65
+  lowerChance: 0
+  upperChance: 25
   rank: 3
   exp: 3
+  bulletSize: 0
+  bulletSpeed: 0
+  bulletLifetime: 0
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
   maxChaseDistance: 6
   chargeAttackTime: 1.5
   chargeAttackCooldown: 2.5
-  chargePower: 15
+  chargePower: 20

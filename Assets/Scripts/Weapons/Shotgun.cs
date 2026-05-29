@@ -8,6 +8,6 @@ public class Shotgun : WeaponBaseClass
     public override void UpgradeWeapon(int level)
     {
         base.UpgradeWeapon(level);
-        bulletSpread *= bulletSpreadDecreaseAmnt;
+        projectileSpread *= bulletSpreadDecreaseAmnt;
     }
 }

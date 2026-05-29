@@ -297,7 +297,11 @@ MonoBehaviour:
   primaryWeaponSpawnOffset: 1.3
   fireOffset: {fileID: 610413234339274742}
   canFire: 1
-  bulletSpread: 0.15
+  projectileSpread: 0.12
+  projectileSize: 0.25
+  projectilePenetration: 0
+  projectileSpeed: 26
+  projectileLifetime: 0.9
   currrentWeaponLevel: 1
   bulletObj: {fileID: 1722106345067432317, guid: 03230ae0a141fa34ba5bd9605babbf40, type: 3}
 --- !u!1 &5622401504479921811

@@ -185,7 +185,7 @@ public class PlayerController : EntityBaseClass
 
     public void Shoot()
     {
-        LevelSystem.i.AddXP(5);
+        //LevelSystem.i.AddXP(5);
         //fire multiple times per press if Shotgun
         if (primaryWeapon is Shotgun && 
             primaryWeapon.canFire == true)

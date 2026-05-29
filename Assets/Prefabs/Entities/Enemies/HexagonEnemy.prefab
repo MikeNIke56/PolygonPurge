@@ -312,7 +312,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!60 &5855389270195071799
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -403,22 +403,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexagonEnemy
   maxHealth: 20
-  moveSpeed: 0
+  moveSpeed: 70
   currentEnemyStates: 
   collisionAttack: 20
   projectileAttack: 10
   hitbox: {fileID: 5855389270195071799}
   maxCollisionAttackCooldown: 0.75
-  maxProjectileCooldown: 0.55
+  maxProjectileCooldown: 0.4
   percentChanceToSpawn: 15
   lowerChance: 25
   upperChance: 40
   rank: 3
   exp: 5
+  bulletSize: 0.1625
+  bulletSpeed: 5.5
+  bulletLifetime: 1
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
-  rotateSpeed: 45
+  rotateSpeed: 90
   firepoints:
   - {fileID: 844414899418995608}
   - {fileID: 5371009945419496252}

@@ -144,12 +144,14 @@ MonoBehaviour:
   primaryWeaponSpawnOffset: 1.25
   fireOffset: {fileID: 47980554126666012}
   canFire: 1
-  bulletSpread: 0.1
+  projectileSpread: 0.075
+  projectileSize: 0.25
+  projectilePenetration: 0
+  projectileSpeed: 15
+  projectileLifetime: 1.25
   currrentWeaponLevel: 1
-  bulletObj: {fileID: 6438708033939589405, guid: 37cb8fed9509ef64fb19adcd71caf0b2, type: 3}
-  newBulletSize: 0.25
+  bulletObj: {fileID: 1722106345067432317, guid: 03230ae0a141fa34ba5bd9605babbf40, type: 3}
   sizeIncreaseAmnt: 1.1
-  newPenetrationValue: 0
 --- !u!50 &1848966746434745556
 Rigidbody2D:
   serializedVersion: 5

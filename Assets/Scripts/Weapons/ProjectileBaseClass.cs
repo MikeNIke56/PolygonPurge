@@ -13,7 +13,7 @@ public class ProjectileBaseClass : MonoBehaviour
     [SerializeField] protected float speed;
     public float lifeTime;
     protected int numEnemiesPenetrated;
-    public int penetrationValue;
+    protected int penetrationValue;
 
     //the layers of objects this object is allowed to apply physics to
     public LayerMask targetLayers;
@@ -53,8 +53,8 @@ public class ProjectileBaseClass : MonoBehaviour
 
                 if(numEnemiesPenetrated >= penetrationValue)
                 {
-                    ObjectPoolingManager.ReturnObjectToPool(gameObject,
-                    ObjectPoolingManager.PoolType.Bullet);
+                    ObjectPoolingManager.ReturnObjectToPool(gameObject, 
+                        ObjectPoolingManager.PoolType.Bullet);
                 }
                 else
                     //projectile will "penetrate" a certain # of enemies 
@@ -82,6 +82,15 @@ public class ProjectileBaseClass : MonoBehaviour
         return rb;
     }
 
+    public void SetAllStats(float damage,  float speed, float size,
+        int penetration, float lifetime)
+    {
+        this.damage = damage;
+        this.speed = speed;
+        gameObject.transform.localScale = new Vector3(size, size, size);
+        penetrationValue = penetration;
+        this.lifeTime = lifetime;
+    }
     public void SetDamage(float damage)
     {
         this.damage = damage;
@@ -89,5 +98,17 @@ public class ProjectileBaseClass : MonoBehaviour
     public void SetSpeed(float speed)
     {
         this.speed = speed;
+    }
+    public void SetSize(float size)
+    {
+        gameObject.transform.localScale = new Vector3(size, size, size);
+    }
+    public void SetPenetration(int penetration)
+    {
+        penetrationValue = penetration;
+    }
+    public void SetLifetime(float lifetime)
+    {
+        this.lifeTime = lifetime;
     }
 }

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriangleEnemy
   maxHealth: 12
-  moveSpeed: 55
+  moveSpeed: 80
   currentEnemyStates: 
   collisionAttack: 4
   projectileAttack: 8
@@ -193,10 +193,13 @@ MonoBehaviour:
   maxCollisionAttackCooldown: 1
   maxProjectileCooldown: 1.2
   percentChanceToSpawn: 25
-  lowerChance: 0
-  upperChance: 25
+  lowerChance: 75
+  upperChance: 100
   rank: 4
   exp: 3
+  bulletSize: 0.18
+  bulletSpeed: 1.5
+  bulletLifetime: 1.2
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -204,7 +207,7 @@ MonoBehaviour:
   maxChaseDistance: 8
   offset: -30
   firepoint: {fileID: 3378122581591987290}
-  bulletObj: {fileID: 6438708033939589405, guid: d7ef182a2adc70a4d8039f0a9091827d, type: 3}
+  bulletObj: {fileID: 6438708033939589405, guid: 85a2b156e7fd9144196a9f5f7598fb8d, type: 3}
 --- !u!1 &7663584593356375080
 GameObject:
   m_ObjectHideFlags: 0

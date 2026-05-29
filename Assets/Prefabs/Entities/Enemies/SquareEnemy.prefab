@@ -115,10 +115,13 @@ MonoBehaviour:
   maxCollisionAttackCooldown: 0.75
   maxProjectileCooldown: 0
   percentChanceToSpawn: 35
-  lowerChance: 65
-  upperChance: 100
+  lowerChance: 40
+  upperChance: 75
   rank: 2
   exp: 1
+  bulletSize: 0
+  bulletSpeed: 0
+  bulletLifetime: 0
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -194,4 +197,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
