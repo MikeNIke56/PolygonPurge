@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -60,6 +61,7 @@ public class EnemyBaseClass : EntityBaseClass
         curProjectileCooldown = maxProjectileCooldown;
         this.player = player;
         rb = GetComponent<Rigidbody2D>();
+        GetComponent<SpriteRenderer>().color = baseColor;
     }
 
     public virtual void RunBehavior()
@@ -68,6 +70,13 @@ public class EnemyBaseClass : EntityBaseClass
             ReduceCollisionAttackCooldown();
         if (currentEnemyStates.Contains(EnemyStates.ProjectileAttackCooldown))
             ReduceProjectileAttackCooldown();
+
+        if(changeSpriteColor == true)
+        {
+            ResetSpriteColor();
+            if (GetComponent<SpriteRenderer>().color == baseColor)
+                changeSpriteColor = false;
+        }
     }
 
     public virtual void HandleMovement()
@@ -125,8 +134,9 @@ public class EnemyBaseClass : EntityBaseClass
 
     public override void TakeDamage(float damage)
     {
-        //float calculatedDamage = Mathf.Clamp(damage - defense, 1, damage);
         curHealth -= damage;
+        GetComponent<SpriteRenderer>().color = damageColor;
+        changeSpriteColor = true;
 
         if (curHealth <= 0)
         {
@@ -140,6 +150,16 @@ public class EnemyBaseClass : EntityBaseClass
         LevelSystem.i.AddXP(exp);
         ObjectPoolingManager.ReturnObjectToPool(gameObject, 
             ObjectPoolingManager.PoolType.Enemy);
+        EnemyManager.i.curNumOfEnemies--;
+    }
+
+    /**
+     * called specifically when enemy needs to be despawned for boss round
+     */
+    public void Despawn()
+    {
+        ObjectPoolingManager.ReturnObjectToPool(gameObject,
+             ObjectPoolingManager.PoolType.Enemy);
         EnemyManager.i.curNumOfEnemies--;
     }
 

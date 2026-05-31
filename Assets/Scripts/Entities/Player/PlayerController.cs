@@ -100,6 +100,7 @@ public class PlayerController : EntityBaseClass
         baseHitboxSize = hitbox.radius;
         curHealth = maxHealth;
         curHealthRegenTime = maxHealthRegenTime;
+        GetComponent<SpriteRenderer>().color = baseColor;
 
         //load in and equip our weapon
         GameObject primaryWeaponGameObjectCopy = Instantiate<GameObject>(primaryWeaponGameObject, 
@@ -133,6 +134,13 @@ public class PlayerController : EntityBaseClass
 
         if(curHealth < maxHealth)
             HandleHealthRegen();
+
+        if (changeSpriteColor == true)
+        {
+            ResetSpriteColor();
+            if (GetComponent<SpriteRenderer>().color == baseColor)
+                changeSpriteColor = false;
+        }
     }
 
     void FixedUpdate()
@@ -285,6 +293,8 @@ public class PlayerController : EntityBaseClass
         //float calculatedDamage = Mathf.Clamp(damage - defense, 1, damage);
         curHealth -= damage;
         curHealthRegenTime = maxHealthRegenTime;
+        GetComponent<SpriteRenderer>().color = damageColor;
+        changeSpriteColor = true;
         Debug.Log(curHealth);
 
         if (curHealth <= 0)

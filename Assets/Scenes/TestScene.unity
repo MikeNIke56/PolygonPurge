@@ -424,10 +424,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerObjs
       objectReference: {fileID: 0}
-    - target: {fileID: 5131730516583307863, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
-      propertyPath: primaryWeaponGameObject
-      value: 
-      objectReference: {fileID: 3832298578810597381, guid: 1e1b05abb5722404e967a03acfd56b96, type: 3}
     - target: {fileID: 9170750593587358215, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -542,17 +538,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4973982655233596522, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: maxRoundTimer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemies
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: maxRoundsToBossSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemiesPerRound
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8031153493488364347, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: m_LocalPosition.x

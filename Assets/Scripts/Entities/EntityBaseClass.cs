@@ -15,6 +15,10 @@ public class EntityBaseClass : MonoBehaviour, IDamageable
     protected float curHealth;
     protected Rigidbody2D rb;
 
+    public Color baseColor;
+    public Color damageColor;
+    protected bool changeSpriteColor;
+
     protected void LookAt(Vector3 target, float offset)
     {
         //find angle between the player and target
@@ -38,6 +42,20 @@ public class EntityBaseClass : MonoBehaviour, IDamageable
     {
 
     }
+
+    /**
+    * blends between damage and base color of enemy sprite
+    */
+    protected void ResetSpriteColor()
+    {
+        Color spriteColor = GetComponent<SpriteRenderer>().color;
+
+        spriteColor = Color.Lerp(spriteColor, baseColor,
+            Time.deltaTime * 6.5f);
+
+        GetComponent<SpriteRenderer>().color = spriteColor;
+    }
+
 
     public float GetCurHealth()
     {

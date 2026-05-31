@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.0173, y: -2.10946, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &2152005911431458682
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleEnemy
   maxHealth: 500
-  moveSpeed: 150
+  moveSpeed: 110
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
   currentEnemyStates: 
   collisionAttack: 20
   projectileAttack: 15
@@ -194,6 +196,5 @@ MonoBehaviour:
   chargeAttackCooldown: 1.2
   chargePower: 30
   rotateSpeed: 0
-  firepoints: []
   bulletObj: {fileID: 0}
   currentAbilities: []

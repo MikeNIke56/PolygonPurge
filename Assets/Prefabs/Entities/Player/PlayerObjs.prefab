@@ -627,6 +627,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   maxHealth: 100
   moveSpeed: 5
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
   currentPlayerStates: 
   hitbox: {fileID: 6118434277873242099}
   inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -634,7 +636,7 @@ MonoBehaviour:
   dodgeDecaySpeed: 48
   maxHealthRegenTime: 5
   healthRegenSpeed: 1
-  primaryWeaponGameObject: {fileID: 3850022347616916355, guid: 8ead973cb23f9c94ca4c5cb2d8560bed, type: 3}
+  primaryWeaponGameObject: {fileID: 3832298578810597381, guid: 1e1b05abb5722404e967a03acfd56b96, type: 3}
   weaponPivotPoint: {fileID: 2183233569898698503}
   abilityPivotPoint: {fileID: 8059392899222047222}
   littleBuddyPivotPoint: {fileID: 1657053679628106637}

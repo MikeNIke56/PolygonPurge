@@ -11,16 +11,22 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Enemy Spawn Variables")]
     public List<EnemyBaseClass> enemySpawnList;
+    private BossEnemy boss;
+    public GameObject bossObj;
     [SerializeField] private int maxNumOfEnemies;
     [SerializeField] private int maxNumOfEnemiesPerRound;
     public int curNumOfEnemies = 0;
-    public float spawnDelay;
+    public float regularSpawnDelay;
+    public float bossSpawnDelay;
     public float minSpawnDistance;
     public float maxSpawnDistance;
 
     [SerializeField] private bool isNextWaveOnCooldown;
     private float roundTimer;
     [SerializeField] private float maxRoundTimer;
+    private int roundsToBossSpawn;
+    public int maxRoundsToBossSpawn;
+    private bool isBossRound = false;
 
     public List<List<EnemyBaseClass>> enemyBatchLists;
     private int curEnemyBatch = 0;
@@ -67,8 +73,9 @@ public class EnemyManager : MonoBehaviour
             enemyBatchLists.Add(innerList);
         }
 
-        isNextWaveOnCooldown = false;
+        isNextWaveOnCooldown = true;
         roundTimer = maxRoundTimer;
+        roundsToBossSpawn = maxRoundsToBossSpawn;
 
         int totalChance = 0;
         foreach (EnemyBaseClass record in enemySpawnList)
@@ -78,20 +85,38 @@ public class EnemyManager : MonoBehaviour
 
             totalChance = totalChance + record.GetChanceToSpawn();
         }
-
-        StartCoroutine(SpawnInEnemies());
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateBatchedEnemiesBehavior();
-        HandleRounds();
+        if(isBossRound == false)
+        {
+            UpdateBatchedEnemiesBehavior();
+            HandleRounds();
+        }
+        else
+        {
+            if (boss && boss.gameObject.activeSelf == true)
+            {
+                if (boss.GetCurHealth() > 0)
+                    boss.RunBehavior();
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        UpdateBatchedEnemiesMovement();
+        if (isBossRound == false)
+            UpdateBatchedEnemiesMovement();
+        else
+        {
+            if (boss && boss.gameObject.activeSelf == true)
+            {
+                if (boss.GetCurHealth() > 0)
+                    boss.HandleMovement();
+            }
+        }
     }
 
     /**
@@ -172,7 +197,7 @@ public class EnemyManager : MonoBehaviour
     /**
      * spawns in appropriate enemies from list with delay between each spawn
      */
-    protected IEnumerator SpawnInEnemies()
+    private IEnumerator SpawnInEnemies()
     {
         if(isNextWaveOnCooldown == false)
         {
@@ -185,22 +210,26 @@ public class EnemyManager : MonoBehaviour
             int currentNumOfEnemiesSpwnedThisRound = 0;
             while (currentNumOfEnemiesSpwnedThisRound < numOfEnemiesToSpawn)
             {
-                //return the first enemy where the value "p" is between their lower and upper spawn chances
+                //return the first enemy where the value "p" is between their lower
+                //and upper spawn chances
                 int randVal = Random.Range(0, 101);
-                EnemyBaseClass enemyRecorded = enemySpawnList.First(p => randVal >= p.GetLowerChance() && randVal
-                <= p.GetUpperChance());
+                EnemyBaseClass enemyRecorded = enemySpawnList.First(p => randVal 
+                >= p.GetLowerChance() && randVal <= p.GetUpperChance());
 
                 //spawn in that enemy
-                GameObject enemyGameObjectCopy = ObjectPoolingManager.SpawnObject(enemyRecorded.gameObject,
-                    FindRandomSpawnPoint(), Quaternion.identity, ObjectPoolingManager.PoolType.Enemy);
+                GameObject enemyGameObjectCopy = ObjectPoolingManager.SpawnObject(
+                    enemyRecorded.gameObject, FindRandomSpawnPoint(
+                        minSpawnDistance, maxSpawnDistance), 
+                    Quaternion.identity, ObjectPoolingManager.PoolType.Enemy);
 
-                EnemyBaseClass enemy = enemyGameObjectCopy.GetComponent<EnemyBaseClass>();
+                EnemyBaseClass enemy = enemyGameObjectCopy.GetComponent<
+                    EnemyBaseClass>();
                 enemy.Setup(player);
                 enemyList.Add(enemy);
                 AddEnemyToBucket(enemy, curEnemyBatch);
                 currentNumOfEnemiesSpwnedThisRound++;
                 curNumOfEnemies++;
-                yield return new WaitForSecondsRealtime(spawnDelay);
+                yield return new WaitForSecondsRealtime(regularSpawnDelay);
             }
 
             if (curEnemyBatch < maxNumOfEnemies / maxNumOfEnemiesPerRound)
@@ -210,6 +239,40 @@ public class EnemyManager : MonoBehaviour
 
             isNextWaveOnCooldown = true;
         }   
+    }
+
+    /**
+     * despawns all enemies, then spawns in boss
+     */
+    private IEnumerator SpawnInBoss()
+    {
+        if (isNextWaveOnCooldown == false)
+        {
+            roundsToBossSpawn = maxRoundsToBossSpawn;
+
+            //despawn every enemy
+            foreach (EnemyBaseClass enemy in enemyList)
+                enemy.Despawn(); 
+            enemyList.Clear();
+
+            //spawn in boss
+            GameObject bossGameObjectCopy = ObjectPoolingManager.SpawnObject(
+                bossObj, FindRandomSpawnPoint(minSpawnDistance / 3, 
+                maxSpawnDistance / 3), Quaternion.identity, 
+                ObjectPoolingManager.PoolType.Enemy);
+
+            BossEnemy bossCopy = bossGameObjectCopy.GetComponent<
+                BossEnemy>();
+            bossCopy.Setup(player);
+            enemyList.Add(bossCopy);
+            curNumOfEnemies = 1;
+            boss = bossCopy;
+
+            yield return new WaitForSecondsRealtime(bossSpawnDelay);
+
+            isBossRound = true;
+        }
+        yield return null;
     }
 
     /**
@@ -224,7 +287,7 @@ public class EnemyManager : MonoBehaviour
     /**
      * finds random point around character to spawn the enemy
      */
-    private Vector3 FindRandomSpawnPoint()
+    private Vector3 FindRandomSpawnPoint(float minDist, float maxDist)
     {
         int[] infrontOrBehind = new int[2];
         infrontOrBehind[0] = 1;
@@ -237,13 +300,13 @@ public class EnemyManager : MonoBehaviour
         int yNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
 
         Vector3 randSpawnPoint = new Vector3(
-            Random.Range(player.transform.position.x + (minSpawnDistance *
+            Random.Range(player.transform.position.x + (minDist *
             xNegPos),
-            player.transform.position.x + (maxSpawnDistance * xNegPos)),
+            player.transform.position.x + (maxDist * xNegPos)),
 
-            Random.Range(player.transform.position.y + (minSpawnDistance *
+            Random.Range(player.transform.position.y + (minDist *
             yNegPos),
-            player.transform.position.y + (maxSpawnDistance * yNegPos)),
+            player.transform.position.y + (maxDist * yNegPos)),
 
             0);
 
@@ -263,10 +326,22 @@ public class EnemyManager : MonoBehaviour
             {
                 isNextWaveOnCooldown = false;
                 roundTimer = maxRoundTimer;
-                StartCoroutine(SpawnInEnemies());
+                roundsToBossSpawn--;
+
+                if (roundsToBossSpawn > 0)
+                    StartCoroutine(SpawnInEnemies());
+                else
+                    StartCoroutine(SpawnInBoss());
             }
         }
-        //else
-           // StartCoroutine(SpawnInEnemies());
+    }
+
+    public void SetBossRound(bool isBossRound)
+    {
+        this.isBossRound = isBossRound;
+    }
+    public void SetWaveCooldown(bool isWaveOnCD)
+    {
+        isNextWaveOnCooldown = isWaveOnCD;
     }
 }

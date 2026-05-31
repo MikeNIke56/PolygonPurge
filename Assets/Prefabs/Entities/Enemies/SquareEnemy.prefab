@@ -108,6 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SquareEnemy
   maxHealth: 10
   moveSpeed: 125
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
   currentEnemyStates: 
   collisionAttack: 10
   projectileAttack: 0

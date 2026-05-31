@@ -186,6 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TriangleEnemy
   maxHealth: 12
   moveSpeed: 80
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
   currentEnemyStates: 
   collisionAttack: 4
   projectileAttack: 8
@@ -198,7 +200,7 @@ MonoBehaviour:
   rank: 4
   exp: 3
   bulletSize: 0.18
-  bulletSpeed: 1.5
+  bulletSpeed: 15
   bulletLifetime: 1.2
   bodyCollisionTargetLayers:
     serializedVersion: 2

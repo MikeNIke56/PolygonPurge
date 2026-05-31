@@ -40,6 +40,7 @@ public class BossEnemy : EnemyBaseClass
 
     public override void RunBehavior()
     {
+        base.RunBehavior();
         HandleModeBehaviors();
     }
 
@@ -73,5 +74,13 @@ public class BossEnemy : EnemyBaseClass
         currentEnemyStates.Add(EnemyStates.ChargingAttackCooldown);
         yield return new WaitForSecondsRealtime(chargeAttackCooldown);
         currentEnemyStates.Remove(EnemyStates.ChargingAttackCooldown);
+    }
+
+    public override void Die()
+    {
+        EnemyManager.i.enemyList.Remove(this);
+        EnemyManager.i.SetBossRound(false);
+        EnemyManager.i.SetWaveCooldown(true);
+        base.Die();
     }
 }
