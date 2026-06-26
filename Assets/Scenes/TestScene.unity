@@ -540,11 +540,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxRoundTimer
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemies
-      value: 20
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: minSpawnDistance
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: maxXSpawnDistance
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: maxYSpawnDistance
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: minXSpawnDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
+      propertyPath: minYSpawnDistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxRoundsToBossSpawn

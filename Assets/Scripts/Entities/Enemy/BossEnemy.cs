@@ -32,10 +32,7 @@ public class BossEnemy : EnemyBaseClass
     public override void Setup(PlayerController player)
     {
         base.Setup(player);
-
-        //copy player's current abilities into boss's
-        currentAbilities = new List<AbilityBaseClass>();
-        currentAbilities = UpgradesManager.i.currentAbilities;
+        SetAbilities();
     }
 
     public override void RunBehavior()
@@ -52,6 +49,15 @@ public class BossEnemy : EnemyBaseClass
         Vector3 direction = (player.transform.position - transform.position).
             normalized;
         rb.linearVelocity = direction * moveSpeed * Time.fixedDeltaTime;
+    }
+
+    /**
+     * sets the boss's abilities from the player's current list of abilities
+     */
+    private void SetAbilities()
+    {
+        currentAbilities = new List<AbilityBaseClass>();
+        currentAbilities = UpgradesManager.i.currentAbilities;
     }
 
     private void HandleModeBehaviors()

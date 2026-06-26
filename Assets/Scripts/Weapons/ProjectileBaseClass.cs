@@ -51,7 +51,7 @@ public class ProjectileBaseClass : MonoBehaviour
                 //cause damage
                 entity.GetComponent<EntityBaseClass>().TakeDamage(damage);
 
-                if(numEnemiesPenetrated >= penetrationValue)
+                if(numEnemiesPenetrated == penetrationValue)
                 {
                     ObjectPoolingManager.ReturnObjectToPool(gameObject, 
                         ObjectPoolingManager.PoolType.Bullet);

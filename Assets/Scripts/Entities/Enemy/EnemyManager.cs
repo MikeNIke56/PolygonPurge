@@ -252,7 +252,10 @@ public class EnemyManager : MonoBehaviour
 
             //despawn every enemy
             foreach (EnemyBaseClass enemy in enemyList)
-                enemy.Despawn(); 
+            {
+                if (enemy && enemy.gameObject.activeSelf == true)
+                    enemy.Despawn();
+            }
             enemyList.Clear();
 
             //spawn in boss
@@ -289,27 +292,14 @@ public class EnemyManager : MonoBehaviour
      */
     private Vector3 FindRandomSpawnPoint(float minDist, float maxDist)
     {
-        int[] infrontOrBehind = new int[2];
-        infrontOrBehind[0] = 1;
-        infrontOrBehind[1] = -1;
-
-        //grab a random point within range of the player
-        //then run a 50/50 for whether to make it negative
-
-        int xNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
-        int yNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
+        //grab a random point within a "belt" range of the player
+        float angle = Random.Range(0f, Mathf.PI * 2f);
+        float randDistance = Random.Range(minDist, maxDist);
 
         Vector3 randSpawnPoint = new Vector3(
-            Random.Range(player.transform.position.x + (minDist *
-            xNegPos),
-            player.transform.position.x + (maxDist * xNegPos)),
-
-            Random.Range(player.transform.position.y + (minDist *
-            yNegPos),
-            player.transform.position.y + (maxDist * yNegPos)),
-
+            Mathf.Cos(angle) * randDistance,
+            Mathf.Sin(angle) * randDistance,
             0);
-
         return randSpawnPoint;
     }
 
