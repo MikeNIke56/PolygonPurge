@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5855153425993624085}
-  - component: {fileID: 8411999352328343970}
+  - component: {fileID: 3362018501782347678}
   - component: {fileID: 4809128493409742050}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossInfinityAura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8411999352328343970
+--- !u!114 &3362018501782347678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8307808365647060174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8460c076c000cd43980d37de203433a, type: 3}
+  m_Script: {fileID: 11500000, guid: bbd1a252fc2f7da419ad17a4363cef61, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InfinityAura
+  m_EditorClassIdentifier: Assembly-CSharp::BossInfinityAura
+  connectedBossAbility: {fileID: 0}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 1152
-  slowSpeedPercentage: 0.75
+    m_Bits: 320
+  slowSpeedPercentage: 0.35
   slowIncreaseAmnt: 0.1
-  slowRange: 2
+  slowRange: 10
 --- !u!58 &4809128493409742050
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -67,7 +68,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2880
+    m_Bits: 7808
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

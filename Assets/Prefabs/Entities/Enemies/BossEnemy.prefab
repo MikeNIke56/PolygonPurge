@@ -184,17 +184,10 @@ MonoBehaviour:
   upperChance: 100
   rank: 1
   exp: 100
-  bulletSize: 0.5
-  bulletSpeed: 7
+  bulletSize: 1.25
+  bulletSpeed: 15
   bulletLifetime: 1.5
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
-  currentMode: 0
-  maxChaseDistance: 30
-  chargeAttackTime: 1
-  chargeAttackCooldown: 1.2
-  chargePower: 30
-  rotateSpeed: 0
-  bulletObj: {fileID: 0}
   currentAbilities: []

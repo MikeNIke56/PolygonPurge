@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038174047254736445}
   - component: {fileID: 4515135265248536176}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossScorchedEarth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc74c2c3cd1f3f84aa940d9a47b745e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScorchedEarth
+  connectedBossAbility: {fileID: 0}
   burnTickPercentage: 0.8
   burnDamageIncreaseAmnt: 1.075
   range: 3

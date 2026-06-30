@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d39ed7c37b57947a9405a21ce50fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbyssalPortals
+  connectedBossAbility: {fileID: 9126223697231180821, guid: 78bebde567189694795ef23e51d73468, type: 3}
   damage: 0.75
   damageIncreaseAmnt: 1.1
   range: 3

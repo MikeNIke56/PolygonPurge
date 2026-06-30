@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086023968188176898}
-  - component: {fileID: 2617505691303396646}
-  m_Layer: 11
+  - component: {fileID: -1079551963906609522}
+  m_Layer: 12
   m_Name: BossCallOfThunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2617505691303396646
+--- !u!114 &-1079551963906609522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 600289376721816919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e3a3154951fa74481819468507fe47, type: 3}
+  m_Script: {fileID: 11500000, guid: f23142462a8011f408a9724cd9036cb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CallOfThunder
+  m_EditorClassIdentifier: Assembly-CSharp::BossCallOfThunder
+  connectedBossAbility: {fileID: 0}
   damage: 10
   damageIncreaseAmnt: 1.2
   range: 1.25
   rangeIncreaseAmnt: 1.2
+  minSpawnDistance: 1
+  maxSpawnDistance: 10
   delayBetweenStrikes: 0.5
   castCooldown: 3.25
-  numOfLightingStrikes: 1
-  lightingObject: {fileID: 5225918706921877738, guid: 05e72a6e557db714cb892d3dab2ddaca, type: 3}
+  numOfLightingStrikes: 3
+  lightingObject: {fileID: 6418778823519729000, guid: 2d53c65aa733e2f4dbc5fca370f2de28, type: 3}

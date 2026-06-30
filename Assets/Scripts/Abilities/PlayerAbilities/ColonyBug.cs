@@ -42,6 +42,7 @@ public class ColonyBug : MonoBehaviour
             target.TakeDamage(damage);
             ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Bullet);
+            parent.curBugsActive--;
         }
         RotateOnZ();
     }

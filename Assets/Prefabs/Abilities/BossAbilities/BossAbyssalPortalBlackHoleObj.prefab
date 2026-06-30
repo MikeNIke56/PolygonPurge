@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8237293813524897620}
-  - component: {fileID: 7345376661905852195}
+  - component: {fileID: 1347901454516175598}
   - component: {fileID: 7316223362314475448}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossAbyssalPortalBlackHoleObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7345376661905852195
+--- !u!114 &1347901454516175598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3452968341065778859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04876988cbfd1c641bc752907b7224e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b39de3fbb05390429e86d0d57965d47, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbyssalPortalBlackHoleObj
-  damage: 1.0980752
-  lifeTime: 2
-  pullStrength: 133.54694
+  m_EditorClassIdentifier: Assembly-CSharp::BossAbyssalPortalBlackHoleObj
+  damage: 0.75
+  lifeTime: 2.5
+  pullStrength: 150
   targetLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
 --- !u!58 &7316223362314475448
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 8064
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -86,4 +86,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4.3923006
+  m_Radius: 3

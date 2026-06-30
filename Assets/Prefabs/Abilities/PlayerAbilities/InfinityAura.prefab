@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8460c076c000cd43980d37de203433a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfinityAura
+  connectedBossAbility: {fileID: 8307808365647060174, guid: c8403fe58adbd864b910f6564da15a55, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 1152
@@ -67,7 +68,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2880
+    m_Bits: 6976
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

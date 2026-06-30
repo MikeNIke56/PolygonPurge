@@ -40,7 +40,7 @@ public class BossColony: AbilityBaseClass
         base.UpgradeAbility(level);
         damage *= damageIncreaseAmnt;
         speed += speedIncreaseAmnt;
-        maxBugs += 2;
+        //maxBugs += 2;
         spawnCooldown /= fireCooldownDecreaseAmnt;
     }
 
@@ -57,7 +57,7 @@ public class BossColony: AbilityBaseClass
 
             //loads in bug
             GameObject bugObjCopy = ObjectPoolingManager.SpawnObject(
-                colonyBugObj, PlayerController.i.transform.position, 
+                colonyBugObj, boss.transform.position, 
                 Quaternion.identity, ObjectPoolingManager.PoolType.Bullet);
 
             //sets the speed and damage of the bug

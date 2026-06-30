@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972a4a91f571ad8449209b1cef2b0ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BodyBuckshots
+  connectedBossAbility: {fileID: 5622590428228774063, guid: aaf6daf31d024d8468533bd9766648e2, type: 3}
   damage: 5
   damageIncreaseAmnt: 1.2
   rounds: 8

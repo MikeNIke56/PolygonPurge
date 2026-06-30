@@ -30,10 +30,8 @@ public class BossLightningObj: MonoBehaviour
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
-
                 //cause damage
-                enemy.TakeDamage(damage);
+                entity.GetComponent<EntityBaseClass>().TakeDamage(damage);
             }
         }
     }

@@ -44,7 +44,7 @@ public class RicochetRoundObj : MonoBehaviour
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
+                EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
                 //cause damage
                 enemy.TakeDamage(damage);

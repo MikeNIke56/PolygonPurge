@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossBoomerangBonanza: AbilityBaseClass
 {
-    [Header("Missle Pods Variables")]
+    [Header("Boomerang Bonanza Variables")]
     public float damage;
     public float damageIncreaseAmnt;
 
@@ -22,25 +22,25 @@ public class BossBoomerangBonanza: AbilityBaseClass
     protected override void Update()
     {
         if (isOnSpawnCooldown == false && curBoomerangActive < maxBoomerangs)
-            StartCoroutine(SpawnColonyBug());
+            StartCoroutine(SpawnBoomerang());
     }
 
 
     public override void SetUp()
     {
         base.SetUp();
-        maxBoomerangs = 1;
+        maxBoomerangs = 3;
     }
 
     public override void UpgradeAbility(int level)
     {
         base.UpgradeAbility(level);
         damage *= damageIncreaseAmnt;
-        maxBoomerangs++;
+        //maxBoomerangs++;
         spawnCooldown /= spawnCooldownDecreaseAmnt;
     }
 
-    private IEnumerator SpawnColonyBug()
+    private IEnumerator SpawnBoomerang()
     {
         isOnSpawnCooldown = true;
 
@@ -53,12 +53,11 @@ public class BossBoomerangBonanza: AbilityBaseClass
 
             //loads in boomerang
             GameObject boomerangObjCopy = ObjectPoolingManager.SpawnObject(
-                boomerangObj, PlayerController.i.transform.position,
+                boomerangObj, boss.transform.position,
                 Quaternion.identity, ObjectPoolingManager.PoolType.Bullet);
 
             //sets the damage of the boomerang
-            BossBoomerang boomerang = boomerangObjCopy.GetComponent<
-                BossBoomerang>();
+            BossBoomerang boomerang = boomerangObjCopy.GetComponent<BossBoomerang>();
 
             boomerang.SetBoomerangParent(this);
             boomerang.damage = damage;
@@ -67,10 +66,10 @@ public class BossBoomerangBonanza: AbilityBaseClass
             yield return new WaitForSecondsRealtime(spawnRate);
         }
 
-        yield return StartColonyBugSpawnCooldown();
+        yield return StartBoomerangSpawnCooldown();
     }
 
-    private IEnumerator StartColonyBugSpawnCooldown()
+    private IEnumerator StartBoomerangSpawnCooldown()
     {
         yield return new WaitForSecondsRealtime(spawnCooldown);
         isOnSpawnCooldown = false;

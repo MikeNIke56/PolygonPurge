@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0807138933fc17a42b40cd419edfb862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlameTrail
+  connectedBossAbility: {fileID: 5000078739549702525, guid: e5f181809c654984db06e76878545a5a, type: 3}
   trailLifeTime: 1
   trailLifeTimeIncreaseAmnt: 0.25
   trailDamage: 0.55

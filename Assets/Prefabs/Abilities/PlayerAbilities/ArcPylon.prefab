@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4557cd2555aafa4ba09e9c25807326d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcPylon
+  connectedBossAbility: {fileID: 2321288810086914263, guid: b476ac5ce10f55746939adddf97c4041, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 128

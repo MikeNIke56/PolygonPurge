@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ee215119ed7c24f9acf35e3dc0af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RicochetRounds
+  connectedBossAbility: {fileID: 2197505336988738591, guid: a08ed7e9ee791984f9471f6891f82c15, type: 3}
   roundSpeed: 10
   roundSpeedIncreaseAmnt: 2
   roundDamage: 3

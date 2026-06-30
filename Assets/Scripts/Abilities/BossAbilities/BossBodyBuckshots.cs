@@ -48,9 +48,11 @@ public class BossBodyBuckshots: AbilityBaseClass
             transform.position, Quaternion.identity, 
             ObjectPoolingManager.PoolType.Bullet);
 
-        //sets the speed and damage of the bullet
+        //sets the stats of the bullet
         ProjectileBaseClass projectile = bulletObjCopy.GetComponent<ProjectileBaseClass>();
         projectile.SetDamage(damage);
+        projectile.SetSize(boss.GetBulletSize());
+        projectile.SetSpeed(boss.GetBulletSpeed());
 
         Vector3 force = Quaternion.Euler(0, 0, angle) * transform.right * 
             projectile.GetSpeed();

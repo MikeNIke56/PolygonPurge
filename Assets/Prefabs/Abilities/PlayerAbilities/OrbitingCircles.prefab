@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0956436ff1d2048459f2609c7d5e30e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrbitingCircles
+  connectedBossAbility: {fileID: 423017129124854189, guid: 7048ef65466ca364182a7f348aa7e025, type: 3}
   orbitSpeed: 75
   orbitSpeedIncreaseAmnt: 1.1
   circleObj: {fileID: 2113447306485321905, guid: f249cb10faf0c5e4f95de9b40ea70451, type: 3}

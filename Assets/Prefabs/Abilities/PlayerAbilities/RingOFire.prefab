@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81961c13d8e935e42b051c7354d9523c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RingOFire
+  connectedBossAbility: {fileID: 4610866588870812475, guid: 8ea2125cb07929f4698f80d437f6d311, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -68,7 +69,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 8000
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -12,6 +12,9 @@ public class BossCallOfThunder: AbilityBaseClass
     public float range;
     public float rangeIncreaseAmnt;
 
+    public float minSpawnDistance;
+    public float maxSpawnDistance;
+
     public float delayBetweenStrikes;
 
     private float curCastCooldown;
@@ -48,7 +51,7 @@ public class BossCallOfThunder: AbilityBaseClass
     {
         base.SetUp();
         curCastCooldown = castCooldown;
-        lightingObject.GetComponent<LightningObj>().damage = damage;
+        lightingObject.GetComponent<BossLightningObj>().damage = damage;
         lightingObject.GetComponent<CircleCollider2D>().radius = range;
         CastLightning();
     }
@@ -58,8 +61,8 @@ public class BossCallOfThunder: AbilityBaseClass
         base.UpgradeAbility(level);
         damage *= damageIncreaseAmnt;
         range *= rangeIncreaseAmnt;
-        numOfLightingStrikes++;
-        lightingObject.GetComponent<LightningObj>().damage = damage;
+        //numOfLightingStrikes++;
+        lightingObject.GetComponent<BossLightningObj>().damage = damage;
         lightingObject.GetComponent<CircleCollider2D>().radius = range;
     }
 
@@ -67,38 +70,38 @@ public class BossCallOfThunder: AbilityBaseClass
     {
         isCurrentlyCasting = true;
 
-        //convert screen resolution to in-game world positions
-        Vector2 screenMin = cam.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector2 screenMax = cam.ViewportToWorldPoint(new Vector2(1, 1));
-
-        List<EnemyBaseClass> allEnemies = EnemyManager.i.enemyList;
-        List<EnemyBaseClass> allEnemiesOnScreen = new List<EnemyBaseClass>();
-
-        foreach(EnemyBaseClass enemy in allEnemies)
-        {
-            if(enemy.transform.position.x < screenMax.x &&
-                enemy.transform.position.x > screenMin.x &&
-                enemy.transform.position.y < screenMax.y &&
-                enemy.transform.position.y > screenMin.y)
-            {
-                allEnemiesOnScreen.Add(enemy);
-            }
-        }
+        //get random position on screen
+        int[] infrontOrBehind = new int[2];
+        infrontOrBehind[0] = 1;
+        infrontOrBehind[1] = -1;
 
         for (int i = 0; i < numOfLightingStrikes; i++)
         {
-            int randomNum = UnityEngine.Random.Range(0, allEnemiesOnScreen.Count);
-            EnemyBaseClass selectedEnemy = allEnemiesOnScreen[randomNum];
+            //grab a random point within range of the player
+            //then run a 50/50 for whether to make it negative
+            int xNegPos = infrontOrBehind[UnityEngine.Random.Range(0, 
+                infrontOrBehind.Length)];
+            int yNegPos = infrontOrBehind[UnityEngine.Random.Range(0, 
+                infrontOrBehind.Length)];
 
-            //loads in lightning object
+            Vector3 randSpawnPoint = new Vector3(
+            UnityEngine.Random.Range(boss.transform.position.x + (minSpawnDistance *
+            xNegPos),
+            boss.transform.position.x + (maxSpawnDistance * xNegPos)),
+
+            UnityEngine.Random.Range(boss.transform.position.y + (minSpawnDistance *
+            yNegPos),
+            boss.transform.position.y + (maxSpawnDistance * yNegPos)),
+
+            0);
+
+
+            //loads in lightning object at that position
             GameObject lightningObjCopy = ObjectPoolingManager.SpawnObject(
-                lightingObject, selectedEnemy.transform.position,
-                Quaternion.identity, 
+                lightingObject, randSpawnPoint, Quaternion.identity,
                 ObjectPoolingManager.PoolType.Ability);
 
             yield return new WaitForSecondsRealtime(delayBetweenStrikes);
-
-            Debug.Log("lightning");
         }
 
         isCurrentlyCasting = false;

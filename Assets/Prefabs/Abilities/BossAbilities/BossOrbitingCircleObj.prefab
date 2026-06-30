@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2891388884864863566}
   - component: {fileID: 1575661462233814918}
-  - component: {fileID: 4901238217094815619}
+  - component: {fileID: 7324464113701423931}
   - component: {fileID: 3628136225353998150}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossOrbitingCircleObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &4901238217094815619
+--- !u!114 &7324464113701423931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,14 +102,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 144474541681253417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b788335cea3a204bb4ebbfd5fec28f6, type: 3}
+  m_Script: {fileID: 11500000, guid: b0aade604aa9fd242835bfdce819987b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OrbitCircleObj
-  damage: 3
+  m_EditorClassIdentifier: Assembly-CSharp::BossOrbitCircleObj
+  damage: 5
   knockBackAmnt: 2
   targetLayers:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 320
 --- !u!58 &3628136225353998150
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2880
+    m_Bits: 7808
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

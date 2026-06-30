@@ -4,41 +4,17 @@ using UnityEngine;
 
 public class BossEnemy : EnemyBaseClass
 {
-    //modes boss will periodically swap between
-    public enum BossModes
-    {
-        None,
-        ChargeMode,
-        BulletHellMode,
-        AbilityCopy
-    }
-    public BossModes currentMode;
-
-    [Header("Charge Attack Variables")]
-    public float maxChaseDistance;
-    public float chargeAttackTime;
-    public float chargeAttackCooldown;
-    public float chargePower;
-
-    [Header("Bullet Hell Variables")]
-    public float rotateSpeed;
-    public GameObject bulletObj;
-
-
-
     //keeps track of the player's/boss's current abilities
     public List<AbilityBaseClass> currentAbilities;
 
     public override void Setup(PlayerController player)
     {
         base.Setup(player);
-        SetAbilities();
     }
 
     public override void RunBehavior()
     {
         base.RunBehavior();
-        HandleModeBehaviors();
     }
 
     public override void HandleMovement()
@@ -54,32 +30,10 @@ public class BossEnemy : EnemyBaseClass
     /**
      * sets the boss's abilities from the player's current list of abilities
      */
-    private void SetAbilities()
+    public void SetAbilities()
     {
         currentAbilities = new List<AbilityBaseClass>();
-        currentAbilities = UpgradesManager.i.currentAbilities;
-    }
-
-    private void HandleModeBehaviors()
-    {
-
-    }
-
-    private IEnumerator ChargeAttack()
-    {
-        rb.linearVelocity = Vector2.zero;
-        yield return new WaitForSecondsRealtime(chargeAttackTime);
-        Vector3 force = transform.right * chargePower;
-        rb.AddForce(force, ForceMode2D.Impulse);
-        yield return StartChargeAttackCooldown();
-    }
-
-    private IEnumerator StartChargeAttackCooldown()
-    {
-        currentEnemyStates.Remove(EnemyStates.Charging);
-        currentEnemyStates.Add(EnemyStates.ChargingAttackCooldown);
-        yield return new WaitForSecondsRealtime(chargeAttackCooldown);
-        currentEnemyStates.Remove(EnemyStates.ChargingAttackCooldown);
+        UpgradesManager.i.SpawnBossAbilities(transform, this);
     }
 
     public override void Die()

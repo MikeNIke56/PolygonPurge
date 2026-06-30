@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917916460236269489}
-  - component: {fileID: 1886275645310294957}
-  m_Layer: 11
+  - component: {fileID: 1288304981776255364}
+  m_Layer: 12
   m_Name: BossFlameTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.13476, y: -2.4136, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2348543495643855313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1886275645310294957
+--- !u!114 &1288304981776255364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5000078739549702525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0807138933fc17a42b40cd419edfb862, type: 3}
+  m_Script: {fileID: 11500000, guid: 44eb6da84a132c1438d26c7e570e07a2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlameTrail
-  trailLifeTime: 1
+  m_EditorClassIdentifier: Assembly-CSharp::BossFlameTrail
+  connectedBossAbility: {fileID: 0}
+  trailLifeTime: 5
   trailLifeTimeIncreaseAmnt: 0.25
   trailDamage: 0.55
   trailDamageIncreaseAmnt: 0.15
@@ -61,7 +62,7 @@ GameObject:
   - component: {fileID: 401409646682859836}
   - component: {fileID: 8855826486642204856}
   - component: {fileID: 7923333488881335007}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +79,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 917916460236269489}
@@ -136,7 +137,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -218,7 +219,7 @@ EdgeCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 3968
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -257,5 +258,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Trail
   targetLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   trailDamage: 0

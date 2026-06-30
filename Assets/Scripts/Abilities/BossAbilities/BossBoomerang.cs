@@ -16,11 +16,17 @@ public class BossBoomerang: MonoBehaviour
     public float damage;
     public float lifeTime;
 
+    private BossEnemy boss;
     private BossBoomerangBonanza parent;
     private Rigidbody2D rb;
     private Vector2 p0, p1, p2, p3;
     private float elapsed;
     private bool active;
+
+    private void Awake()
+    {
+        boss = FindAnyObjectByType<BossEnemy>();
+    }
 
     private void OnEnable()
     {
@@ -49,7 +55,7 @@ public class BossBoomerang: MonoBehaviour
         p2 = rb.position + dir * throwDistance + perp * returnCurveWidth;
 
         //return to origin
-        p3 = transform.position;                                      
+        p3 = boss.transform.position;                                      
 
         elapsed = 0f;
         active = true;
@@ -60,7 +66,7 @@ public class BossBoomerang: MonoBehaviour
         if (!active) return;
 
         //constantly update the return position
-        p3 = transform.position;
+        p3 = boss.transform.position;
 
         elapsed += Time.fixedDeltaTime;
         float t = Mathf.Clamp01(elapsed / duration);

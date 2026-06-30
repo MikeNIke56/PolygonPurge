@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9195147949568210353}
   - component: {fileID: 8173655682563794791}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossRicochetRounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ee215119ed7c24f9acf35e3dc0af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RicochetRounds
+  connectedBossAbility: {fileID: 0}
   roundSpeed: 10
   roundSpeedIncreaseAmnt: 2
   roundDamage: 3

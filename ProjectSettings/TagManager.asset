@@ -16,8 +16,8 @@ TagManager:
   - PlayerProjectile
   - Item
   - EnemyProjectile
-  - Ability
-  - 
+  - PlayerAbility
+  - BossAbility
   - 
   - 
   - 

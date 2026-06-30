@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7759270653057699628}
   - component: {fileID: 1646357304678495416}
-  - component: {fileID: 8552666595611753057}
+  - component: {fileID: -4186437495155477058}
   - component: {fileID: 3965382771407204915}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossLightningObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &8552666595611753057
+--- !u!114 &-4186437495155477058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,14 +102,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6418778823519729000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bb724e327df5c40bef2d3705955479, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b7ce47156497324184883c6efb5d5a5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LightningObj
-  damage: 20.736002
+  m_EditorClassIdentifier: Assembly-CSharp::BossLightningObj
+  damage: 10
   lifeTime: 1
   targetLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
 --- !u!58 &3965382771407204915
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 8064
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -145,4 +145,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2.5920002
+  m_Radius: 1.25

@@ -8,6 +8,11 @@ public class AbilityBaseClass : MonoBehaviour
     //keeps track of the ability's current level
     protected int currentAbilityLevel = 1;
 
+    //the connected ability to add to the currentAbilities list (Player only)
+    [SerializeField] private GameObject connectedBossAbility;
+
+    protected BossEnemy boss;
+
     protected virtual void Update()
     {
 
@@ -20,7 +25,8 @@ public class AbilityBaseClass : MonoBehaviour
 
     public virtual void SetUp()
     {
-
+        if(name.Contains("Boss"))
+            boss = FindAnyObjectByType<BossEnemy>();
     }
 
     /**
@@ -35,5 +41,10 @@ public class AbilityBaseClass : MonoBehaviour
     public int GetCurrentLevel()
     {
         return currentAbilityLevel;
+    }
+
+    public GameObject GetConnectedBossAbility()
+    {
+        return connectedBossAbility;
     }
 }

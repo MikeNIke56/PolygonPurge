@@ -256,6 +256,14 @@ public class EnemyBaseClass : EntityBaseClass
     {
         return rank;
     }
+    public float GetBulletSize()
+    {
+        return bulletSize;
+    }
+    public float GetBulletSpeed()
+    {
+        return bulletSpeed;
+    }
 
     public void SetLowerChance(int chance)
     {

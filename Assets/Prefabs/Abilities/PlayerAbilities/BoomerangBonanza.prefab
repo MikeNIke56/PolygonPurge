@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071de8cbcc5297d4d9007ff279f45910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomerangBonanza
+  connectedBossAbility: {fileID: 1746246115043130719, guid: c43dcef379281e944830e3e72fe8c3e9, type: 3}
   damage: 10
   damageIncreaseAmnt: 1.1
   spawnRate: 0.8

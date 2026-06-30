@@ -36,7 +36,7 @@ public class BossAbyssalPortalBlackHoleObj : MonoBehaviour
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
+                EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
                 //cause damage and pull enemy in
                 enemy.TakeDamage(Time.deltaTime * damage);
@@ -55,7 +55,7 @@ public class BossAbyssalPortalBlackHoleObj : MonoBehaviour
     /**
      * pulls in enemies towards center of the object
      */
-    private void PullIn(EnemyBaseClass enemy)
+    private void PullIn(EntityBaseClass enemy)
     {
         Vector2 direction = (transform.position -
             enemy.transform.position).normalized;

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6973087870929513143}
-  - component: {fileID: 5595096642653808584}
-  m_Layer: 11
+  - component: {fileID: -8702363483876911070}
+  m_Layer: 12
   m_Name: BossOrbitingCircles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5595096642653808584
+--- !u!114 &-8702363483876911070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 423017129124854189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0956436ff1d2048459f2609c7d5e30e6, type: 3}
+  m_Script: {fileID: 11500000, guid: ad41a3b77d3bd3c45939a5740529d55f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OrbitingCircles
-  orbitSpeed: 75
+  m_EditorClassIdentifier: Assembly-CSharp::BossOrbitingCircles
+  connectedBossAbility: {fileID: 0}
+  orbitSpeed: 50
   orbitSpeedIncreaseAmnt: 1.1
-  circleObj: {fileID: 2113447306485321905, guid: f249cb10faf0c5e4f95de9b40ea70451, type: 3}
+  circleObj: {fileID: 144474541681253417, guid: cb6ac4feafc32334f85c4a9d6e6a4c9b, type: 3}
   circles: []

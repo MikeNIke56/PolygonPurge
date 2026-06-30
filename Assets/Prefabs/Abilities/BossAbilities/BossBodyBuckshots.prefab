@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851902726743064821}
-  - component: {fileID: 5144927458061860624}
+  - component: {fileID: 8620102565652120017}
   m_Layer: 0
   m_Name: BossBodyBuckshots
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5144927458061860624
+--- !u!114 &8620102565652120017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5622590428228774063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 972a4a91f571ad8449209b1cef2b0ce1, type: 3}
+  m_Script: {fileID: 11500000, guid: 75dcee030df40fc40a1e6bd9b25b5df2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BodyBuckshots
+  m_EditorClassIdentifier: Assembly-CSharp::BossBodyBuckshots
+  connectedBossAbility: {fileID: 0}
   damage: 5
   damageIncreaseAmnt: 1.2
   rounds: 8
   castCooldown: 2
-  bulletObj: {fileID: 2970311279419032869, guid: 6936982be81ceb747a10bafdaca4eb97, type: 3}
+  bulletObj: {fileID: 6438708033939589405, guid: 85a2b156e7fd9144196a9f5f7598fb8d, type: 3}

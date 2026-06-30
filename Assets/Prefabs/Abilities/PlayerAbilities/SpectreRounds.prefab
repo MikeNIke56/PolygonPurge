@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516eb5573b35a5f4984603646819eca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpectreRounds
+  connectedBossAbility: {fileID: 6381607726740805106, guid: 06b60fadfa597c84fa9f80bd20ea1a78, type: 3}
   delayAfterFirstShot: 0.35

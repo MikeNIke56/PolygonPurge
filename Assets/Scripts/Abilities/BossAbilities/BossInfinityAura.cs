@@ -38,14 +38,10 @@ public class BossInfinityAura: AbilityBaseClass
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
+                EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
                 //slow enemy
-                if(enemy as SquareEnemy == false && 
-                    enemy as TriangleEnemy == false)
-                    enemy.GetComponent<Rigidbody2D>().linearVelocity *= slowSpeedPercentage;
-                else
-                    enemy.SetMoveSpeed(enemy.GetMoveSpeed() * slowSpeedPercentage);
+                enemy.SetMoveSpeed(enemy.GetMoveSpeed() * slowSpeedPercentage);
             }
             //enemy projectile
             else
@@ -70,14 +66,10 @@ public class BossInfinityAura: AbilityBaseClass
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
+                EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
                 //reset enemy speed
-                if (enemy as SquareEnemy == false &&
-                    enemy as TriangleEnemy == false)
-                    enemy.GetComponent<Rigidbody2D>().linearVelocity /= slowSpeedPercentage;
-                else
-                    enemy.SetMoveSpeed(enemy.GetMoveSpeed() / slowSpeedPercentage);
+                enemy.SetMoveSpeed(enemy.GetMoveSpeed() / slowSpeedPercentage);
             }
             //enemy projectile
             else

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3372934434280004527}
   - component: {fileID: 1940504212811864614}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5289048365837637703}
   - component: {fileID: 8273033628340944967}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3742691193184552474}
   - component: {fileID: 7042375397952215707}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171006326305287902}
   - component: {fileID: 6990549004702120720}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7525512501238725081}
   - component: {fileID: 5531197605764456018}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,9 +464,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9017250329397276907}
-  - component: {fileID: 7800858107574079358}
   - component: {fileID: 6757023662646156931}
-  m_Layer: 11
+  - component: {fileID: -5304857379922932125}
+  m_Layer: 12
   m_Name: BossColonyBugObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,32 +483,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.13476, y: -2.4136, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6049311332326555296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7800858107574079358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5499394080358519587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4770a4d80d0bcd44883d33ae700c690, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColonyBug
-  damage: 0
-  speed: 0
-  lifetime: 10
-  lookOffset: 0
-  damageTriggerRange: 0.25
-  frequency: 1
-  amplitude: 0.01
-  bugBody: {fileID: 8316444851242304939}
 --- !u!50 &6757023662646156931
 Rigidbody2D:
   serializedVersion: 5
@@ -536,6 +516,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5304857379922932125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5499394080358519587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c55c93457d3f94f899c71c538a72e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossColonyBug
+  damage: 0
+  speed: 0
+  lifetime: 5
+  lookOffset: 0
+  damageTriggerRange: 0.25
+  frequency: 1
+  amplitude: 0.01
+  bugBody: {fileID: 8316444851242304939}
 --- !u!1 &5965292525859462412
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7937564451248426219}
   - component: {fileID: 3457679561670181107}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6049311332326555296}
   - component: {fileID: 1679997208223875603}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

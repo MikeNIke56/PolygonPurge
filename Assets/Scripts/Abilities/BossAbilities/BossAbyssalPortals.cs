@@ -26,13 +26,6 @@ public class BossAbyssalPortals: AbilityBaseClass
 
     //blackhole visual to spawn at position
     public GameObject blackHoleObject;
-    private Camera cam;
-
-
-    private void Awake()
-    {
-        cam = Camera.main;
-    }
 
     protected override void Update()
     {
@@ -54,8 +47,8 @@ public class BossAbyssalPortals: AbilityBaseClass
         base.SetUp();
         curCastCooldown = castCooldown;
 
-        AbyssalPortalBlackHoleObj blackHole = blackHoleObject.
-            GetComponent<AbyssalPortalBlackHoleObj>();
+        BossAbyssalPortalBlackHoleObj blackHole = blackHoleObject.
+            GetComponent<BossAbyssalPortalBlackHoleObj>();
 
         blackHole.damage = damage;
         blackHole.pullStrength = pullStrength;
@@ -69,7 +62,7 @@ public class BossAbyssalPortals: AbilityBaseClass
         damage *= damageIncreaseAmnt;
         range *= rangeIncreaseAmnt;
         pullStrength *= pullStrengthIncreaseAmnt;
-        numOfBlackHoles++;
+        //numOfBlackHoles++;
 
         AbyssalPortalBlackHoleObj blackHole = blackHoleObject.
             GetComponent<AbyssalPortalBlackHoleObj>();
@@ -82,7 +75,6 @@ public class BossAbyssalPortals: AbilityBaseClass
     private IEnumerator SummonBlackHole()
     {
         isCurrentlyCasting = true;
-        PlayerController player = PlayerController.i;
 
         //get random position on screen
         int[] infrontOrBehind = new int[2];
@@ -97,13 +89,13 @@ public class BossAbyssalPortals: AbilityBaseClass
             int yNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
 
             Vector3 randSpawnPoint = new Vector3(
-            Random.Range(player.transform.position.x + (minSpawnDistance *
+            Random.Range(boss.transform.position.x + (minSpawnDistance *
             xNegPos),
-            player.transform.position.x + (maxSpawnDistance * xNegPos)),
+            boss.transform.position.x + (maxSpawnDistance * xNegPos)),
 
-            Random.Range(player.transform.position.y + (minSpawnDistance *
+            Random.Range(boss.transform.position.y + (minSpawnDistance *
             yNegPos),
-            player.transform.position.y + (maxSpawnDistance * yNegPos)),
+            boss.transform.position.y + (maxSpawnDistance * yNegPos)),
 
             0);
 
@@ -114,8 +106,6 @@ public class BossAbyssalPortals: AbilityBaseClass
                 ObjectPoolingManager.PoolType.Ability);
 
             yield return new WaitForSecondsRealtime(delayBetweenSummons);
-
-            Debug.Log("black hole");
         }
 
         isCurrentlyCasting = false;

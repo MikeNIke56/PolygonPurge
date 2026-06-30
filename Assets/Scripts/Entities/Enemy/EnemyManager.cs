@@ -264,9 +264,9 @@ public class EnemyManager : MonoBehaviour
                 maxSpawnDistance / 3), Quaternion.identity, 
                 ObjectPoolingManager.PoolType.Enemy);
 
-            BossEnemy bossCopy = bossGameObjectCopy.GetComponent<
-                BossEnemy>();
+            BossEnemy bossCopy = bossGameObjectCopy.GetComponent<BossEnemy>();
             bossCopy.Setup(player);
+            bossCopy.SetAbilities();
             enemyList.Add(bossCopy);
             curNumOfEnemies = 1;
             boss = bossCopy;

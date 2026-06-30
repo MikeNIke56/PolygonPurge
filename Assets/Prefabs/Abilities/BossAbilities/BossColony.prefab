@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360956378423004931}
-  - component: {fileID: 4683971219609870633}
+  - component: {fileID: 5582463646904819836}
   - component: {fileID: 6927192726988915333}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossColony
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4683971219609870633
+--- !u!114 &5582463646904819836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,17 +42,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587727643623797482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 848c81a310c2bfe4fb618811ade96afa, type: 3}
+  m_Script: {fileID: 11500000, guid: db84269efae7794478f59770e0897f28, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Colony
+  m_EditorClassIdentifier: Assembly-CSharp::BossColony
+  connectedBossAbility: {fileID: 0}
   damage: 15
   damageIncreaseAmnt: 1.1
-  speed: 150
+  speed: 275
   speedIncreaseAmnt: 1.25
   spawnRate: 0.75
   spawnCooldown: 2
   fireCooldownDecreaseAmnt: 1.1
-  colonyBugObj: {fileID: 5743971172652967199, guid: 2eaca3ce6067d2d468392187484c7c65, type: 3}
+  colonyBugObj: {fileID: 5499394080358519587, guid: cf9ef16974fb1854f953b934d31ab7f4, type: 3}
   curBugsActive: 0
   maxBugs: 0
 --- !u!50 &6927192726988915333

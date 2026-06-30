@@ -51,9 +51,8 @@ public class UpgradesManager : MonoBehaviour
     private void Start()
     {
         statsBuffRecord = new Dictionary<StatsUpgrades, int>();
-        currentAbilities = new List<AbilityBaseClass>();
+        //currentAbilities = new List<AbilityBaseClass>();
         InitializeStartingStats();
-
     }
 
     /**
@@ -210,9 +209,9 @@ public class UpgradesManager : MonoBehaviour
     }
 
     /**
-     * spawns in ability
+     * spawns in ability for player
      */
-    public void SpawnAbility(GameObject ability)
+    public void PlayerSpawnAbility(GameObject ability)
     {
         /*
          * spawns in ability object
@@ -239,9 +238,44 @@ public class UpgradesManager : MonoBehaviour
     }
 
     /**
-     * upgrades selected ability
+     * spawns in ability for boss
      */
-    public void UpgradeAbility(AbilityBaseClass ability)
+    public void SpawnBossAbilities(Transform parent, BossEnemy boss)
+    {
+        /*
+         * spawns in all abilities from the currentAbilities list
+         * have to spawn and parent seperately because we are attaching
+         * to a persistent (Dont Destroy On Load) object
+         */
+
+        foreach(AbilityBaseClass ability in currentAbilities)
+        {
+            if (boss.currentAbilities.Contains(ability.
+                GetConnectedBossAbility().GetComponent<AbilityBaseClass>())) return;
+            if (ability.GetComponent<AbilityBaseClass>() is SpectreRounds) return;
+
+            GameObject abilityObjCopy = Instantiate(ability.
+                GetConnectedBossAbility());
+
+            abilityObjCopy.GetComponent<AbilityBaseClass>().SetUp();
+
+            boss.currentAbilities.Add(ability.GetConnectedBossAbility().
+                GetComponent<AbilityBaseClass>());
+
+            if (ability.GetConnectedBossAbility().
+                GetComponent<AbilityBaseClass>() is LittleBuddy == false)
+            {
+                abilityObjCopy.transform.SetParent(parent);
+                abilityObjCopy.transform.localPosition = Vector3.zero;
+            }
+        }
+    }
+
+
+/**
+ * upgrades selected ability
+ */
+public void UpgradeAbility(AbilityBaseClass ability)
     {
         if (ability.GetCurrentLevel() < maxLevel)
             ability.UpgradeAbility(1);

@@ -54,7 +54,7 @@ public class RingOFire : AbilityBaseClass
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
+                EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
                 //apply tick damage
                 enemy.TakeDamage(Time.deltaTime * burnTickPercentage);  

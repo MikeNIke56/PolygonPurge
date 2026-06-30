@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eef75326188d494caccdb18b30c6d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LittleBuddy
+  connectedBossAbility: {fileID: 7425546649765396094, guid: d3d56f7b336aaa9498fdaf7fc07694e2, type: 3}
   damage: 3
   damageIncreaseAmnt: 1.5
   fireRate: 0.075
@@ -113,7 +114,6 @@ MonoBehaviour:
   range: 7
   rangeIncreaseAmnt: 1.2
   littleBuddyBulletObj: {fileID: 2075227883246156999, guid: d5b523d43902f7547be703ce85bbe8f7, type: 3}
-  curBurstsBeforeRetarget: 0
   maxBurstsBeforeRetarget: 2
   frequency: 1
   amplitude: 0.01

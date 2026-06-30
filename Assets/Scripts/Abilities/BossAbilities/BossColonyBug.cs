@@ -42,6 +42,7 @@ public class BossColonyBug: MonoBehaviour
             target.TakeDamage(damage);
             ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Bullet);
+            parent.curBugsActive--;
         }
         RotateOnZ();
     }

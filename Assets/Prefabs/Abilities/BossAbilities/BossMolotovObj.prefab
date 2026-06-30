@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6405671514064652613}
   - component: {fileID: 2294271849598050347}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 590009044807190698}
   - component: {fileID: 3564632696176950689}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3636290021812136391}
   - component: {fileID: 6184739247683042902}
   - component: {fileID: 6446099831518579100}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossMolotovObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 8064
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

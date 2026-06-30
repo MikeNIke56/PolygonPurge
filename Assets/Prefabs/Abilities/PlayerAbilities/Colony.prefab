@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c81a310c2bfe4fb618811ade96afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Colony
+  connectedBossAbility: {fileID: 1587727643623797482, guid: 388a0a220b68a1c4cbd08c0305640fc7, type: 3}
   damage: 15
   damageIncreaseAmnt: 1.1
   speed: 150

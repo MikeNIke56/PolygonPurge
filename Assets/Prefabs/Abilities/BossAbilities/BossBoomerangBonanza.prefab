@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446036591263396993}
-  - component: {fileID: 993205350695378978}
-  m_Layer: 11
+  - component: {fileID: 2177315045462043444}
+  m_Layer: 12
   m_Name: BossBoomerangBonanza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &993205350695378978
+--- !u!114 &2177315045462043444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1746246115043130719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 071de8cbcc5297d4d9007ff279f45910, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dc34f1f2642f18438c1af84225e54c7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoomerangBonanza
-  damage: 10
+  m_EditorClassIdentifier: Assembly-CSharp::BossBoomerangBonanza
+  connectedBossAbility: {fileID: 0}
+  damage: 6
   damageIncreaseAmnt: 1.1
   spawnRate: 0.8
   spawnCooldown: 1
   spawnCooldownDecreaseAmnt: 1.1
-  boomerangObj: {fileID: 3605553769796558115, guid: 5c8c118f6062cb0409d0405aeeb52abe, type: 3}
+  boomerangObj: {fileID: 6739433571664784077, guid: e1e6890284a367341977be20fea5f769, type: 3}
   curBoomerangActive: 0
-  maxBoomerangs: 0
+  maxBoomerangs: 3

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6733713931677912376}
   - component: {fileID: 8584651783046445252}
   - component: {fileID: 8861166690329725250}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossRicochetRoundObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 8064
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8258746397154663242}
   - component: {fileID: 2997371435049984178}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,10 +101,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3215284885476393974}
-  - component: {fileID: 961861297629137189}
+  - component: {fileID: -3087135391472691728}
   - component: {fileID: 5998942915457671201}
   - component: {fileID: 8903826650416556511}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BossBoomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,13 +121,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.13476, y: -2.4136, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8258746397154663242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &961861297629137189
+--- !u!114 &-3087135391472691728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,12 +136,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6739433571664784077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60712a2f0842055498a798f2058dfab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15f70dc62229d884abc0c9ab16ed967a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Boomerang
+  m_EditorClassIdentifier: Assembly-CSharp::BossBoomerang
   targetLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   throwDistance: 10
   curveWidth: 10
   returnCurveWidth: -6
@@ -189,10 +189,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3904
+    m_Bits: 8064
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7992569507579914689}
   - component: {fileID: 3485846357336736323}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

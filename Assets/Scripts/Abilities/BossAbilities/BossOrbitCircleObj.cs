@@ -20,11 +20,10 @@ public class BossOrbitCircleObj: MonoBehaviour
             //and if it implements the IDamageable interface
             if (entity.TryGetComponent(out IDamageable myInterface))
             {
-                EnemyBaseClass enemy = entity.GetComponent<EnemyBaseClass>();
+                EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
                 //cause damage and apply knockback
-                enemy.TakeDamage(damage);
-                StartCoroutine(enemy.ApplyKnockback(gameObject, knockBackAmnt));              
+                enemy.TakeDamage(damage);             
             }
             //enemy projectile
             else

@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradesManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
+      propertyPath: currentAbilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
+      propertyPath: 'currentAbilities.Array.data[0]'
+      value: 
+      objectReference: {fileID: 42616200152555070, guid: db16be2e15a72cb4bb6a4aa5cef6ee1f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -544,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemies
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxSpawnDistance
@@ -572,11 +580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxRoundsToBossSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemiesPerRound
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8031153493488364347, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: m_LocalPosition.x
