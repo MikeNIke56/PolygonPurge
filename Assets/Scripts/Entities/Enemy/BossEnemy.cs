@@ -7,6 +7,8 @@ public class BossEnemy : EnemyBaseClass
     //keeps track of the player's/boss's current abilities
     public List<AbilityBaseClass> currentAbilities;
 
+    public GameObject littleBuddyPivotPoint;
+
     public override void Setup(PlayerController player)
     {
         base.Setup(player);

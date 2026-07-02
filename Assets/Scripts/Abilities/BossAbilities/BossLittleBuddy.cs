@@ -32,13 +32,13 @@ public class BossLittleBuddy: AbilityBaseClass
     public float lookOffset;
 
     private Transform target;
-    private EnemyBaseClass targetedEnemy;
+    private PlayerController targetedEnemy;
     private bool isOnFireCooldown = false;
     private Transform firepoint;
 
     private void Awake()
     {
-        target = PlayerController.i.littleBuddyPivotPoint.transform;
+        target = boss.littleBuddyPivotPoint.transform;
     }
 
     private void Start()
@@ -53,7 +53,7 @@ public class BossLittleBuddy: AbilityBaseClass
         if (targetedEnemy.gameObject.activeSelf)
             LookAt(targetedEnemy.transform.position, lookOffset);
         else
-            targetedEnemy = GetTargetEnemy();
+            targetedEnemy = PlayerController.i;
 
         if (targetedEnemy.gameObject.activeSelf && isOnFireCooldown == false)
             StartCoroutine(Shoot());
@@ -68,7 +68,7 @@ public class BossLittleBuddy: AbilityBaseClass
     public override void SetUp()
     {
         base.SetUp();
-        targetedEnemy = GetTargetEnemy();
+        targetedEnemy = PlayerController.i;
     }
 
     public override void UpgradeAbility(int level)
@@ -95,8 +95,8 @@ public class BossLittleBuddy: AbilityBaseClass
             firepoint.localRotation, ObjectPoolingManager.PoolType.Bullet);
 
             //sets the speed and damage of the bullet
-            LittleBuddyBullet littleBuddyBullet = bulletObjCopy.
-                GetComponent<LittleBuddyBullet>();
+            EnemyBullet littleBuddyBullet = bulletObjCopy.
+                GetComponent<EnemyBullet>();
 
             littleBuddyBullet.SetDamage(damage);
 
@@ -122,47 +122,8 @@ public class BossLittleBuddy: AbilityBaseClass
             targetedEnemy.isActiveAndEnabled == false)
         {
             curBurstsBeforeRetarget = 0;
-            targetedEnemy = GetTargetEnemy();
+            targetedEnemy = PlayerController.i;
         }
-    }
-
-    /**
-     * Grade enemies based on their rank value and distance from the player.
-     * lower rank and lower distance to the player will be prioritized
-     */
-    private EnemyBaseClass GetTargetEnemy()
-    {
-        List<EnemyBaseClass> allEnemies = EnemyManager.i.enemyList;
-        List<EnemyBaseClass> allEnemiesInRange = new List<EnemyBaseClass>();
-
-        //first get all enemies within range
-        foreach (EnemyBaseClass enemy in allEnemies)
-        {
-            if(enemy.gameObject.activeSelf)
-            {
-                if (Vector2.Distance(transform.position, enemy.transform.position) <=
-                range)
-                    allEnemiesInRange.Add(enemy);
-            }
-        }
-
-        //then choose target from enemies within range based
-        //on distance and rank
-        EnemyBaseClass selectedEnemy = null;
-        float lowestScore = 4 * range;
-
-        foreach (EnemyBaseClass enemy in allEnemiesInRange)
-        {
-            float enemyScore = Vector2.Distance(transform.position,
-                enemy.transform.position) / enemy.GetRank();
-
-            if(enemyScore < lowestScore)
-            {
-                lowestScore = enemyScore;
-                selectedEnemy = enemy;
-            }
-        }
-        return selectedEnemy;
     }
 
     private void LookAt(Vector3 target, float offset)

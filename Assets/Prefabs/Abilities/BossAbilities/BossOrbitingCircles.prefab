@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossOrbitingCircles
   connectedBossAbility: {fileID: 0}
-  orbitSpeed: 50
+  orbitSpeed: 80
   orbitSpeedIncreaseAmnt: 1.1
   circleObj: {fileID: 144474541681253417, guid: cb6ac4feafc32334f85c4a9d6e6a4c9b, type: 3}
   circles: []

@@ -5,7 +5,6 @@ using UnityEngine;
 public class BossOrbitCircleObj: MonoBehaviour
 {
     public float damage;
-    public float knockBackAmnt;
 
     //the layers of objects this object is allowed to apply physics to
     public LayerMask targetLayers;
@@ -22,7 +21,7 @@ public class BossOrbitCircleObj: MonoBehaviour
             {
                 EntityBaseClass enemy = entity.GetComponent<EntityBaseClass>();
 
-                //cause damage and apply knockback
+                //cause damage
                 enemy.TakeDamage(damage);             
             }
             //enemy projectile

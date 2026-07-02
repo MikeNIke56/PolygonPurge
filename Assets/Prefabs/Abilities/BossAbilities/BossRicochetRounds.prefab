@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9195147949568210353}
-  - component: {fileID: 8173655682563794791}
+  - component: {fileID: -6204305703173963758}
   m_Layer: 12
   m_Name: BossRicochetRounds
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8173655682563794791
+--- !u!114 &-6204305703173963758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2197505336988738591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ee215119ed7c24f9acf35e3dc0af2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4c3505b1cd2184495af232c33a9eb0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RicochetRounds
+  m_EditorClassIdentifier: Assembly-CSharp::BossRicochetRounds
   connectedBossAbility: {fileID: 0}
-  roundSpeed: 10
+  roundSpeed: 20
   roundSpeedIncreaseAmnt: 2
-  roundDamage: 3
+  roundDamage: 10
   roundDamageIncreaseAmnt: 1
-  roundObj: {fileID: 5797583004084412605, guid: d5c26609e4c67394d9e1a6ce9c28872a, type: 3}
+  roundObj: {fileID: 8056599043244301342, guid: dae2896043b118142a1050bcea00a10b, type: 3}

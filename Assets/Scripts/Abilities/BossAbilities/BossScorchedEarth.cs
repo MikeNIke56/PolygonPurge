@@ -30,7 +30,7 @@ public class BossScorchedEarth: AbilityBaseClass
             for (int i = 0; i < rounds; i++)
             {
                 ThrowMolotovs(newangle);
-                newangle += 60;
+                newangle += 90;
             }
         }
     }
@@ -57,7 +57,7 @@ public class BossScorchedEarth: AbilityBaseClass
             ObjectPoolingManager.PoolType.Bullet);
 
         //sets the stats of the molotov
-        Molotov molotov = molotovObjCopy.GetComponent<Molotov>();
+        BossMolotov molotov = molotovObjCopy.GetComponent<BossMolotov>();
         molotov.burnTickPercentage = burnTickPercentage;
         molotov.range = range;
         molotov.lifeTime = lifetime;

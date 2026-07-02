@@ -263,7 +263,7 @@ public class UpgradesManager : MonoBehaviour
                 GetComponent<AbilityBaseClass>());
 
             if (ability.GetConnectedBossAbility().
-                GetComponent<AbilityBaseClass>() is LittleBuddy == false)
+                GetComponent<AbilityBaseClass>() is BossLittleBuddy == false)
             {
                 abilityObjCopy.transform.SetParent(parent);
                 abilityObjCopy.transform.localPosition = Vector3.zero;

@@ -7,8 +7,8 @@ public class BossOrbitingCircles: AbilityBaseClass
     public float orbitSpeedIncreaseAmnt;
 
     [SerializeField] GameObject circleObj;
-    public List<OrbitCircleObj> circles;
-    private int numOfCircles = 1;
+    public List<BossOrbitCircleObj> circles;
+    private int numOfCircles = 3;
 
     protected override void Update()
     {
@@ -18,72 +18,34 @@ public class BossOrbitingCircles: AbilityBaseClass
     public override void SetUp()
     {
         base.SetUp();
-        circles = new List<OrbitCircleObj>();
-        SpawnNewCircle();
+        circles = new List<BossOrbitCircleObj>();
+        SpawnCircles();
     }
 
     public override void UpgradeAbility(int level)
     {
         base.UpgradeAbility(level);
         orbitSpeed *= orbitSpeedIncreaseAmnt;
-        numOfCircles++;
-        SpawnNewCircle();
+        //numOfCircles++;
+        //SpawnCircles();
     }
 
-    private void SpawnNewCircle()
+    private void SpawnCircles()
     {
         //spawns in circle object
-        GameObject circleObjCopy = Instantiate(circleObj, transform);
-
-        circles.Add(circleObjCopy.GetComponent<OrbitCircleObj>());
-
-        //adjusts locations of circles
-        switch (numOfCircles)
+        for (int i = 0; i < numOfCircles; i++)
         {
-            case 1:
-                circles[0].gameObject.transform.localPosition = 
-                    new Vector3(2f, 0, 0);
-                break;
-            case 2:
-                circles[0].gameObject.transform.localPosition =
-                    new Vector3(2f, 0, 0);
-                circles[1].gameObject.transform.localPosition =
-                    new Vector3(-2f, 0, 0);
-                break;
-            case 3:
-                circles[0].gameObject.transform.localPosition =
-                    new Vector3(0, 2f, 0);
-                circles[1].gameObject.transform.localPosition =
-                    new Vector3(-1.75f, -1.2f, 0);
-                circles[2].gameObject.transform.localPosition =
-                    new Vector3(1.75f, -1.2f, 0);
-                break;
-            case 4:
-                circles[0].gameObject.transform.localPosition =
-                    new Vector3(2f, 0, 0);
-                circles[1].gameObject.transform.localPosition =
-                    new Vector3(-2f, 0, 0);
-                circles[2].gameObject.transform.localPosition =
-                    new Vector3(0, 2f, 0);
-                circles[3].gameObject.transform.localPosition =
-                    new Vector3(0, -2f, 0);
-                break;
-            case 5:
-                circles[0].gameObject.transform.localPosition =
-                    new Vector3(2f, .45f, 0);
-                circles[1].gameObject.transform.localPosition =
-                    new Vector3(-2f, .45f, 0);
-                circles[2].gameObject.transform.localPosition =
-                    new Vector3(0, 2f, 0);
-                circles[3].gameObject.transform.localPosition =
-                    new Vector3(1f, -1.75f, 0);
-                circles[4].gameObject.transform.localPosition =
-                    new Vector3(-1f, -1.75f, 0);
-                break;
-            default:
-                Debug.Log("invalid amount of circles");
-                break;
+            GameObject circleObjCopy = Instantiate(circleObj, transform);
+            circles.Add(circleObjCopy.GetComponent<BossOrbitCircleObj>());
         }
+
+        //sets locations of circles
+        circles[0].gameObject.transform.localPosition =
+            new Vector3(0, 4f, 0);
+        circles[1].gameObject.transform.localPosition =
+            new Vector3(-3.3f, -2.2f, 0);
+        circles[2].gameObject.transform.localPosition =
+            new Vector3(3.3f, -2.2f, 0);
     }
 
     private void ContinuouslyRotate()

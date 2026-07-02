@@ -13,13 +13,11 @@ public class BossRicochetRounds: AbilityBaseClass
     public float roundDamageIncreaseAmnt;
 
     public GameObject roundObj;
-
-    private List<RicochetRoundObj> rounds;
+    private BossRicochetRoundObj round;
 
     public override void SetUp()
     {
         base.SetUp();
-        rounds = new List<RicochetRoundObj>();
         SpawnNewRound();
     }
 
@@ -28,16 +26,16 @@ public class BossRicochetRounds: AbilityBaseClass
         base.UpgradeAbility(level);
         roundSpeed += roundSpeedIncreaseAmnt;
         roundDamage += roundDamageIncreaseAmnt;
-        SpawnNewRound();
+        round.speed = roundSpeed;
+        round.damage = roundDamage;
     }
 
     private void SpawnNewRound()
     {
         //spawns in round object
         GameObject roundObjCopy = Instantiate(roundObj, transform);
-        RicochetRoundObj ricRound = roundObjCopy.GetComponent<RicochetRoundObj>();
-
-        rounds.Add(ricRound);
+        BossRicochetRoundObj ricRound = roundObjCopy.GetComponent<
+            BossRicochetRoundObj>();
 
         ricRound.damage = roundDamage;
 
@@ -46,11 +44,9 @@ public class BossRicochetRounds: AbilityBaseClass
         Vector3 force = randomDir * roundSpeed;
         ricRound.GetRigidbody().AddForce(force, ForceMode2D.Impulse);
 
-        //increases stats of all active rounds
-        foreach (RicochetRoundObj round in rounds)
-        {
-            round.speed = roundSpeed;
-            round.damage = roundDamage;
-        }
+        //increases stats of all round
+        ricRound.speed = roundSpeed;
+        ricRound.damage = roundDamage;
+        round = ricRound;
     }
 }

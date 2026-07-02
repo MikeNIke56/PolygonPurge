@@ -40,8 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4098108122611716200}
+  - component: {fileID: 2346553543569825867}
   - component: {fileID: 8276990698567909188}
-  - component: {fileID: 2232194349870936584}
   m_Layer: 0
   m_Name: BossLittleBuddy
   m_TagString: Untagged
@@ -59,12 +59,38 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.13476, y: -2.4136, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7031540892398752679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2346553543569825867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425546649765396094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898e04f6ee33c4b45acae2faec4712ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossLittleBuddy
+  connectedBossAbility: {fileID: 0}
+  damage: 5
+  damageIncreaseAmnt: 1.5
+  fireRate: 0.075
+  fireCooldown: 1.5
+  fireCooldownDecreaseAmnt: 1.1
+  range: 7
+  rangeIncreaseAmnt: 1.2
+  littleBuddyBulletObj: {fileID: 2075227883246156999, guid: 46168c1286546b345aed09c09b2df8a4, type: 3}
+  maxBurstsBeforeRetarget: 2
+  frequency: 1
+  amplitude: 0.01
+  followSpeed: 5
+  lookOffset: -30
 --- !u!212 &8276990698567909188
 SpriteRenderer:
   serializedVersion: 2
@@ -124,28 +150,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2232194349870936584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425546649765396094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eef75326188d494caccdb18b30c6d02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LittleBuddy
-  damage: 3
-  damageIncreaseAmnt: 1.5
-  fireRate: 0.075
-  fireCooldown: 1.5
-  fireCooldownDecreaseAmnt: 1.1
-  range: 7
-  rangeIncreaseAmnt: 1.2
-  littleBuddyBulletObj: {fileID: 2075227883246156999, guid: d5b523d43902f7547be703ce85bbe8f7, type: 3}
-  maxBurstsBeforeRetarget: 2
-  frequency: 1
-  amplitude: 0.01
-  followSpeed: 5
-  lookOffset: -30
