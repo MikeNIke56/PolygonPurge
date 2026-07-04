@@ -15,6 +15,7 @@ public class BossBoomerang: MonoBehaviour
 
     public float damage;
     public float lifeTime;
+    public bool isSpectreRound = false;
 
     private BossEnemy boss;
     private BossBoomerangBonanza parent;
@@ -79,7 +80,9 @@ public class BossBoomerang: MonoBehaviour
 
             ObjectPoolingManager.ReturnObjectToPool(gameObject,
                 ObjectPoolingManager.PoolType.Bullet);
-            parent.curBoomerangActive--;
+
+            if(isSpectreRound == false)
+                parent.curBoomerangActive--;
 
             return;
         }

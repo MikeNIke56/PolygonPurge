@@ -36,13 +36,9 @@ public class BossLittleBuddy: AbilityBaseClass
     private bool isOnFireCooldown = false;
     private Transform firepoint;
 
-    private void Awake()
-    {
-        target = boss.littleBuddyPivotPoint.transform;
-    }
-
     private void Start()
     {
+        target = boss.littleBuddyPivotPoint.transform;
         firepoint = GetComponentInChildren<Transform>();
     }
 

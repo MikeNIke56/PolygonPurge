@@ -53,6 +53,8 @@ public class ProjectileBaseClass : MonoBehaviour
 
                 if(numEnemiesPenetrated == penetrationValue)
                 {
+                    if (gameObject.activeSelf == false) return;
+
                     ObjectPoolingManager.ReturnObjectToPool(gameObject, 
                         ObjectPoolingManager.PoolType.Bullet);
                 }

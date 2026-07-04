@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossBodyBuckshots: AbilityBaseClass
@@ -24,6 +25,10 @@ public class BossBodyBuckshots: AbilityBaseClass
             for (int i = 0; i < rounds; i++)
             {
                 Shoot(newangle);
+
+                if (boss.GetSpectreRounds())
+                    StartCoroutine(ShootSpectreRounds(newangle));
+
                 newangle += 45;
             }
         }
@@ -58,5 +63,13 @@ public class BossBodyBuckshots: AbilityBaseClass
             projectile.GetSpeed();
 
         projectile.GetRigidbody().AddForce(force, ForceMode2D.Impulse);
+    }
+
+    private IEnumerator ShootSpectreRounds(float angle)
+    {
+        yield return new WaitForSecondsRealtime(boss.GetSpectreRounds().
+            delayAfterFirstShot);
+
+        Shoot(angle);
     }
 }

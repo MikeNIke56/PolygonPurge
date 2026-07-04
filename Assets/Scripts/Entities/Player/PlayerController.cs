@@ -35,7 +35,7 @@ public class PlayerController : EntityBaseClass
     [Header("Dodge Variables")]
     public float dodgePower;
     public float dodgeDecaySpeed;
-    private float dodgeHitboxSize = .25f;
+    private float dodgeHitboxSize = 0f;
     private float baseHitboxSize;
 
     private float curHealthRegenTime;
@@ -162,7 +162,8 @@ public class PlayerController : EntityBaseClass
                 return;
             }
             currentPlayerStates.Remove(PlayerStates.Dodging);
-            hitbox.radius = baseHitboxSize;
+            //hitbox.radius = baseHitboxSize;
+            hitbox.enabled = true;
         }
         Move(inputVelocity);
     }
@@ -186,14 +187,14 @@ public class PlayerController : EntityBaseClass
         if (!currentPlayerStates.Contains(PlayerStates.Dodging))
         {
             currentPlayerStates.Add(PlayerStates.Dodging);
-            hitbox.radius = dodgeHitboxSize;
+            //hitbox.radius = dodgeHitboxSize;
+            hitbox.enabled = false;
             rb.linearVelocity = moveVal * dodgePower;
         }
     }
 
     public void Shoot()
     {
-        //LevelSystem.i.AddXP(5);
         //fire multiple times per press if Shotgun
         if (primaryWeapon is Shotgun && 
             primaryWeapon.canFire == true)
@@ -219,6 +220,10 @@ public class PlayerController : EntityBaseClass
         }
     }
 
+    /**
+     * fires the current weapon again after a delay (tied to the spectre rounds
+     * ability)
+     */
     private IEnumerator ShootSpectreRounds(WeaponBaseClass weapon)
     {
         yield return new WaitForSecondsRealtime(spectreRounds.

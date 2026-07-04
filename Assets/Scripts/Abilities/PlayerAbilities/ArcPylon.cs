@@ -41,7 +41,7 @@ public class ArcPylon : AbilityBaseClass
     private Transform followTarget;
     private bool isOnFireCooldown = false;
 
-    private void Awake()
+    private void Start()
     {
         followTarget = PlayerController.i.arcPylonPivotPoint.transform;
     }

@@ -90,33 +90,13 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isBossRound == false)
-        {
-            UpdateBatchedEnemiesBehavior();
-            HandleRounds();
-        }
-        else
-        {
-            if (boss && boss.gameObject.activeSelf == true)
-            {
-                if (boss.GetCurHealth() > 0)
-                    boss.RunBehavior();
-            }
-        }
+        UpdateBatchedEnemiesBehavior();
+        HandleRounds();
     }
 
     private void FixedUpdate()
     {
-        if (isBossRound == false)
-            UpdateBatchedEnemiesMovement();
-        else
-        {
-            if (boss && boss.gameObject.activeSelf == true)
-            {
-                if (boss.GetCurHealth() > 0)
-                    boss.HandleMovement();
-            }
-        }
+        UpdateBatchedEnemiesMovement();
     }
 
     /**
@@ -250,14 +230,6 @@ public class EnemyManager : MonoBehaviour
         {
             roundsToBossSpawn = maxRoundsToBossSpawn;
 
-            //despawn every enemy
-            foreach (EnemyBaseClass enemy in enemyList)
-            {
-                if (enemy && enemy.gameObject.activeSelf == true)
-                    enemy.Despawn();
-            }
-            enemyList.Clear();
-
             //spawn in boss
             GameObject bossGameObjectCopy = ObjectPoolingManager.SpawnObject(
                 bossObj, FindRandomSpawnPoint(minSpawnDistance / 3, 
@@ -268,7 +240,8 @@ public class EnemyManager : MonoBehaviour
             bossCopy.Setup(player);
             bossCopy.SetAbilities();
             enemyList.Add(bossCopy);
-            curNumOfEnemies = 1;
+            AddEnemyToBucket(bossCopy, curEnemyBatch);
+            curNumOfEnemies++;
             boss = bossCopy;
 
             yield return new WaitForSecondsRealtime(bossSpawnDelay);

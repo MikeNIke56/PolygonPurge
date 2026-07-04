@@ -9,6 +9,8 @@ public class BossEnemy : EnemyBaseClass
 
     public GameObject littleBuddyPivotPoint;
 
+    private BossSpectreRounds spectreRounds;
+
     public override void Setup(PlayerController player)
     {
         base.Setup(player);
@@ -36,6 +38,16 @@ public class BossEnemy : EnemyBaseClass
     {
         currentAbilities = new List<AbilityBaseClass>();
         UpgradesManager.i.SpawnBossAbilities(transform, this);
+    }
+
+    public void SetSpectreRounds(BossSpectreRounds spectreRounds)
+    {
+        this.spectreRounds = spectreRounds;
+    }
+
+    public BossSpectreRounds GetSpectreRounds()
+    {
+        return spectreRounds;
     }
 
     public override void Die()

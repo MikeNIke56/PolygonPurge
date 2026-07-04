@@ -51,7 +51,7 @@ public class UpgradesManager : MonoBehaviour
     private void Start()
     {
         statsBuffRecord = new Dictionary<StatsUpgrades, int>();
-        //currentAbilities = new List<AbilityBaseClass>();
+        currentAbilities = new List<AbilityBaseClass>();
         InitializeStartingStats();
     }
 
@@ -252,7 +252,6 @@ public class UpgradesManager : MonoBehaviour
         {
             if (boss.currentAbilities.Contains(ability.
                 GetConnectedBossAbility().GetComponent<AbilityBaseClass>())) return;
-            if (ability.GetComponent<AbilityBaseClass>() is SpectreRounds) return;
 
             GameObject abilityObjCopy = Instantiate(ability.
                 GetConnectedBossAbility());
@@ -268,6 +267,11 @@ public class UpgradesManager : MonoBehaviour
                 abilityObjCopy.transform.SetParent(parent);
                 abilityObjCopy.transform.localPosition = Vector3.zero;
             }
+
+            if (ability.GetConnectedBossAbility().
+                GetComponent<AbilityBaseClass>() is BossSpectreRounds)
+                boss.SetSpectreRounds(abilityObjCopy.
+                    GetComponent<BossSpectreRounds>());
         }
     }
 

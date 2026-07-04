@@ -38,7 +38,6 @@ public class RicochetRounds : AbilityBaseClass
         RicochetRoundObj ricRound = roundObjCopy.GetComponent<RicochetRoundObj>();
 
         rounds.Add(ricRound);
-
         ricRound.damage = roundDamage;
 
         //launch round in random direction

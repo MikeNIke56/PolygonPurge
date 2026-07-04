@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,12 +14,15 @@ public class BossRicochetRounds: AbilityBaseClass
     public float roundDamageIncreaseAmnt;
 
     public GameObject roundObj;
-    private BossRicochetRoundObj round;
+    public List<BossRicochetRoundObj> rounds;
 
     public override void SetUp()
     {
         base.SetUp();
         SpawnNewRound();
+
+        if (boss.GetSpectreRounds())
+            StartCoroutine(ShootSpectreRounds());
     }
 
     public override void UpgradeAbility(int level)
@@ -26,17 +30,22 @@ public class BossRicochetRounds: AbilityBaseClass
         base.UpgradeAbility(level);
         roundSpeed += roundSpeedIncreaseAmnt;
         roundDamage += roundDamageIncreaseAmnt;
-        round.speed = roundSpeed;
-        round.damage = roundDamage;
+
+        foreach(BossRicochetRoundObj round in rounds)
+        {
+            round.speed = roundSpeed;
+            round.damage = roundDamage;
+        }
     }
 
     private void SpawnNewRound()
     {
         //spawns in round object
-        GameObject roundObjCopy = Instantiate(roundObj, transform);
+        GameObject roundObjCopy = Instantiate(roundObj, boss.transform);
         BossRicochetRoundObj ricRound = roundObjCopy.GetComponent<
             BossRicochetRoundObj>();
 
+        rounds.Add(ricRound);
         ricRound.damage = roundDamage;
 
         //launch round in random direction
@@ -44,9 +53,19 @@ public class BossRicochetRounds: AbilityBaseClass
         Vector3 force = randomDir * roundSpeed;
         ricRound.GetRigidbody().AddForce(force, ForceMode2D.Impulse);
 
-        //increases stats of all round
-        ricRound.speed = roundSpeed;
-        ricRound.damage = roundDamage;
-        round = ricRound;
+        //increases stats of all active rounds
+        foreach (BossRicochetRoundObj round in rounds)
+        {
+            round.speed = roundSpeed;
+            round.damage = roundDamage;
+        }
+    }
+
+    private IEnumerator ShootSpectreRounds()
+    {
+        yield return new WaitForSecondsRealtime(boss.GetSpectreRounds().
+            delayAfterFirstShot);
+
+        SpawnNewRound();
     }
 }

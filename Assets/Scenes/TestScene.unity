@@ -173,12 +173,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
       propertyPath: currentAbilities.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
       propertyPath: 'currentAbilities.Array.data[0]'
       value: 
-      objectReference: {fileID: 6889644955770578845, guid: 65955ca9af98b92459f5098591769677, type: 3}
+      objectReference: {fileID: 3961470722201024893, guid: 4db17452d7ffd7b409a759a355b31b22, type: 3}
+    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
+      propertyPath: 'currentAbilities.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5798133431172828987, guid: ae9e960e8b207624eaa6f08f7097479a, type: 3}
+    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
+      propertyPath: 'currentAbilities.Array.data[2]'
+      value: 
+      objectReference: {fileID: -8440532804524901408, guid: 5f8a27fc8ab9c7841b2e626672b45891, type: 3}
+    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
+      propertyPath: 'currentAbilities.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8036810219065656487, guid: fb9d861b64166c74885bdb483e3aa41f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -548,11 +560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxRoundTimer
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemies
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxSpawnDistance
@@ -580,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxRoundsToBossSpawn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: maxNumOfEnemiesPerRound

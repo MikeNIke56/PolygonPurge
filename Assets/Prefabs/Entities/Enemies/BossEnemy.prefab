@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8595a3bc47f03544958f20d81f75e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleEnemy
-  maxHealth: 500
+  maxHealth: 10
   moveSpeed: 110
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   damageColor: {r: 1, g: 0, b: 0, a: 1}

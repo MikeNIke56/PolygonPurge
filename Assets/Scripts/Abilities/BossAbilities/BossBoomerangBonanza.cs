@@ -22,7 +22,12 @@ public class BossBoomerangBonanza: AbilityBaseClass
     protected override void Update()
     {
         if (isOnSpawnCooldown == false && curBoomerangActive < maxBoomerangs)
-            StartCoroutine(SpawnBoomerang());
+        {
+            StartCoroutine(SpawnBoomerangs(false));
+
+            if (boss.GetSpectreRounds())
+                StartCoroutine(ShootSpectreRounds());
+        }
     }
 
 
@@ -40,7 +45,7 @@ public class BossBoomerangBonanza: AbilityBaseClass
         spawnCooldown /= spawnCooldownDecreaseAmnt;
     }
 
-    private IEnumerator SpawnBoomerang()
+    private IEnumerator SpawnBoomerangs(bool isSpectreRound)
     {
         isOnSpawnCooldown = true;
 
@@ -61,7 +66,10 @@ public class BossBoomerangBonanza: AbilityBaseClass
 
             boomerang.SetBoomerangParent(this);
             boomerang.damage = damage;
-            curBoomerangActive++;
+            boomerang.isSpectreRound = isSpectreRound;
+
+            if(isSpectreRound == false)
+                curBoomerangActive++;
 
             yield return new WaitForSecondsRealtime(spawnRate);
         }
@@ -73,5 +81,12 @@ public class BossBoomerangBonanza: AbilityBaseClass
     {
         yield return new WaitForSecondsRealtime(spawnCooldown);
         isOnSpawnCooldown = false;
+    }
+    private IEnumerator ShootSpectreRounds()
+    {
+        yield return new WaitForSecondsRealtime(boss.GetSpectreRounds().
+            delayAfterFirstShot);
+
+        yield return SpawnBoomerangs(true);
     }
 }

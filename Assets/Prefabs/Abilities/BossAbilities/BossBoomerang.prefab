@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 6739433571664784077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.13476, y: -2.4136, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -149,6 +149,7 @@ MonoBehaviour:
   spinSpeed: 720
   damage: 0
   lifeTime: 3.5
+  isSpectreRound: 0
 --- !u!50 &5998942915457671201
 Rigidbody2D:
   serializedVersion: 5
@@ -189,7 +190,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 8064

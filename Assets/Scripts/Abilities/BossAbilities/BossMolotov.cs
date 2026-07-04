@@ -86,6 +86,6 @@ public class BossMolotov: MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(lifeTime);
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
-            ObjectPoolingManager.PoolType.Bullet);
+            ObjectPoolingManager.PoolType.Ability);
     }
 }
