@@ -26,8 +26,12 @@ public class HealthPickup : ItemBaseClass
 
                 player.SetCurHealth(Mathf.Clamp(player.GetCurHealth() + healAmnt, 
                     1, player.GetMaxHealth()));
-                Debug.Log("healed");
-                Destroy(gameObject);
+
+
+                ItemSpawner.i.DerementItemNum();
+
+                ObjectPoolingManager.ReturnObjectToPool(gameObject,
+                    ObjectPoolingManager.PoolType.Item);
             }
         }
     }

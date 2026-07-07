@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56cba0eb533f1c489c9c74e9ee60b22, type: 3}
+  m_Name: SpectreRounds
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
+  abilityObj: {fileID: 3719811679326864308, guid: ae9e960e8b207624eaa6f08f7097479a, type: 3}
+  statsBuff: 0
+  optionName: Spectre Rounds
+  description: 

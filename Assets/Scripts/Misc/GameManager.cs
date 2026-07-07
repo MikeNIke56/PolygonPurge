@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 using static UpgradesManager;
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameState curState;
     public GameState prevState;
 
+    public float multipleUpgradesDelayTime;
+
     public static GameManager i { get; private set; }
 
     private void Awake()
@@ -34,42 +37,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        HandleStates();
-    }
-
     /**
-     * driver for the player when the game transitions from state to state
+     * brings up the upgrades menu and pauses the active game
      */
-    private void HandleStates()
+    public IEnumerator HandleUpgradesMenu()
     {
-        switch (curState)
+        prevState = curState;
+        curState = GameState.UpgradesMenu;
+
+        int tempLevel = LevelSystem.i.levelsGained;
+        while(tempLevel > 0)
         {
-            //applies the buffs to the player's current weapon
-            case GameState.MainMenu:
+            UpgradesManager.i.InitializeUpgradesMenu();
 
-                break;
-            case GameState.InGame:
+            yield return new WaitUntil(() => tempLevel != 
+                LevelSystem.i.levelsGained);
+            tempLevel = LevelSystem.i.levelsGained;
 
-                break;
-            case GameState.UpgradesMenu:
-
-                break;
-            case GameState.Pause:
-
-                break;
-            case GameState.None:
-
-                break;
-            default:
-                Debug.Log("invalid game state");
-                break;
+            yield return new WaitForSecondsRealtime(multipleUpgradesDelayTime);
         }
-    }
 
-    public void InitializeUpgradesMenu()
-    {
-        
+        prevState = curState;
+        curState = GameState.InGame;
+        Time.timeScale = 1f;
+        yield return null;
     }
 }

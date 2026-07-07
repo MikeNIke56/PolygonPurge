@@ -18,8 +18,7 @@ public class EnemyManager : MonoBehaviour
     public int curNumOfEnemies = 0;
     public float regularSpawnDelay;
     public float bossSpawnDelay;
-    public float minSpawnDistance;
-    public float maxSpawnDistance;
+    [SerializeField] private BoxCollider2D spawnArea;
 
     [SerializeField] private bool isNextWaveOnCooldown;
     private float roundTimer;
@@ -198,8 +197,7 @@ public class EnemyManager : MonoBehaviour
 
                 //spawn in that enemy
                 GameObject enemyGameObjectCopy = ObjectPoolingManager.SpawnObject(
-                    enemyRecorded.gameObject, FindRandomSpawnPoint(
-                        minSpawnDistance, maxSpawnDistance), 
+                    enemyRecorded.gameObject, FindRandomSpawnPoint(), 
                     Quaternion.identity, ObjectPoolingManager.PoolType.Enemy);
 
                 EnemyBaseClass enemy = enemyGameObjectCopy.GetComponent<
@@ -232,8 +230,7 @@ public class EnemyManager : MonoBehaviour
 
             //spawn in boss
             GameObject bossGameObjectCopy = ObjectPoolingManager.SpawnObject(
-                bossObj, FindRandomSpawnPoint(minSpawnDistance / 3, 
-                maxSpawnDistance / 3), Quaternion.identity, 
+                bossObj, FindRandomSpawnPoint(), Quaternion.identity, 
                 ObjectPoolingManager.PoolType.Enemy);
 
             BossEnemy bossCopy = bossGameObjectCopy.GetComponent<BossEnemy>();
@@ -261,18 +258,17 @@ public class EnemyManager : MonoBehaviour
     }
 
     /**
-     * finds random point around character to spawn the enemy
+     * finds random point within spawn area to spawn the enemy
      */
-    private Vector3 FindRandomSpawnPoint(float minDist, float maxDist)
+    private Vector3 FindRandomSpawnPoint()
     {
-        //grab a random point within a "belt" range of the player
-        float angle = Random.Range(0f, Mathf.PI * 2f);
-        float randDistance = Random.Range(minDist, maxDist);
+        //grab a random point within the box spawn area
+        Bounds bounds = spawnArea.bounds;
 
-        Vector3 randSpawnPoint = new Vector3(
-            Mathf.Cos(angle) * randDistance,
-            Mathf.Sin(angle) * randDistance,
-            0);
+        Vector2 randSpawnPoint = new Vector2(
+            Random.Range(bounds.min.x, bounds.max.x),
+            Random.Range(bounds.min.y, bounds.max.y)
+        );
         return randSpawnPoint;
     }
 

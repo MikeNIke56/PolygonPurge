@@ -21,6 +21,7 @@ public class WeaponBaseClass : MonoBehaviour
     [SerializeField] protected int projectilePenetration;
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected float projectileLifetime;
+    public string weaponName;
 
     //keeps track of the player's current weapon level
     public int currrentWeaponLevel = 1;
@@ -75,8 +76,8 @@ public class WeaponBaseClass : MonoBehaviour
     public void SetWeaponPivotOffset()
     {
         Vector3 newPos = transform.position;
-        newPos.x = primaryWeaponSpawnOffset; 
-        transform.position = newPos;
+        float newXPos = primaryWeaponSpawnOffset; 
+        transform.position = new Vector3(newXPos, 0f, 0f);
     }
 
     /**

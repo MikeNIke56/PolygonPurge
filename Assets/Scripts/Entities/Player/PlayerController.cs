@@ -21,6 +21,7 @@ public class PlayerController : EntityBaseClass
 
 
     [SerializeField] protected CircleCollider2D hitbox;
+    [SerializeField] protected CircleCollider2D wallHitbox;
 
     //input Action Variables
     public InputActionAsset inputActions;
@@ -35,8 +36,6 @@ public class PlayerController : EntityBaseClass
     [Header("Dodge Variables")]
     public float dodgePower;
     public float dodgeDecaySpeed;
-    private float dodgeHitboxSize = 0f;
-    private float baseHitboxSize;
 
     private float curHealthRegenTime;
     [SerializeField] protected float maxHealthRegenTime;
@@ -97,14 +96,13 @@ public class PlayerController : EntityBaseClass
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        baseHitboxSize = hitbox.radius;
         curHealth = maxHealth;
         curHealthRegenTime = maxHealthRegenTime;
         GetComponent<SpriteRenderer>().color = baseColor;
 
-        //load in and equip our weapon
-        GameObject primaryWeaponGameObjectCopy = Instantiate<GameObject>(primaryWeaponGameObject, 
-            weaponPivotPoint.transform);
+        //load in and equip our starting weapon
+        GameObject primaryWeaponGameObjectCopy = Instantiate<GameObject>(
+            primaryWeaponGameObject, weaponPivotPoint.transform);
 
         primaryWeapon = primaryWeaponGameObjectCopy.GetComponent<WeaponBaseClass>();
     }
@@ -175,6 +173,8 @@ public class PlayerController : EntityBaseClass
 
     public void Look()
     {
+        if (GameManager.i.curState != GameManager.GameState.InGame) return;
+
         //get the current mouse position in screen pixels
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
@@ -341,5 +341,9 @@ public class PlayerController : EntityBaseClass
     public void SetSpectreRounds(SpectreRounds spectreRounds)
     {
         this.spectreRounds = spectreRounds;
+    }
+    public void SetPrimaryWeapon(WeaponBaseClass weapon)
+    {
+        this.primaryWeapon = weapon;
     }
 }

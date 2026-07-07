@@ -44,6 +44,18 @@ TagManager:
   - name: Entities
     uniqueID: 2939363795
     locked: 0
+  - name: Items
+    uniqueID: 1698201775
+    locked: 0
+  - name: Bullets
+    uniqueID: 3555054655
+    locked: 0
+  - name: Weapons
+    uniqueID: 2693427429
+    locked: 0
+  - name: Abilities
+    uniqueID: 122899573
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

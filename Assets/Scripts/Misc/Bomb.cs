@@ -37,7 +37,10 @@ public class Bomb : ItemBaseClass
                 enemy.TakeDamage(damage);
             }
 
-            Destroy(gameObject);
+            ItemSpawner.i.DerementItemNum();
+
+            ObjectPoolingManager.ReturnObjectToPool(gameObject,
+                ObjectPoolingManager.PoolType.Item);
         }
         else
         {

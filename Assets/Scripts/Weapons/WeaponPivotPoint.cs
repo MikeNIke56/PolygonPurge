@@ -6,9 +6,6 @@ using UnityEngine;
 */
 public class WeaponPivotPoint : MonoBehaviour
 {
-    [Header("Primary Weapon Variables")]
-    private WeaponBaseClass primaryWeapon;
-
     private float gunFlipSpeed = 12f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,10 +50,5 @@ public class WeaponPivotPoint : MonoBehaviour
     private float AngleBetweenTwoPoints(Vector3 point1, Vector3 point2)
     {
         return Mathf.Atan2(point1.y - point2.y, point1.x - point2.x) * Mathf.Rad2Deg;
-    }
-
-    public void SetPrimaryWeapon(WeaponBaseClass primaryWeapon)
-    {
-        this.primaryWeapon = primaryWeapon;
     }
 }

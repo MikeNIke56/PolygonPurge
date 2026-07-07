@@ -15,6 +15,7 @@ public class LevelSystem : MonoBehaviour
     [Header("State")]
     public int curPlayerLevel = 1;
     public int currentXP = 0;
+    public int levelsGained = 0;
 
     public Slider expBar;
 
@@ -59,6 +60,9 @@ public class LevelSystem : MonoBehaviour
         }
 
         expBar.value = GetFillAmount();
+
+        if(levelsGained > 0)     
+            StartCoroutine(GameManager.i.HandleUpgradesMenu());
     }
 
     private void OnEventTriggeredLevelUp(int level)
@@ -69,6 +73,8 @@ public class LevelSystem : MonoBehaviour
             growthMultiplier = 1.3f;
         else if (level < 30)
             growthMultiplier = 1.15f;
+
+        levelsGained++;
     }
 
     public int GetXPRequired(int lvl)

@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78afa54c4b37fb440b0230404d5da0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  curState: 2
+  prevState: 0
+  multipleUpgradesDelayTime: 0.5

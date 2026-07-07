@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -739912641
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
@@ -172,7 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RPGRocket
   speed: 22
   lifeTime: 3
-  penetrationValue: 0
   targetLayers:
     serializedVersion: 2
     m_Bits: 128

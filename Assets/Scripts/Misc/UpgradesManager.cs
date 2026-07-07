@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+using static GameManager;
 
 /**
  * manages all upgrades related to the player (stats and abilities)
@@ -11,16 +13,12 @@ public class UpgradesManager : MonoBehaviour
 {
     public enum StatsUpgrades
     {
+        None,
         Attack,
         MaxHealth,
         HealthRegen,
         MoveSpeed,
         AttackSpeed
-    }
-    public enum ItemTypes
-    {
-        HealthPickup,
-        Bomb
     }
 
     [Header("UpgradesManager Variables")]
@@ -32,6 +30,15 @@ public class UpgradesManager : MonoBehaviour
 
     public float[] statIncreases = new float[5];
     private const int maxLevel = 5;
+
+    public GameObject background;
+    public GameObject upgradesMenu;
+    public GameObject upgradesContainer;
+    public GameObject upgradeOptionObj;
+    public int maxUpgrageOptions;
+
+    public List<UpgradeOptionData> availableUpgrades;
+    public List<UpgradeOptionData> allUpgrades;
 
     public static UpgradesManager i { get; private set; }
 
@@ -52,6 +59,11 @@ public class UpgradesManager : MonoBehaviour
     {
         statsBuffRecord = new Dictionary<StatsUpgrades, int>();
         currentAbilities = new List<AbilityBaseClass>();
+        availableUpgrades = new List<UpgradeOptionData>();
+
+        foreach(UpgradeOptionData data in allUpgrades)
+            availableUpgrades.Add(data);
+
         InitializeStartingStats();
     }
 
@@ -276,12 +288,74 @@ public class UpgradesManager : MonoBehaviour
     }
 
 
-/**
- * upgrades selected ability
- */
-public void UpgradeAbility(AbilityBaseClass ability)
+    /**
+     * upgrades selected ability
+     */
+    public void UpgradeAbility(AbilityBaseClass ability)
+        {
+            if (ability.GetCurrentLevel() < maxLevel)
+                ability.UpgradeAbility(1);
+        }
+
+    /**
+     * brings up the upgrades menu and pauses the active game
+     */
+    public void InitializeUpgradesMenu()
     {
-        if (ability.GetCurrentLevel() < maxLevel)
-            ability.UpgradeAbility(1);
+        background.SetActive(true);
+        upgradesMenu.SetActive(true);
+        Time.timeScale = 0f;
+
+        //first clear all previous upgrades if there are any
+        foreach (Transform child in upgradesContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        availableUpgrades.Clear();
+        foreach (UpgradeOptionData data in allUpgrades)
+            availableUpgrades.Add(data);
+
+        //repopulate children
+        for (int i = 0; i < maxUpgrageOptions; i++)
+        {
+            GameObject upgradeOptionCopy = Instantiate(upgradeOptionObj, 
+                upgradesContainer.transform);
+
+            //set the option's data a randomly picked one
+            UpgradeOptionData randomUpgradeOption = GetRandomUpgradeData();
+
+            upgradeOptionCopy.GetComponent<UpgradeObjOption>().SetData(
+                randomUpgradeOption);
+
+            availableUpgrades.Remove(randomUpgradeOption);
+        }
+    }
+
+    /**
+     * randomly selects upgrade from list
+     */
+    private UpgradeOptionData GetRandomUpgradeData()
+    {
+        return availableUpgrades[Random.Range(0, availableUpgrades.Count)];
+    }
+
+    private List<UpgradeOptionData> GrabAvailableUpgrades()
+    {
+        //foreach(UpgradeOptionData data in a)
+        return null;
+    }
+
+    public void DisableUpgradesMenuMultipleLevelsGained()
+    {
+        background.SetActive(false);
+        upgradesMenu.SetActive(false);
+    }
+
+    public void DisableUpgradesMenuSingleLevelGained()
+    {
+        background.SetActive(false);
+        upgradesMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

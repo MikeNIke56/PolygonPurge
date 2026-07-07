@@ -16,6 +16,7 @@ public class ObjectPoolingManager : MonoBehaviour
 
     //the game objects of the types of pools we're handling once spawned
     private static GameObject bulletsEmpty;
+    private static GameObject itemsEmpty;
     private static GameObject enemiesEmpty;
     private static GameObject abilitiesEmpty;
 
@@ -29,6 +30,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public enum PoolType
     {
         Bullet,
+        Item,
         Enemy,
         Ability
     }
@@ -65,6 +67,9 @@ public class ObjectPoolingManager : MonoBehaviour
         //parent the child holders
         bulletsEmpty = new GameObject("Bullets");
         bulletsEmpty.transform.SetParent(emptyHolder.transform);
+
+        itemsEmpty = new GameObject("Items");
+        itemsEmpty.transform.SetParent(emptyHolder.transform);
 
         enemiesEmpty = new GameObject("Enemies");
         enemiesEmpty.transform.SetParent(emptyHolder.transform);
@@ -149,6 +154,9 @@ public class ObjectPoolingManager : MonoBehaviour
        {
             case PoolType.Bullet:
                 return bulletsEmpty;
+
+            case PoolType.Item:
+                return itemsEmpty;
 
             case PoolType.Enemy:
                 return enemiesEmpty;
