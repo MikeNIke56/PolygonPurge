@@ -19,6 +19,7 @@ public class EnemyManager : MonoBehaviour
     public float regularSpawnDelay;
     public float bossSpawnDelay;
     [SerializeField] private BoxCollider2D spawnArea;
+    public GameObject spawnIndicatorObj;
 
     [SerializeField] private bool isNextWaveOnCooldown;
     private float roundTimer;
@@ -180,6 +181,8 @@ public class EnemyManager : MonoBehaviour
     {
         if(isNextWaveOnCooldown == false)
         {
+            GameManager.i.SetWaveNumber(GameManager.i.curWave + 1);
+
             //find how many enemies we need to spawn per round
             int numOfEnemiesToSpawn = maxNumOfEnemies - curNumOfEnemies;
 
@@ -195,10 +198,23 @@ public class EnemyManager : MonoBehaviour
                 EnemyBaseClass enemyRecorded = enemySpawnList.First(p => randVal 
                 >= p.GetLowerChance() && randVal <= p.GetUpperChance());
 
+
+                Vector3 randSpawnPos = FindRandomSpawnPoint();
+                //load in spawn indicator to give player heads up
+                GameObject spawnIndicatorObjCopy = ObjectPoolingManager.SpawnObject(
+                    spawnIndicatorObj, randSpawnPos,
+                    Quaternion.identity, ObjectPoolingManager.PoolType.Misc);
+
+                yield return new WaitForSecondsRealtime(spawnIndicatorObjCopy.
+                    GetComponent<SpawnIndicator>().lifeTime);
+
                 //spawn in that enemy
                 GameObject enemyGameObjectCopy = ObjectPoolingManager.SpawnObject(
-                    enemyRecorded.gameObject, FindRandomSpawnPoint(), 
+                    enemyRecorded.gameObject, randSpawnPos,
                     Quaternion.identity, ObjectPoolingManager.PoolType.Enemy);
+
+                ObjectPoolingManager.ReturnObjectToPool(spawnIndicatorObjCopy,
+                    ObjectPoolingManager.PoolType.Misc);
 
                 EnemyBaseClass enemy = enemyGameObjectCopy.GetComponent<
                     EnemyBaseClass>();
@@ -226,12 +242,25 @@ public class EnemyManager : MonoBehaviour
     {
         if (isNextWaveOnCooldown == false)
         {
+            GameManager.i.SetWaveNumber(GameManager.i.curWave + 1);
             roundsToBossSpawn = maxRoundsToBossSpawn;
+
+            Vector3 randSpawnPos = FindRandomSpawnPoint();
+            //load in spawn indicator to give player heads up
+            GameObject spawnIndicatorObjCopy = ObjectPoolingManager.SpawnObject(
+                spawnIndicatorObj, randSpawnPos,
+                Quaternion.identity, ObjectPoolingManager.PoolType.Misc);
+
+            yield return new WaitForSecondsRealtime(spawnIndicatorObjCopy.
+                GetComponent<SpawnIndicator>().lifeTime * 2);
 
             //spawn in boss
             GameObject bossGameObjectCopy = ObjectPoolingManager.SpawnObject(
-                bossObj, FindRandomSpawnPoint(), Quaternion.identity, 
+                bossObj, randSpawnPos, Quaternion.identity, 
                 ObjectPoolingManager.PoolType.Enemy);
+
+            ObjectPoolingManager.ReturnObjectToPool(spawnIndicatorObjCopy,
+                ObjectPoolingManager.PoolType.Misc);
 
             BossEnemy bossCopy = bossGameObjectCopy.GetComponent<BossEnemy>();
             bossCopy.Setup(player);

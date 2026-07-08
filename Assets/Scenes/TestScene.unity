@@ -171,106 +171,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradesManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: allUpgrades.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 975fae55b8a337a46bbdadd419d5097e, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 74b3366ff8c9f884f8c7ffc7e8d85107, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: a9eab1fed7cde3d4ab95a1d1869bda67, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 56014569c7914d44bbc17b393b65513a, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[5]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[6]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[7]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[8]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[9]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[10]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[11]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[12]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[13]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[14]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[15]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[16]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[17]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[18]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[19]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[20]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[21]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[22]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
-    - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
-      propertyPath: 'allUpgrades.Array.data[23]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 17cd2c1d638aa6b4abe20f4acd237cd0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -867,6 +767,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerObjs
       objectReference: {fileID: 0}
+    - target: {fileID: 5540627591201032960, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
+      propertyPath: m_text
+      value: '0
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5540627591201032960, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 9170750593587358215, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -912,6 +822,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
+--- !u!114 &1746671769278301931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5540627591201032960, guid: 2bb8461ac7a911746a4a866b632dc69c, type: 3}
+  m_PrefabInstance: {fileID: 1746671769278301930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &4168651560586123490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -980,10 +901,6 @@ PrefabInstance:
     - target: {fileID: 4973982655233596522, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: m_Name
       value: EnemyManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795892744710236053, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
-      propertyPath: maxRoundsToBossSpawn
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8031153493488364347, guid: 6f03788b2aaf04f4f9d21dd353c98698, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1107,6 +1024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4391053766395836867, guid: 8f6b394877934b54bb53287526494ca8, type: 3}
+      propertyPath: waveText
+      value: 
+      objectReference: {fileID: 1746671769278301931}
     - target: {fileID: 7915450218304025947, guid: 8f6b394877934b54bb53287526494ca8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.04044

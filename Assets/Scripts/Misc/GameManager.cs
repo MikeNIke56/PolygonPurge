@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 using static UpgradesManager;
@@ -21,6 +22,9 @@ public class GameManager : MonoBehaviour
     public GameState prevState;
 
     public float multipleUpgradesDelayTime;
+    public int curWave = 0;
+
+    public TextMeshProUGUI waveText;
 
     public static GameManager i { get; private set; }
 
@@ -61,5 +65,11 @@ public class GameManager : MonoBehaviour
         curState = GameState.InGame;
         Time.timeScale = 1f;
         yield return null;
+    }
+
+    public void SetWaveNumber(int wave)
+    {
+        curWave = wave;
+        waveText.text = wave.ToString();
     }
 }

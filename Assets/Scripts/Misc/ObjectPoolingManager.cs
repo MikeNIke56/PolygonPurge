@@ -19,6 +19,7 @@ public class ObjectPoolingManager : MonoBehaviour
     private static GameObject itemsEmpty;
     private static GameObject enemiesEmpty;
     private static GameObject abilitiesEmpty;
+    private static GameObject miscEmpty;
 
     //list of pools for each type of object we're handling
     private static Dictionary<GameObject, ObjectPool<GameObject>> objectPools;
@@ -32,7 +33,8 @@ public class ObjectPoolingManager : MonoBehaviour
         Bullet,
         Item,
         Enemy,
-        Ability
+        Ability,
+        Misc
     }
     public static PoolType poolType;
 
@@ -75,6 +77,9 @@ public class ObjectPoolingManager : MonoBehaviour
         enemiesEmpty.transform.SetParent(emptyHolder.transform);
 
         abilitiesEmpty = new GameObject("Abilities");
+        abilitiesEmpty.transform.SetParent(emptyHolder.transform);
+
+        miscEmpty = new GameObject("Misc");
         abilitiesEmpty.transform.SetParent(emptyHolder.transform);
 
         if (addToDontDestroyOnLoad)
@@ -163,6 +168,9 @@ public class ObjectPoolingManager : MonoBehaviour
 
             case PoolType.Ability:
                 return abilitiesEmpty;
+
+            case PoolType.Misc:
+                return miscEmpty;
 
             default:
                 return null;

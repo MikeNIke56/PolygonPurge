@@ -57,12 +57,11 @@ MonoBehaviour:
   curNumOfEnemies: 0
   regularSpawnDelay: 0.35
   bossSpawnDelay: 1
-  minSpawnDistance: 5
-  maxSpawnDistance: 35
   spawnArea: {fileID: 4152414648036586378}
+  spawnIndicatorObj: {fileID: 8924821416938412344, guid: 59d6e0409900d39499d7003e30181a49, type: 3}
   isNextWaveOnCooldown: 0
   maxRoundTimer: 5
-  maxRoundsToBossSpawn: 3
+  maxRoundsToBossSpawn: 2
   enemyList: []
   separationDistance: 1.35
   separationStrength: 2.25

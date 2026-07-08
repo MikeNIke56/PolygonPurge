@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static GameManager;
 
@@ -61,7 +63,10 @@ public class UpgradesManager : MonoBehaviour
         currentAbilities = new List<AbilityBaseClass>();
         availableUpgrades = new List<UpgradeOptionData>();
 
-        foreach(UpgradeOptionData data in allUpgrades)
+        foreach (UpgradeOptionData data in allUpgrades)
+            data.level = 1;
+
+        foreach (UpgradeOptionData data in allUpgrades)
             availableUpgrades.Add(data);
 
         InitializeStartingStats();
@@ -308,27 +313,56 @@ public class UpgradesManager : MonoBehaviour
 
         //first clear all previous upgrades if there are any
         foreach (Transform child in upgradesContainer.transform)
-        {
             Destroy(child.gameObject);
-        }
 
         availableUpgrades.Clear();
         foreach (UpgradeOptionData data in allUpgrades)
-            availableUpgrades.Add(data);
+        {
+            if (data.level < maxLevel)
+                availableUpgrades.Add(data);
+        }
 
         //repopulate children
-        for (int i = 0; i < maxUpgrageOptions; i++)
+        int optionsToSpawn;
+        if (availableUpgrades.Count < maxUpgrageOptions)
+            optionsToSpawn = availableUpgrades.Count;
+        else
+            optionsToSpawn = maxUpgrageOptions;
+
+        for (int i = 0; i < optionsToSpawn; i++)
         {
             GameObject upgradeOptionCopy = Instantiate(upgradeOptionObj, 
                 upgradesContainer.transform);
 
             //set the option's data a randomly picked one
             UpgradeOptionData randomUpgradeOption = GetRandomUpgradeData();
-
+            
             upgradeOptionCopy.GetComponent<UpgradeObjOption>().SetData(
                 randomUpgradeOption);
 
             availableUpgrades.Remove(randomUpgradeOption);
+        }
+
+        HorizontalLayoutGroup horizontalGroup = upgradesContainer.
+            GetComponent<HorizontalLayoutGroup>();
+
+        switch (optionsToSpawn)
+        {
+            case 1:
+                horizontalGroup.padding.left = -35;
+                return;
+            case 2:
+                horizontalGroup.padding.left = -250;
+                return;
+            case 3:
+                horizontalGroup.padding.left = -400;
+                return;
+            case 4:
+                horizontalGroup.padding.left = -550;
+                return;
+            default:
+                Debug.Log("no options to load");
+                break;
         }
     }
 
@@ -338,12 +372,6 @@ public class UpgradesManager : MonoBehaviour
     private UpgradeOptionData GetRandomUpgradeData()
     {
         return availableUpgrades[Random.Range(0, availableUpgrades.Count)];
-    }
-
-    private List<UpgradeOptionData> GrabAvailableUpgrades()
-    {
-        //foreach(UpgradeOptionData data in a)
-        return null;
     }
 
     public void DisableUpgradesMenuMultipleLevelsGained()
@@ -357,5 +385,10 @@ public class UpgradesManager : MonoBehaviour
         background.SetActive(false);
         upgradesMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public int GetMaxLevel()
+    {
+        return maxLevel;
     }
 }

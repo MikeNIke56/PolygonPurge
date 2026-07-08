@@ -75,9 +75,8 @@ public class WeaponBaseClass : MonoBehaviour
     */
     public void SetWeaponPivotOffset()
     {
-        Vector3 newPos = transform.position;
         float newXPos = primaryWeaponSpawnOffset; 
-        transform.position = new Vector3(newXPos, 0f, 0f);
+        transform.localPosition = new Vector3(newXPos, 0f, 0f);
     }
 
     /**

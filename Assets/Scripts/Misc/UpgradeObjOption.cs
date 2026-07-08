@@ -10,12 +10,16 @@ public class UpgradeObjOption : MonoBehaviour
     public UpgradeOptionData data;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI levelText;
 
     public void SetData(UpgradeOptionData data)
     {
         this.data = data;
         nameText.text = data.optionName;
         descriptionText.text = data.description;
+
+        int lvl = data.level + 1;
+        levelText.text = "Lvl " + lvl.ToString();
     }
 
     public void OptionSelected()
@@ -39,11 +43,12 @@ public class UpgradeObjOption : MonoBehaviour
                 WeaponBaseClass prevWeapon = PlayerController.i.
                     GetPrimaryWeapon();
 
-                //load in and equip our weapon
+                //destroy current weapon
                 foreach(Transform weapon in PlayerController.i.
                     weaponPivotPoint.transform)
                     Destroy(weapon.gameObject);
 
+                //load in and equip our weapon
                 GameObject primaryWeaponGameObjectCopy =
                     Instantiate<GameObject>(data.weaponObj,
                     PlayerController.i.weaponPivotPoint.transform);
@@ -64,6 +69,11 @@ public class UpgradeObjOption : MonoBehaviour
         {
             UpgradesManager.i.ApplyStatBuff(data.statsBuff);
         }
+
+        if (data.level < UpgradesManager.i.GetMaxLevel() - 1)
+            data.level++;
+        else if (data.level == UpgradesManager.i.GetMaxLevel() - 1)
+            data.level += 2;
 
         LevelSystem.i.levelsGained--;
         UpgradesManager.i.DisableUpgradesMenuMultipleLevelsGained();      
