@@ -144,7 +144,7 @@ public class ArcPylon : AbilityBaseClass
     {
         isOnFireCooldown = true;
 
-        yield return new WaitForSecondsRealtime(fireCooldown);
+        yield return new WaitForSeconds(fireCooldown);
 
         isOnFireCooldown = false;
         curCastTime = maxCastTime;

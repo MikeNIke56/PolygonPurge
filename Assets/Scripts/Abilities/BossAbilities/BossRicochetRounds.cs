@@ -63,7 +63,7 @@ public class BossRicochetRounds: AbilityBaseClass
 
     private IEnumerator ShootSpectreRounds()
     {
-        yield return new WaitForSecondsRealtime(boss.GetSpectreRounds().
+        yield return new WaitForSeconds(boss.GetSpectreRounds().
             delayAfterFirstShot);
 
         SpawnNewRound();

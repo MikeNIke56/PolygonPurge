@@ -19,6 +19,10 @@ public class EntityBaseClass : MonoBehaviour, IDamageable
     public Color damageColor;
     protected bool changeSpriteColor;
 
+    protected HealthBarObj healthBar;
+    public Vector3 healthBarOffset;
+    public Color healthBarFillColor;
+
     protected void LookAt(Vector3 target, float offset)
     {
         //find angle between the player and target
@@ -73,6 +77,10 @@ public class EntityBaseClass : MonoBehaviour, IDamageable
     {
         return rb;
     }
+    public HealthBarObj GetHealthBar()
+    {
+        return healthBar;
+    }
 
     public void SetMaxHealth(float health)
     {
@@ -81,6 +89,10 @@ public class EntityBaseClass : MonoBehaviour, IDamageable
     public void SetMoveSpeed(float speed)
     {
         moveSpeed = speed;
+    }
+    public void SetHealthBar(HealthBarObj healthBar)
+    {
+        this.healthBar = healthBar;
     }
 }
 

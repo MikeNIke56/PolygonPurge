@@ -67,7 +67,7 @@ public class BossBodyBuckshots: AbilityBaseClass
 
     private IEnumerator ShootSpectreRounds(float angle)
     {
-        yield return new WaitForSecondsRealtime(boss.GetSpectreRounds().
+        yield return new WaitForSeconds(boss.GetSpectreRounds().
             delayAfterFirstShot);
 
         Shoot(angle);

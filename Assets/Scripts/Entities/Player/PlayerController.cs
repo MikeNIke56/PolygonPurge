@@ -105,6 +105,12 @@ public class PlayerController : EntityBaseClass
             primaryWeaponGameObject, weaponPivotPoint.transform);
 
         primaryWeapon = primaryWeaponGameObjectCopy.GetComponent<WeaponBaseClass>();
+
+        if(healthBar == null)
+        {
+            healthBar = HealthBarsManager.i.CreateHealthBar(healthBarOffset, this);
+            healthBar.SetUp(healthBarFillColor);
+        }
     }
 
     // Update is called once per frame
@@ -226,7 +232,7 @@ public class PlayerController : EntityBaseClass
      */
     private IEnumerator ShootSpectreRounds(WeaponBaseClass weapon)
     {
-        yield return new WaitForSecondsRealtime(spectreRounds.
+        yield return new WaitForSeconds(spectreRounds.
             delayAfterFirstShot);
 
         switch (weapon)
@@ -267,7 +273,7 @@ public class PlayerController : EntityBaseClass
         currentPlayerStates.Add(PlayerStates.Shooting);
         primaryWeapon.canFire = false;
 
-        yield return new WaitForSecondsRealtime(primaryWeapon.fireCooldown);
+        yield return new WaitForSeconds(primaryWeapon.fireCooldown);
 
         primaryWeapon.canFire = true;
         currentPlayerStates.Remove(PlayerStates.Shooting);
@@ -284,6 +290,7 @@ public class PlayerController : EntityBaseClass
         if(curHealthRegenTime <= 0)
         {
             curHealth += Time.deltaTime * healthRegenSpeed;
+            healthBar.UpdateHealth(curHealth);
 
             if (curHealth >= maxHealth)
                 curHealthRegenTime = maxHealthRegenTime;
@@ -300,7 +307,9 @@ public class PlayerController : EntityBaseClass
         curHealthRegenTime = maxHealthRegenTime;
         GetComponent<SpriteRenderer>().color = damageColor;
         changeSpriteColor = true;
-        Debug.Log(curHealth);
+
+        if (healthBar != null)
+            healthBar.UpdateHealth(curHealth);
 
         if (curHealth <= 0)
         {
@@ -310,6 +319,9 @@ public class PlayerController : EntityBaseClass
 
     public override void Die()
     {
+        if (healthBar != null)
+            ObjectPoolingManager.ReturnObjectToPool(healthBar.gameObject,
+                ObjectPoolingManager.PoolType.HealthBar);
         Debug.Log("player died");
     }
 

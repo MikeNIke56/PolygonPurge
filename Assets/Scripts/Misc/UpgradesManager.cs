@@ -245,6 +245,11 @@ public class UpgradesManager : MonoBehaviour
             abilityObjCopy.transform.SetParent(playerParentTrans);
             abilityObjCopy.transform.localPosition = Vector3.zero;
         }
+        else
+        {
+            abilityObjCopy.transform.SetParent(PlayerController.i.littleBuddyPivotPoint.transform);
+            abilityObjCopy.transform.localPosition = Vector3.zero;
+        }
 
         abilityObjCopy.GetComponent<AbilityBaseClass>().SetUp();
         currentAbilities.Add(abilityObjCopy.GetComponent<AbilityBaseClass>());
@@ -282,6 +287,11 @@ public class UpgradesManager : MonoBehaviour
                 GetComponent<AbilityBaseClass>() is BossLittleBuddy == false)
             {
                 abilityObjCopy.transform.SetParent(parent);
+                abilityObjCopy.transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                abilityObjCopy.transform.SetParent(boss.littleBuddyPivotPoint.transform);
                 abilityObjCopy.transform.localPosition = Vector3.zero;
             }
 

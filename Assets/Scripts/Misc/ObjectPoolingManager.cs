@@ -19,6 +19,7 @@ public class ObjectPoolingManager : MonoBehaviour
     private static GameObject itemsEmpty;
     private static GameObject enemiesEmpty;
     private static GameObject abilitiesEmpty;
+    private static GameObject healthBarsEmpty;
     private static GameObject miscEmpty;
 
     //list of pools for each type of object we're handling
@@ -34,6 +35,7 @@ public class ObjectPoolingManager : MonoBehaviour
         Item,
         Enemy,
         Ability,
+        HealthBar,
         Misc
     }
     public static PoolType poolType;
@@ -78,6 +80,9 @@ public class ObjectPoolingManager : MonoBehaviour
 
         abilitiesEmpty = new GameObject("Abilities");
         abilitiesEmpty.transform.SetParent(emptyHolder.transform);
+
+        healthBarsEmpty = new GameObject("Health Bars");
+        healthBarsEmpty.transform.SetParent(HealthBarsManager.i.transform);
 
         miscEmpty = new GameObject("Misc");
         abilitiesEmpty.transform.SetParent(emptyHolder.transform);
@@ -168,6 +173,9 @@ public class ObjectPoolingManager : MonoBehaviour
 
             case PoolType.Ability:
                 return abilitiesEmpty;
+
+            case PoolType.HealthBar:
+                return healthBarsEmpty;
 
             case PoolType.Misc:
                 return miscEmpty;

@@ -54,7 +54,7 @@ public class DiamondEnemy : EnemyBaseClass
     private IEnumerator ChargeAttack()
     {
         rb.linearVelocity = Vector2.zero;
-        yield return new WaitForSecondsRealtime(chargeAttackTime);
+        yield return new WaitForSeconds(chargeAttackTime);
         Vector3 force = transform.right * chargePower;
         rb.AddForce(force, ForceMode2D.Impulse);
         yield return StartChargeAttackCooldown();
@@ -64,7 +64,7 @@ public class DiamondEnemy : EnemyBaseClass
     {
         currentEnemyStates.Remove(EnemyStates.Charging);
         currentEnemyStates.Add(EnemyStates.ChargingAttackCooldown);
-        yield return new WaitForSecondsRealtime(chargeAttackCooldown);
+        yield return new WaitForSeconds(chargeAttackCooldown);
         currentEnemyStates.Remove(EnemyStates.ChargingAttackCooldown);
     }
 }

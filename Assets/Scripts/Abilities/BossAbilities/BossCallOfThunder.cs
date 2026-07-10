@@ -101,7 +101,7 @@ public class BossCallOfThunder: AbilityBaseClass
                 lightingObject, randSpawnPoint, Quaternion.identity,
                 ObjectPoolingManager.PoolType.Ability);
 
-            yield return new WaitForSecondsRealtime(delayBetweenStrikes);
+            yield return new WaitForSeconds(delayBetweenStrikes);
         }
 
         isCurrentlyCasting = false;

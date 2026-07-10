@@ -62,6 +62,14 @@ public class EnemyBaseClass : EntityBaseClass
         this.player = player;
         rb = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().color = baseColor;
+
+        //assigns health bar
+        if(healthBar == null)
+        {
+            healthBar = HealthBarsManager.i.CreateHealthBar(healthBarOffset, this);
+            healthBar.SetUp(healthBarFillColor);
+        }
+        
     }
 
     public virtual void RunBehavior()
@@ -138,16 +146,24 @@ public class EnemyBaseClass : EntityBaseClass
         GetComponent<SpriteRenderer>().color = damageColor;
         changeSpriteColor = true;
 
+        if (healthBar != null)
+            healthBar.UpdateHealth(curHealth);
+
         if (curHealth <= 0)
-        {
             Die();
-        }
     }
 
     public override void Die()
     {
-        Debug.Log(name + " died");
+        if (healthBar != null)
+            healthBar.UpdateHealth(0);
+
         LevelSystem.i.AddXP(exp);
+
+        if (healthBar != null)
+            ObjectPoolingManager.ReturnObjectToPool(healthBar.gameObject,
+                ObjectPoolingManager.PoolType.HealthBar);
+
         ObjectPoolingManager.ReturnObjectToPool(gameObject, 
             ObjectPoolingManager.PoolType.Enemy);
         EnemyManager.i.curNumOfEnemies--;
@@ -158,6 +174,10 @@ public class EnemyBaseClass : EntityBaseClass
      */
     public void Despawn()
     {
+        if(healthBar != null)
+            ObjectPoolingManager.ReturnObjectToPool(healthBar.gameObject,
+                ObjectPoolingManager.PoolType.HealthBar);
+
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
              ObjectPoolingManager.PoolType.Enemy);
         EnemyManager.i.curNumOfEnemies--;

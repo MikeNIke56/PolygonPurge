@@ -68,7 +68,7 @@ public class BossColony: AbilityBaseClass
             bug.speed = speed;
             curBugsActive++;
 
-            yield return new WaitForSecondsRealtime(spawnRate);
+            yield return new WaitForSeconds(spawnRate);
         }
 
         yield return StartColonyBugSpawnCooldown();
@@ -76,7 +76,7 @@ public class BossColony: AbilityBaseClass
 
     private IEnumerator StartColonyBugSpawnCooldown()
     {
-        yield return new WaitForSecondsRealtime(spawnCooldown);
+        yield return new WaitForSeconds(spawnCooldown);
         isOnSpawnCooldown = false;
     }
 }

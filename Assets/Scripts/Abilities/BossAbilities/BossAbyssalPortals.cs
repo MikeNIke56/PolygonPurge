@@ -105,7 +105,7 @@ public class BossAbyssalPortals: AbilityBaseClass
                 blackHoleObject, randSpawnPoint, Quaternion.identity,
                 ObjectPoolingManager.PoolType.Ability);
 
-            yield return new WaitForSecondsRealtime(delayBetweenSummons);
+            yield return new WaitForSeconds(delayBetweenSummons);
         }
 
         isCurrentlyCasting = false;

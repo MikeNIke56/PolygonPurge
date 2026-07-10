@@ -63,7 +63,7 @@ public class RPGRocket : ProjectileBaseClass
 
     protected override IEnumerator StartLifetimeCountdown()
     {
-        yield return new WaitForSecondsRealtime(lifeTime);
+        yield return new WaitForSeconds(lifeTime);
 
         ApplyRadialDamage();
         ObjectPoolingManager.ReturnObjectToPool(gameObject,

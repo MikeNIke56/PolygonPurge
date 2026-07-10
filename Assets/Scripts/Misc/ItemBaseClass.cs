@@ -7,7 +7,7 @@ using UnityEngine;
 public class ItemBaseClass : MonoBehaviour
 {
     [Header("Item Base Variables")]
-    private Vector3 tempPos;
+    private Vector3 startLocalPos;
     public float frequency;
     public float amplitude;
     [SerializeField] protected GameObject childObj;
@@ -15,13 +15,18 @@ public class ItemBaseClass : MonoBehaviour
     //the layers of objects this object is allowed to apply physics to
     public LayerMask targetLayers;
 
+    private void Start()
+    {
+        startLocalPos = childObj.transform.localPosition;
+    }
+
     protected void BobUpDown()
     {
         //float up/down with a Sin()
-        tempPos = childObj.transform.localPosition;
-        tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency) * amplitude;
+        Vector3 pos = startLocalPos;
+        pos.y += Mathf.Sin(Time.time * Mathf.PI * frequency) * amplitude;
 
-        childObj.transform.localPosition = tempPos;
+        childObj.transform.localPosition = pos;
     }
 
     /**

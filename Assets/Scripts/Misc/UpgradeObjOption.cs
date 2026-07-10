@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using static GameManager;
@@ -26,7 +27,26 @@ public class UpgradeObjOption : MonoBehaviour
     {
         //grants ability/ability buff
         if (data.abilityObj)
-            UpgradesManager.i.PlayerSpawnAbility(data.abilityObj);
+        {
+            if (UpgradesManager.i.currentAbilities.Count == 0)
+                UpgradesManager.i.PlayerSpawnAbility(data.abilityObj);
+            else
+            {
+                //if we already have the ability, just upgrade it
+                foreach (AbilityBaseClass ability in UpgradesManager.i.
+                        currentAbilities)
+                {
+                    if (ability.GetConnectedBossAbility() == data.abilityObj.
+                            GetComponent<AbilityBaseClass>().GetConnectedBossAbility())
+                    {
+                        UpgradesManager.i.UpgradeAbility(ability);
+                        break;
+                    }
+                    //if not, create it
+                    UpgradesManager.i.PlayerSpawnAbility(data.abilityObj);
+                }
+            }           
+        }         
         //grants weapon/weapon buff
         else if(data.weaponObj)
         {

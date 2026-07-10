@@ -21,7 +21,7 @@ public class LittleBuddy : AbilityBaseClass
     public int maxBurstsBeforeRetarget;
 
     [Header("Bob Up/Down Variables")]
-    private Vector3 tempPos;
+    private Vector3 startLocalPos;
     public float frequency;
     public float amplitude;
 
@@ -40,25 +40,21 @@ public class LittleBuddy : AbilityBaseClass
     {
         target = PlayerController.i.littleBuddyPivotPoint.transform;
         firepoint = GetComponentInChildren<Transform>();
+        startLocalPos = transform.localPosition;
     }
 
     protected override void Update()
     {
         BobUpDown();
 
-        if (targetedEnemy.gameObject.activeSelf)
+        if (targetedEnemy && targetedEnemy.gameObject.activeSelf)
             LookAt(targetedEnemy.transform.position, lookOffset);
         else
             targetedEnemy = GetTargetEnemy();
 
-        if (targetedEnemy.gameObject.activeSelf && isOnFireCooldown == false)
+        if (targetedEnemy && targetedEnemy.gameObject.activeSelf && 
+            isOnFireCooldown == false)
             StartCoroutine(Shoot());
-    }
-
-    protected override void FixedUpdate()
-    {
-        transform.position = Vector3.Lerp(transform.position, target.position, 
-            followSpeed * Time.deltaTime);
     }
 
     public override void SetUp()
@@ -80,7 +76,7 @@ public class LittleBuddy : AbilityBaseClass
         isOnFireCooldown = true;
 
         //wait a little bit so it has time to look at the enemy before shooting
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
 
         //burst fire
         for (int i = 0; i < 3; i++)
@@ -102,14 +98,14 @@ public class LittleBuddy : AbilityBaseClass
 
             littleBuddyBullet.GetRigidbody().AddForce(-force, ForceMode2D.Impulse);
             curBurstsBeforeRetarget++;
-            yield return new WaitForSecondsRealtime(fireRate);
+            yield return new WaitForSeconds(fireRate);
         }
         yield return StartFireCooldown();
     }
 
     private IEnumerator StartFireCooldown()
     {
-        yield return new WaitForSecondsRealtime(fireCooldown);
+        yield return new WaitForSeconds(fireCooldown);
         isOnFireCooldown = false;
 
         //if we've locked on to an enemy for 2 full bursts or
@@ -178,9 +174,9 @@ public class LittleBuddy : AbilityBaseClass
     private void BobUpDown()
     {
         //float up/down with a Sin()
-        tempPos = transform.localPosition;
-        tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency) * amplitude;
+        Vector3 pos = startLocalPos;
+        pos.y += Mathf.Sin(Time.time * Mathf.PI * frequency) * amplitude;
 
-        transform.localPosition = tempPos;
+        transform.localPosition = pos;
     }
 }

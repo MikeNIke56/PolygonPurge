@@ -56,6 +56,9 @@ TagManager:
   - name: Abilities
     uniqueID: 122899573
     locked: 0
+  - name: UI
+    uniqueID: 2855783297
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

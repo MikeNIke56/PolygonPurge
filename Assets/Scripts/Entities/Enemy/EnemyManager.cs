@@ -205,7 +205,7 @@ public class EnemyManager : MonoBehaviour
                     spawnIndicatorObj, randSpawnPos,
                     Quaternion.identity, ObjectPoolingManager.PoolType.Misc);
 
-                yield return new WaitForSecondsRealtime(spawnIndicatorObjCopy.
+                yield return new WaitForSeconds(spawnIndicatorObjCopy.
                     GetComponent<SpawnIndicator>().lifeTime);
 
                 //spawn in that enemy
@@ -223,7 +223,7 @@ public class EnemyManager : MonoBehaviour
                 AddEnemyToBucket(enemy, curEnemyBatch);
                 currentNumOfEnemiesSpwnedThisRound++;
                 curNumOfEnemies++;
-                yield return new WaitForSecondsRealtime(regularSpawnDelay);
+                yield return new WaitForSeconds(regularSpawnDelay);
             }
 
             if (curEnemyBatch < maxNumOfEnemies / maxNumOfEnemiesPerRound)
@@ -251,7 +251,7 @@ public class EnemyManager : MonoBehaviour
                 spawnIndicatorObj, randSpawnPos,
                 Quaternion.identity, ObjectPoolingManager.PoolType.Misc);
 
-            yield return new WaitForSecondsRealtime(spawnIndicatorObjCopy.
+            yield return new WaitForSeconds(spawnIndicatorObjCopy.
                 GetComponent<SpawnIndicator>().lifeTime * 2);
 
             //spawn in boss
@@ -270,7 +270,7 @@ public class EnemyManager : MonoBehaviour
             curNumOfEnemies++;
             boss = bossCopy;
 
-            yield return new WaitForSecondsRealtime(bossSpawnDelay);
+            yield return new WaitForSeconds(bossSpawnDelay);
 
             isBossRound = true;
         }

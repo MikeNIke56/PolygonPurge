@@ -133,7 +133,7 @@ public class BossBoomerang: MonoBehaviour
 
     private IEnumerator StartLifetimeCountdown()
     {
-        yield return new WaitForSecondsRealtime(lifeTime);
+        yield return new WaitForSeconds(lifeTime);
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Bullet);
     }

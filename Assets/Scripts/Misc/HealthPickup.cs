@@ -26,7 +26,7 @@ public class HealthPickup : ItemBaseClass
 
                 player.SetCurHealth(Mathf.Clamp(player.GetCurHealth() + healAmnt, 
                     1, player.GetMaxHealth()));
-
+                player.GetHealthBar().UpdateHealth(player.GetCurHealth());
 
                 ItemSpawner.i.DerementItemNum();
 

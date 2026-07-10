@@ -63,7 +63,7 @@ public class BossColonyBug: MonoBehaviour
 
     protected virtual IEnumerator StartLifetimeCountdown()
     {
-        yield return new WaitForSecondsRealtime(lifetime);
+        yield return new WaitForSeconds(lifetime);
         parent.curBugsActive--;
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Bullet);

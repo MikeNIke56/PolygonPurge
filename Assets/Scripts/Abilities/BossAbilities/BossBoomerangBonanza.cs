@@ -71,7 +71,7 @@ public class BossBoomerangBonanza: AbilityBaseClass
             if(isSpectreRound == false)
                 curBoomerangActive++;
 
-            yield return new WaitForSecondsRealtime(spawnRate);
+            yield return new WaitForSeconds(spawnRate);
         }
 
         yield return StartBoomerangSpawnCooldown();

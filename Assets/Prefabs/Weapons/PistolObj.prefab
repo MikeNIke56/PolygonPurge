@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32087ace932c0b438b407634fc0cb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pistol
-  attack: 10
+  attack: 5
   fireCooldown: 1
   primaryWeaponSpawnOffset: 1.25
   fireOffset: {fileID: 47980554126666012}

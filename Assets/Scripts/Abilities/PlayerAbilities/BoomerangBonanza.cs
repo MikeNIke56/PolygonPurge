@@ -63,7 +63,7 @@ public class BoomerangBonanza : AbilityBaseClass
             boomerang.damage = damage;
             curBoomerangActive++;
 
-            yield return new WaitForSecondsRealtime(spawnRate);
+            yield return new WaitForSeconds(spawnRate);
         }
 
         yield return StartColonyBugSpawnCooldown();
@@ -71,7 +71,7 @@ public class BoomerangBonanza : AbilityBaseClass
 
     private IEnumerator StartColonyBugSpawnCooldown()
     {
-        yield return new WaitForSecondsRealtime(spawnCooldown);
+        yield return new WaitForSeconds(spawnCooldown);
         isOnSpawnCooldown = false;
     }
 }

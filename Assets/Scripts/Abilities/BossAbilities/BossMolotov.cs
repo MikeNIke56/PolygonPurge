@@ -67,7 +67,7 @@ public class BossMolotov: MonoBehaviour
 
     protected virtual IEnumerator StartDetonateCountdown()
     {
-        yield return new WaitForSecondsRealtime(detonateDelayTime);
+        yield return new WaitForSeconds(detonateDelayTime);
         burnCollider.enabled = true;
         GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
 
@@ -84,7 +84,7 @@ public class BossMolotov: MonoBehaviour
 
     protected virtual IEnumerator StartLifetimeCountdown()
     {
-        yield return new WaitForSecondsRealtime(lifeTime);
+        yield return new WaitForSeconds(lifeTime);
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Ability);
     }

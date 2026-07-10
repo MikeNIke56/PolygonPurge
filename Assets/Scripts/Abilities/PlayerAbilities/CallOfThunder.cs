@@ -96,7 +96,7 @@ public class CallOfThunder : AbilityBaseClass
                 Quaternion.identity, 
                 ObjectPoolingManager.PoolType.Ability);
 
-            yield return new WaitForSecondsRealtime(delayBetweenStrikes);
+            yield return new WaitForSeconds(delayBetweenStrikes);
 
             Debug.Log("lightning");
         }

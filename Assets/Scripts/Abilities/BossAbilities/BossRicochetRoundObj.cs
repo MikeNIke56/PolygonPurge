@@ -111,7 +111,7 @@ public class BossRicochetRoundObj: MonoBehaviour
     private IEnumerator StartHitboxCooldown()
     {
         col.enabled = false;
-        yield return new WaitForSecondsRealtime(hitboxCooldown);
+        yield return new WaitForSeconds(hitboxCooldown);
         col.enabled = true;
     }
 
