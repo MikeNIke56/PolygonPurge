@@ -142,6 +142,8 @@ public class EnemyBaseClass : EntityBaseClass
 
     public override void TakeDamage(float damage)
     {
+        if (curHealth <= 0) return;
+
         curHealth -= damage;
         GetComponent<SpriteRenderer>().color = damageColor;
         changeSpriteColor = true;
@@ -161,8 +163,11 @@ public class EnemyBaseClass : EntityBaseClass
         LevelSystem.i.AddXP(exp);
 
         if (healthBar != null)
+        {
             ObjectPoolingManager.ReturnObjectToPool(healthBar.gameObject,
                 ObjectPoolingManager.PoolType.HealthBar);
+            healthBar = null;
+        }
 
         ObjectPoolingManager.ReturnObjectToPool(gameObject, 
             ObjectPoolingManager.PoolType.Enemy);

@@ -36,6 +36,7 @@ public class PlayerController : EntityBaseClass
     [Header("Dodge Variables")]
     public float dodgePower;
     public float dodgeDecaySpeed;
+    public GameObject dodgeVFXObj;
 
     private float curHealthRegenTime;
     [SerializeField] protected float maxHealthRegenTime;
@@ -196,6 +197,11 @@ public class PlayerController : EntityBaseClass
             //hitbox.radius = dodgeHitboxSize;
             hitbox.enabled = false;
             rb.linearVelocity = moveVal * dodgePower;
+
+            //loads in dash effect
+            GameObject explosionCopy = ObjectPoolingManager.SpawnObject(
+                dodgeVFXObj, transform.position,
+                Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
         }
     }
 
@@ -302,7 +308,8 @@ public class PlayerController : EntityBaseClass
 
     public override void TakeDamage(float damage)
     {
-        //float calculatedDamage = Mathf.Clamp(damage - defense, 1, damage);
+        if (curHealth <= 0) return;
+
         curHealth -= damage;
         curHealthRegenTime = maxHealthRegenTime;
         GetComponent<SpriteRenderer>().color = damageColor;

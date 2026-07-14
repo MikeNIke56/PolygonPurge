@@ -6,6 +6,9 @@ public class AbyssalPortalBlackHoleObj : MonoBehaviour
     public float damage;
     public float lifeTime;
     public float pullStrength;
+    public float blackholeVFXSize;
+    public GameObject blackholeVFX;
+    private bool effectSpawned = false;
 
     //the layers of objects this object is allowed to apply physics to
     public LayerMask targetLayers;
@@ -47,7 +50,23 @@ public class AbyssalPortalBlackHoleObj : MonoBehaviour
 
     private IEnumerator StartLifetimeCountdown()
     {
+        if(effectSpawned == false)
+        {
+            effectSpawned = true;
+
+            //loads in explosion
+            GameObject blackholeCopy = ObjectPoolingManager.SpawnObject(
+                blackholeVFX, transform.position,
+                Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
+
+            Vector3 blackholeScale =
+                new Vector3(blackholeVFXSize, blackholeVFXSize);
+            blackholeCopy.transform.localScale = blackholeScale;
+        }
+
         yield return new WaitForSeconds(lifeTime);
+
+        effectSpawned = false;
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Ability);
     }

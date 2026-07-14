@@ -48,6 +48,8 @@ MonoBehaviour:
   damage: 0.75
   lifeTime: 2.5
   pullStrength: 150
+  blackholeVFXSize: 0.8
+  blackholeVFX: {fileID: 5118844270492420796, guid: d04a77f4d40afaf4788e24caa1b02cea, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 64

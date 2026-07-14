@@ -8,6 +8,7 @@ public class AbyssalPortals : AbilityBaseClass
     public float damageIncreaseAmnt;
 
     public float range;
+    public float blackholeVFXSize;
     public float rangeIncreaseAmnt;
 
     public float minSpawnDistance;
@@ -26,13 +27,6 @@ public class AbyssalPortals : AbilityBaseClass
 
     //blackhole visual to spawn at position
     public GameObject blackHoleObject;
-    private Camera cam;
-
-
-    private void Awake()
-    {
-        cam = Camera.main;
-    }
 
     protected override void Update()
     {
@@ -60,6 +54,7 @@ public class AbyssalPortals : AbilityBaseClass
         blackHole.damage = damage;
         blackHole.pullStrength = pullStrength;
         blackHoleObject.GetComponent<CircleCollider2D>().radius = range;
+        blackHole.blackholeVFXSize = blackholeVFXSize;
         SummonBlackHole();
     }
 
@@ -68,50 +63,35 @@ public class AbyssalPortals : AbilityBaseClass
         base.UpgradeAbility(level);
         damage *= damageIncreaseAmnt;
         range *= rangeIncreaseAmnt;
+        blackholeVFXSize *= rangeIncreaseAmnt;
         pullStrength *= pullStrengthIncreaseAmnt;
         numOfBlackHoles++;
 
-        AbyssalPortalBlackHoleObj blackHole = blackHoleObject.
-            GetComponent<AbyssalPortalBlackHoleObj>();
+        AbyssalPortalBlackHoleObj[] blackHoles = FindObjectsByType<
+            AbyssalPortalBlackHoleObj>(FindObjectsInactive.Include);
 
-        blackHole.damage = damage;
-        blackHole.pullStrength = pullStrength;
-        blackHoleObject.GetComponent<CircleCollider2D>().radius = range;
+        foreach (AbyssalPortalBlackHoleObj blackHole in blackHoles)
+        {
+            blackHole.damage = damage;
+            blackHole.pullStrength = pullStrength;
+            blackHole.blackholeVFXSize = blackholeVFXSize;
+            blackHoleObject.GetComponent<CircleCollider2D>().radius = range;
+        }  
     }
 
     private IEnumerator SummonBlackHole()
     {
         isCurrentlyCasting = true;
-        PlayerController player = PlayerController.i;
-
-        //get random position on screen
-        int[] infrontOrBehind = new int[2];
-        infrontOrBehind[0] = 1;
-        infrontOrBehind[1] = -1;
 
         for (int i = 0; i < numOfBlackHoles; i++)
         {
-            //grab a random point within range of the player
-            //then run a 50/50 for whether to make it negative
-            int xNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
-            int yNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
-
-            Vector3 randSpawnPoint = new Vector3(
-            Random.Range(player.transform.position.x + (minSpawnDistance *
-            xNegPos),
-            player.transform.position.x + (maxSpawnDistance * xNegPos)),
-
-            Random.Range(player.transform.position.y + (minSpawnDistance *
-            yNegPos),
-            player.transform.position.y + (maxSpawnDistance * yNegPos)),
-
-            0);
-
-
             //loads in blackHole object at that position
             GameObject blackHoleObjCopy = ObjectPoolingManager.SpawnObject(
-                blackHoleObject, randSpawnPoint, Quaternion.identity,
+                blackHoleObject, FindRandomSpawnPointInArena(), Quaternion.identity,
                 ObjectPoolingManager.PoolType.Ability);
+
+            blackHoleObjCopy.GetComponent<
+                AbyssalPortalBlackHoleObj>().blackholeVFXSize = blackholeVFXSize;
 
             yield return new WaitForSeconds(delayBetweenSummons);
 

@@ -22,6 +22,7 @@ public class WeaponBaseClass : MonoBehaviour
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected float projectileLifetime;
     public string weaponName;
+    protected Animator muzzleFlash;
 
     //keeps track of the player's current weapon level
     public int currrentWeaponLevel = 1;
@@ -41,10 +42,14 @@ public class WeaponBaseClass : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         SetWeaponPivotOffset();
+        muzzleFlash = GetComponentInChildren<Animator>();
     }
 
     public virtual void Fire()
     {
+        //play muzzle lash animation
+        muzzleFlash.SetTrigger("Fire");
+
         //loads in and fires bullet
         GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, 
             fireOffset.position, fireOffset.rotation, 

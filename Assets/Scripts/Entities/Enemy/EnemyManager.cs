@@ -48,14 +48,9 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
 
         spatialGrid = GetComponent<SpatialGrid>();
     }
@@ -64,7 +59,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         spatialGrid.SetGrid(separationDistance);
-        player = FindAnyObjectByType<PlayerController>();
+        player = FindAnyObjectByType<PlayerController>(FindObjectsInactive.Include);
 
         enemyBatchLists = new List<List<EnemyBaseClass>>();
         for(int i = 0; i < maxNumOfEnemies/maxNumOfEnemiesPerRound; i++)

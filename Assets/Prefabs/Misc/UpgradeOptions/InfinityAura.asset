@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: InfinityAura
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 1231164193221707565, guid: 79ce776ce34e170469941b4a220a9c32, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Infinity Aura
   description: 
+  level: 0

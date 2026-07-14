@@ -15,14 +15,9 @@ public class HealthBarsManager : MonoBehaviour
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
     }
 
     private void LateUpdate()

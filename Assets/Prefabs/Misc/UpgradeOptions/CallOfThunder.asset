@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CallOfThunder
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 8602195091546980987, guid: ad22176a26902494c975d58b31572b3d, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Call Of Thunder
   description: 
+  level: 0

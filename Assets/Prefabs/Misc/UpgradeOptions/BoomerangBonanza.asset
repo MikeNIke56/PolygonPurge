@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: BoomerangBonanza
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 3672996724231690424, guid: 5f8a27fc8ab9c7841b2e626672b45891, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Boomerang Bonanza
   description: 
+  level: 0

@@ -11,6 +11,9 @@ public class RPG : WeaponBaseClass
     }
     public override void Fire()
     {
+        //play muzzle lash animation
+        muzzleFlash.SetTrigger("Fire");
+
         //loads in and fires bullet
         GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, fireOffset.position,
             fireOffset.rotation, ObjectPoolingManager.PoolType.Bullet);

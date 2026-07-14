@@ -18,8 +18,8 @@ TagManager:
   - EnemyProjectile
   - PlayerAbility
   - BossAbility
-  - 
-  - 
+  - PostProcessing
+  - VFX
   - 
   - 
   - 
@@ -58,6 +58,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2855783297
+    locked: 0
+  - name: VFX
+    uniqueID: 1498319073
     locked: 0
   m_RenderingLayers:
   - Default

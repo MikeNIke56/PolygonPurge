@@ -8,6 +8,7 @@ public class BossAbyssalPortals: AbilityBaseClass
     public float damageIncreaseAmnt;
 
     public float range;
+    public float blackholeVFXSize;
     public float rangeIncreaseAmnt;
 
     public float minSpawnDistance;
@@ -64,48 +65,35 @@ public class BossAbyssalPortals: AbilityBaseClass
         pullStrength *= pullStrengthIncreaseAmnt;
         //numOfBlackHoles++;
 
-        AbyssalPortalBlackHoleObj blackHole = blackHoleObject.
-            GetComponent<AbyssalPortalBlackHoleObj>();
+        BossAbyssalPortalBlackHoleObj[] blackHoles = FindObjectsByType<
+            BossAbyssalPortalBlackHoleObj>(FindObjectsInactive.Include);
 
-        blackHole.damage = damage;
-        blackHole.pullStrength = pullStrength;
-        blackHoleObject.GetComponent<CircleCollider2D>().radius = range;
+        foreach (BossAbyssalPortalBlackHoleObj blackHole in blackHoles)
+        {
+            blackHole.damage = damage;
+            blackHole.pullStrength = pullStrength;
+            blackHole.blackholeVFXSize = blackholeVFXSize;
+            blackHoleObject.GetComponent<CircleCollider2D>().radius = range;
+        }
     }
 
     private IEnumerator SummonBlackHole()
     {
         isCurrentlyCasting = true;
 
-        //get random position on screen
-        int[] infrontOrBehind = new int[2];
-        infrontOrBehind[0] = 1;
-        infrontOrBehind[1] = -1;
-
         for (int i = 0; i < numOfBlackHoles; i++)
         {
-            //grab a random point within range of the player
-            //then run a 50/50 for whether to make it negative
-            int xNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
-            int yNegPos = infrontOrBehind[Random.Range(0, infrontOrBehind.Length)];
-
-            Vector3 randSpawnPoint = new Vector3(
-            Random.Range(boss.transform.position.x + (minSpawnDistance *
-            xNegPos),
-            boss.transform.position.x + (maxSpawnDistance * xNegPos)),
-
-            Random.Range(boss.transform.position.y + (minSpawnDistance *
-            yNegPos),
-            boss.transform.position.y + (maxSpawnDistance * yNegPos)),
-
-            0);
-
-
             //loads in blackHole object at that position
             GameObject blackHoleObjCopy = ObjectPoolingManager.SpawnObject(
-                blackHoleObject, randSpawnPoint, Quaternion.identity,
+                blackHoleObject, FindRandomSpawnPointInArena(), Quaternion.identity,
                 ObjectPoolingManager.PoolType.Ability);
 
+            blackHoleObjCopy.GetComponent<
+                BossAbyssalPortalBlackHoleObj>().blackholeVFXSize = blackholeVFXSize;
+
             yield return new WaitForSeconds(delayBetweenSummons);
+
+            Debug.Log("black hole");
         }
 
         isCurrentlyCasting = false;

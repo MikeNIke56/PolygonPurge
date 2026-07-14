@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Colony
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 1682145029288726821, guid: 47d4fe116951db540933e1d30c9f0164, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Colony
   description: 
+  level: 0

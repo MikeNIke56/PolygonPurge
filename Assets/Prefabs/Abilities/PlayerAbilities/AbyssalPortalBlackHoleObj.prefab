@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04876988cbfd1c641bc752907b7224e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbyssalPortalBlackHoleObj
-  damage: 1.0980752
+  damage: 0.75
   lifeTime: 2
-  pullStrength: 133.54694
+  pullStrength: 100
+  blackholeVFXSize: 0.8
+  blackholeVFX: {fileID: 8832100702958245244, guid: 579ed883bcf58e0468369f09ede10a30, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -86,4 +88,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4.3923006
+  m_Radius: 3

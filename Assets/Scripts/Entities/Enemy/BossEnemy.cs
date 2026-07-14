@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossEnemy : EnemyBaseClass
 {
+    //the layers of objects to destroy when spawning in new abilities
+    public LayerMask targetAbilityDestroyLayers;
+
     //keeps track of the player's/boss's current abilities
     public List<AbilityBaseClass> currentAbilities;
 
@@ -36,6 +39,13 @@ public class BossEnemy : EnemyBaseClass
      */
     public void SetAbilities()
     {
+        foreach(Transform ability in transform)
+        {
+            if (LayerMaskChecker.i.IsInLayerMask
+                (ability.gameObject, targetAbilityDestroyLayers))
+                Destroy(ability.gameObject);
+        }
+
         currentAbilities = new List<AbilityBaseClass>();
         UpgradesManager.i.SpawnBossAbilities(transform, this);
     }

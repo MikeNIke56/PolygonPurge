@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ScorchedEarth
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 5072145681821938432, guid: a6e2bc6c526e97c41814dfab93e9248b, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Scorched Earth
   description: 
+  level: 0

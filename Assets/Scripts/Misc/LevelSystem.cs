@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class LevelSystem : MonoBehaviour
     public int levelsGained = 0;
 
     public Slider expBar;
+    public TextMeshProUGUI levelText;
 
     private UnityEvent<int> onLevelUp;
 
@@ -28,18 +30,15 @@ public class LevelSystem : MonoBehaviour
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
     }
 
     private void Start()
     {
+        levelText.text = "1";
+
         if (onLevelUp == null)
             onLevelUp = new UnityEvent<int>();
 
@@ -56,6 +55,7 @@ public class LevelSystem : MonoBehaviour
         {
             currentXP -= XPToNextLevel;
             curPlayerLevel++;
+            levelText.text = curPlayerLevel.ToString();
             onLevelUp?.Invoke(curPlayerLevel);
         }
 

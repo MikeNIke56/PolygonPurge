@@ -28,12 +28,4 @@ public class ItemBaseClass : MonoBehaviour
 
         childObj.transform.localPosition = pos;
     }
-
-    /**
-     * checks if object's layermask matches the one being checked
-     */
-    protected bool IsInLayerMask(GameObject obj, LayerMask mask)
-    {
-        return (mask.value & (1 << obj.layer)) != 0;
-    }
 }

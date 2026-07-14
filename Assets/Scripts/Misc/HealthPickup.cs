@@ -17,7 +17,7 @@ public class HealthPickup : ItemBaseClass
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the collided object is on a layer we should interact with...
-        if (IsInLayerMask(collision.gameObject, targetLayers))
+        if (LayerMaskChecker.i.IsInLayerMask(collision.gameObject, targetLayers))
         {
             if(PlayerController.i.GetCurHealth() <
                 PlayerController.i.GetMaxHealth())

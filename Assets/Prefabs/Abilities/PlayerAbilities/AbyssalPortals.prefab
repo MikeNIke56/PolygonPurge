@@ -48,6 +48,7 @@ MonoBehaviour:
   damage: 0.75
   damageIncreaseAmnt: 1.1
   range: 3
+  blackholeVFXSize: 0.8
   rangeIncreaseAmnt: 1.1
   minSpawnDistance: 6
   maxSpawnDistance: 12

@@ -19,7 +19,22 @@ public class UpgradeObjOption : MonoBehaviour
         nameText.text = data.optionName;
         descriptionText.text = data.description;
 
-        int lvl = data.level + 1;
+        int lvl = 0;
+
+        if (data.abilityObj)
+            lvl = data.level + 1;
+        else if (data.weaponObj)
+        {
+            if (data.level >= UpgradesManager.i.GetMaxLevel())
+                lvl = PlayerController.i.GetPrimaryWeapon().
+                currrentWeaponLevel;
+            else
+                lvl = PlayerController.i.GetPrimaryWeapon().
+                 currrentWeaponLevel + 1;
+        }
+        else
+            lvl = data.level + 1;
+
         levelText.text = "Lvl " + lvl.ToString();
     }
 
@@ -44,6 +59,7 @@ public class UpgradeObjOption : MonoBehaviour
                     }
                     //if not, create it
                     UpgradesManager.i.PlayerSpawnAbility(data.abilityObj);
+                    break;
                 }
             }           
         }         
@@ -86,14 +102,13 @@ public class UpgradeObjOption : MonoBehaviour
         }
         //grants stat buff
         else
-        {
             UpgradesManager.i.ApplyStatBuff(data.statsBuff);
-        }
 
-        if (data.level < UpgradesManager.i.GetMaxLevel() - 1)
+        if (data.weaponObj)
+            data.level = PlayerController.i.GetPrimaryWeapon().
+                currrentWeaponLevel;
+        else
             data.level++;
-        else if (data.level == UpgradesManager.i.GetMaxLevel() - 1)
-            data.level += 2;
 
         LevelSystem.i.levelsGained--;
         UpgradesManager.i.DisableUpgradesMenuMultipleLevelsGained();      

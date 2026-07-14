@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -20,6 +21,7 @@ public class ObjectPoolingManager : MonoBehaviour
     private static GameObject enemiesEmpty;
     private static GameObject abilitiesEmpty;
     private static GameObject healthBarsEmpty;
+    private static GameObject vfxEmpty;
     private static GameObject miscEmpty;
 
     //list of pools for each type of object we're handling
@@ -36,6 +38,7 @@ public class ObjectPoolingManager : MonoBehaviour
         Enemy,
         Ability,
         HealthBar,
+        VFX,
         Misc
     }
     public static PoolType poolType;
@@ -45,14 +48,9 @@ public class ObjectPoolingManager : MonoBehaviour
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
 
         objectPools = new Dictionary<GameObject, ObjectPool<GameObject>>();
         cloneToPrefabMap = new Dictionary<GameObject, GameObject>();
@@ -82,13 +80,23 @@ public class ObjectPoolingManager : MonoBehaviour
         abilitiesEmpty.transform.SetParent(emptyHolder.transform);
 
         healthBarsEmpty = new GameObject("Health Bars");
-        healthBarsEmpty.transform.SetParent(HealthBarsManager.i.transform);
+        StartCoroutine(WaitUntilHealthReady());
+
+        vfxEmpty = new GameObject("VFX");
+        vfxEmpty.transform.SetParent(emptyHolder.transform);
 
         miscEmpty = new GameObject("Misc");
-        abilitiesEmpty.transform.SetParent(emptyHolder.transform);
+        miscEmpty.transform.SetParent(emptyHolder.transform);
 
         if (addToDontDestroyOnLoad)
             DontDestroyOnLoad(bulletsEmpty.transform.root);
+    }
+
+    public IEnumerator WaitUntilHealthReady()
+    {
+        yield return new WaitUntil(() => HealthBarsManager.i != null);
+        healthBarsEmpty.transform.SetParent(HealthBarsManager.i.transform);
+        yield return null;
     }
 
     /**
@@ -176,6 +184,9 @@ public class ObjectPoolingManager : MonoBehaviour
 
             case PoolType.HealthBar:
                 return healthBarsEmpty;
+
+            case PoolType.VFX:
+                return vfxEmpty;
 
             case PoolType.Misc:
                 return miscEmpty;

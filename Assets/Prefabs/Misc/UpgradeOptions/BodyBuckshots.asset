@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: BodyBuckshots
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 5267441287757745598, guid: 3cb61fb4352eedb4180426091316637f, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Body Buckshots
   description: 
+  level: 0

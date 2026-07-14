@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8972cb4770c0c46a32368b0b2368b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPoolingManager
-  addToDontDestroyOnLoad: 0
+  addToDontDestroyOnLoad: 1

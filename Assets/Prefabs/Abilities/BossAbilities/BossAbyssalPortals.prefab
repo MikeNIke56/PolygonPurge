@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossAbyssalPortals
   connectedBossAbility: {fileID: 0}
+  spawnArea: {fileID: 0}
   damage: 0.75
   damageIncreaseAmnt: 1.1
   range: 3
+  blackholeVFXSize: 0.8
   rangeIncreaseAmnt: 1.1
   minSpawnDistance: 2
   maxSpawnDistance: 9
@@ -55,5 +57,5 @@ MonoBehaviour:
   pullStrengthIncreaseAmnt: 1.075
   delayBetweenSummons: 0.35
   castCooldown: 4
-  numOfBlackHoles: 3
+  numOfBlackHoles: 1
   blackHoleObject: {fileID: 3452968341065778859, guid: d598e7e85cbb9804e84b44ef1efa0ba9, type: 3}

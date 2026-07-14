@@ -26,7 +26,7 @@ public class Bomb : ItemBaseClass
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the collided object is the player
-        if (IsInLayerMask(collision.gameObject, targetLayers))
+        if (LayerMaskChecker.i.IsInLayerMask(collision.gameObject, targetLayers))
         {
             //apply damage to all enemies within the bomb's collider
             foreach (Collider2D col in colliders)

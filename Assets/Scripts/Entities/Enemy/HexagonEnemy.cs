@@ -8,6 +8,8 @@ public class HexagonEnemy : EnemyBaseClass
     //each weapon's respective bullet object
     public GameObject bulletObj;
 
+    private Animator[] muzzleFlashObjs;
+
     protected override void OnEnable()
     {
         Setup(player);
@@ -18,6 +20,7 @@ public class HexagonEnemy : EnemyBaseClass
     public override void Setup(PlayerController player)
     {
         base.Setup(player);
+        muzzleFlashObjs = GetComponentsInChildren<Animator>();
         currentEnemyStates.Add(EnemyStates.Chasing);
         currentEnemyStates.Add(EnemyStates.Shooting);
     }
@@ -31,7 +34,11 @@ public class HexagonEnemy : EnemyBaseClass
         {
             currentEnemyStates.Add(EnemyStates.ProjectileAttackCooldown);
             foreach (Transform firepoint in firepoints)
-               Shoot(firepoint);   
+               Shoot(firepoint);
+
+            //play muzzle lash animation
+            foreach (Animator anim in muzzleFlashObjs)
+                anim.SetTrigger("Fire");
         }
     }
 

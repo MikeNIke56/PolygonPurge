@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: FlameTrail
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 2930548699262930814, guid: 8d458db450b89a84a83bfe2251e2e8fc, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Flame Trail
   description: 
+  level: 0

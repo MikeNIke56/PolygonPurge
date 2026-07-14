@@ -201,9 +201,9 @@ MonoBehaviour:
   hitbox: {fileID: 8853973773096178335}
   maxCollisionAttackCooldown: 0.5
   maxProjectileCooldown: 0
-  percentChanceToSpawn: 25
-  lowerChance: 0
-  upperChance: 25
+  percentChanceToSpawn: 20
+  lowerChance: 20
+  upperChance: 40
   rank: 3
   exp: 3
   bulletSize: 0

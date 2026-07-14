@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: RingOFire
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 1873652360666503617, guid: ed6c1d086ad9a1b4b9f7da6a0cadbc90, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Ring O Fire
   description: 
+  level: 0

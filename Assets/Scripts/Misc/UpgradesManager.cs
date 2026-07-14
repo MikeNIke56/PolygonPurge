@@ -47,14 +47,9 @@ public class UpgradesManager : MonoBehaviour
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
     }
 
     private void Start()
@@ -64,7 +59,14 @@ public class UpgradesManager : MonoBehaviour
         availableUpgrades = new List<UpgradeOptionData>();
 
         foreach (UpgradeOptionData data in allUpgrades)
-            data.level = 1;
+        {
+            if (data.abilityObj)
+                data.level = 0;
+            else if (data.weaponObj)
+                data.level = 1;
+            else
+                data.level = 0;
+        }
 
         foreach (UpgradeOptionData data in allUpgrades)
             availableUpgrades.Add(data);
@@ -73,15 +75,15 @@ public class UpgradesManager : MonoBehaviour
     }
 
     /**
-     * initializes all player stats to lvl1
+     * initializes all player stats to lvl 0
      */
     private void InitializeStartingStats()
     {
-        statsBuffRecord.Add(StatsUpgrades.Attack, 1);
-        statsBuffRecord.Add(StatsUpgrades.MaxHealth, 1);
-        statsBuffRecord.Add(StatsUpgrades.HealthRegen, 1);
-        statsBuffRecord.Add(StatsUpgrades.MoveSpeed, 1);
-        statsBuffRecord.Add(StatsUpgrades.AttackSpeed, 1);
+        statsBuffRecord.Add(StatsUpgrades.Attack, 0);
+        statsBuffRecord.Add(StatsUpgrades.MaxHealth, 0);
+        statsBuffRecord.Add(StatsUpgrades.HealthRegen, 0);
+        statsBuffRecord.Add(StatsUpgrades.MoveSpeed, 0);
+        statsBuffRecord.Add(StatsUpgrades.AttackSpeed, 0);
     }
 
     /**
@@ -142,7 +144,7 @@ public class UpgradesManager : MonoBehaviour
 
                             weaponAtkCopy.SetWeaponAttack(curWeaponAttack *
                                 statIncreases[value]);
-                            Debug.Log("atk: " + value);
+                            //Debug.Log("atk: " + value);
                             break;
 
                         //applies the buffs to the player's current weapon
@@ -327,9 +329,33 @@ public class UpgradesManager : MonoBehaviour
 
         availableUpgrades.Clear();
         foreach (UpgradeOptionData data in allUpgrades)
-        {
-            if (data.level < maxLevel)
-                availableUpgrades.Add(data);
+        {   
+            //set the level of all weapon data to the current weapon's level
+            if (data.weaponObj)
+                data.level = PlayerController.i.GetPrimaryWeapon().
+                currrentWeaponLevel;
+
+            if(!data.weaponObj)
+            {
+                if (data.level < maxLevel)
+                    availableUpgrades.Add(data);
+            }
+            else
+            {
+                //even if the weapon is max level, the player should still 
+                //be able to swap weapons if they want
+                if (data.weaponObj.GetComponent<WeaponBaseClass>().weaponName ==
+                    PlayerController.i.GetPrimaryWeapon().weaponName)
+                {
+                    if (data.level < maxLevel)
+                        availableUpgrades.Add(data);
+                }
+                else if (data.weaponObj.GetComponent<WeaponBaseClass>().weaponName !=
+                    PlayerController.i.GetPrimaryWeapon().weaponName)
+                {
+                    availableUpgrades.Add(data);
+                }
+            }       
         }
 
         //repopulate children

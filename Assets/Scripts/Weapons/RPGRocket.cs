@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class RPGRocket : ProjectileBaseClass
 {
     public float damageRadius;
+    public GameObject explosionVFX;
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,6 +23,11 @@ public class RPGRocket : ProjectileBaseClass
 
                 if (numEnemiesPenetrated >= penetrationValue)
                 {
+                    //loads in explosion
+                    GameObject explosionCopy = ObjectPoolingManager.SpawnObject(
+                        explosionVFX, transform.position,
+                        Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
+
                     ObjectPoolingManager.ReturnObjectToPool(gameObject,
                     ObjectPoolingManager.PoolType.Bullet);
                 }
@@ -64,6 +70,11 @@ public class RPGRocket : ProjectileBaseClass
     protected override IEnumerator StartLifetimeCountdown()
     {
         yield return new WaitForSeconds(lifeTime);
+
+        //loads in explosion
+        GameObject explosionCopy = ObjectPoolingManager.SpawnObject(
+            explosionVFX, transform.position,
+            Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
 
         ApplyRadialDamage();
         ObjectPoolingManager.ReturnObjectToPool(gameObject,

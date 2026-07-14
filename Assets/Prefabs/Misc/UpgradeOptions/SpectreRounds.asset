@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: SpectreRounds
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 3719811679326864308, guid: ae9e960e8b207624eaa6f08f7097479a, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Spectre Rounds
   description: 
+  level: 0

@@ -36,11 +36,14 @@ public class LittleBuddy : AbilityBaseClass
     private bool isOnFireCooldown = false;
     private Transform firepoint;
 
+    private Animator muzzleFlash;
+
     private void Start()
     {
         target = PlayerController.i.littleBuddyPivotPoint.transform;
         firepoint = GetComponentInChildren<Transform>();
         startLocalPos = transform.localPosition;
+        muzzleFlash = GetComponentInChildren<Animator>();
     }
 
     protected override void Update()
@@ -81,6 +84,9 @@ public class LittleBuddy : AbilityBaseClass
         //burst fire
         for (int i = 0; i < 3; i++)
         {
+            //play muzzle lash animation
+            muzzleFlash.SetTrigger("Fire");
+
             //loads in and fires bullet
             GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(
                 littleBuddyBulletObj, firepoint.position,

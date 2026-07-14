@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: OrbitingCircles
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 6816381485814025341, guid: db16be2e15a72cb4bb6a4aa5cef6ee1f, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Orbiting Circles
   description: 
+  level: 0

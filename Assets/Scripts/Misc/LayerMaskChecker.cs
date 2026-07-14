@@ -10,16 +10,14 @@ public class LayerMaskChecker : MonoBehaviour
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
     }
 
+    /**
+     * checks if object's layermask matches the one being checked
+     */
     public bool IsInLayerMask(GameObject obj, LayerMask mask)
     {
         return (mask.value & (1 << obj.layer)) != 0;

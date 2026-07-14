@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ArcPylon
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 5704045586934597577, guid: 4db17452d7ffd7b409a759a355b31b22, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Arc Pylon
   description: 
+  level: 0

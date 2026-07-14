@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: MaxHealth
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 0}
+  weaponObj: {fileID: 0}
   statsBuff: 2
   optionName: Max Health
   description: 
+  level: 0

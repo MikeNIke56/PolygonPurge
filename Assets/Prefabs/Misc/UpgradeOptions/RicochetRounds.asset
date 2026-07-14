@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: RicochetRounds
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 5121992598309053261, guid: fb9d861b64166c74885bdb483e3aa41f, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Ricochet Rounds
   description: 
+  level: 0

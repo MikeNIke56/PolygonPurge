@@ -14,9 +14,12 @@ public class TriangleEnemy : EnemyBaseClass
     //each weapon's respective bullet object
     public GameObject bulletObj;
 
+    private Animator muzzleFlash;
+
     protected override void OnEnable()
     {
         Setup(player);
+        muzzleFlash = GetComponentInChildren<Animator>();
         currentEnemyStates.Add(EnemyStates.Shooting);
     }
 
@@ -91,6 +94,9 @@ public class TriangleEnemy : EnemyBaseClass
 
     protected override void Shoot()
     {
+        //play muzzle lash animation
+        muzzleFlash.SetTrigger("Fire");
+
         //loads in and fires bullet
         GameObject bulletObjCopy = ObjectPoolingManager.SpawnObject(bulletObj, firepoint.position,
             firepoint.localRotation, ObjectPoolingManager.PoolType.Bullet);

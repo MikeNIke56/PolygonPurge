@@ -217,12 +217,15 @@ MonoBehaviour:
   lowerChance: 0
   upperChance: 100
   rank: 1
-  exp: 100
+  exp: 10000
   bulletSize: 1.25
   bulletSpeed: 15
   bulletLifetime: 1.5
   bodyCollisionTargetLayers:
     serializedVersion: 2
     m_Bits: 64
+  targetAbilityDestroyLayers:
+    serializedVersion: 2
+    m_Bits: 4096
   currentAbilities: []
   littleBuddyPivotPoint: {fileID: 5296644890308548209}

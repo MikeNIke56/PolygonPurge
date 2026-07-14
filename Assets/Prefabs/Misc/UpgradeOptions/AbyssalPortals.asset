@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AbyssalPortals
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 4419928738455409858, guid: 2f500bdace1953d4f812dcd04b351de1, type: 3}
+  weaponObj: {fileID: 0}
   statsBuff: 0
   optionName: Abyssal Portals
   description: 
+  level: 0

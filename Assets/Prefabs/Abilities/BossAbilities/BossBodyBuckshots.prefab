@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851902726743064821}
   - component: {fileID: 8620102565652120017}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BossBodyBuckshots
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,26 +14,18 @@ public class ItemSpawner : MonoBehaviour
     public int maxAllowedItems;
     private int curActiveItems = 0;
 
-    private BoxCollider2D spawnArea;
-
     public static ItemSpawner i { get; private set; }
 
     private void Awake()
     {
         if (i != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             i = this;
-            DontDestroyOnLoad(gameObject);
-        }
     }
 
     private void Start()
     {
-        spawnArea = GetComponent<BoxCollider2D>();
         selectedSpawnTime = SelectRandomSpawnTime();
     }
 
@@ -71,7 +63,7 @@ public class ItemSpawner : MonoBehaviour
     private Vector3 FindRandomSpawnPoint()
     {
         //grab a random point within the box spawn area
-        Bounds bounds = spawnArea.bounds;
+        Bounds bounds = ArenaArea.i.GetSpawnArea().bounds;
 
         Vector2 randSpawnPoint = new Vector2(
             Random.Range(bounds.min.x, bounds.max.x),

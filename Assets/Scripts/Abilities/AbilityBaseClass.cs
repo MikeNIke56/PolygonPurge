@@ -38,6 +38,21 @@ public class AbilityBaseClass : MonoBehaviour
         Debug.Log(name + " upgraded to " + currentAbilityLevel);
     }
 
+    /**
+     * finds random point within spawn area to spawn the item
+     */
+    protected Vector3 FindRandomSpawnPointInArena()
+    {
+        //grab a random point within the box spawn area
+        Bounds bounds = ArenaArea.i.GetSpawnArea().bounds;
+
+        Vector2 randSpawnPoint = new Vector2(
+            Random.Range(bounds.min.x, bounds.max.x),
+            Random.Range(bounds.min.y, bounds.max.y)
+        );
+        return randSpawnPoint;
+    }
+
     public int GetCurrentLevel()
     {
         return currentAbilityLevel;

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AttackSpeed
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeOptionData
   abilityObj: {fileID: 0}
+  weaponObj: {fileID: 0}
   statsBuff: 5
   optionName: Attack Speed
   description: 
+  level: 0
