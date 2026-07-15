@@ -30,7 +30,7 @@ public class ArcPylon : AbilityBaseClass
     public GameObject arcChainObj;
 
     [Header("Bob Up/Down Variables")]
-    private Vector3 tempPos;
+    private Vector3 startLocalPos;
     public float frequency;
     public float amplitude;
 
@@ -44,6 +44,7 @@ public class ArcPylon : AbilityBaseClass
     private void Start()
     {
         followTarget = PlayerController.i.arcPylonPivotPoint.transform;
+        startLocalPos = transform.localPosition;
     }
 
     protected override void Update()
@@ -136,6 +137,34 @@ public class ArcPylon : AbilityBaseClass
             }
         }
 
+        GameObject arcChainCopy = null;
+        //spawn chain lightning object from player to first enemy
+
+        //loads in lightning chain
+        arcChainCopy = ObjectPoolingManager.SpawnObject(
+            arcChainObj, transform.position,
+            Quaternion.identity, ObjectPoolingManager.PoolType.Ability);
+
+        arcChainCopy.GetComponent<ChainLightning>().SetPosition(transform,
+            chainedEnemies[0].transform);
+
+        //spawn chain lightning object between enemies
+        for (int i = 0; i < chainedEnemies.Count-1; i++)
+        {
+            //find the in between position
+            Vector3 spawnPos = (chainedEnemies[i].transform.position +
+                chainedEnemies[i + 1].transform.position) / 2;
+
+            //loads in lightning chain
+            arcChainCopy = ObjectPoolingManager.SpawnObject(
+                arcChainObj, transform.position,
+                Quaternion.identity, ObjectPoolingManager.PoolType.Ability);
+
+            arcChainCopy.GetComponent<ChainLightning>().SetPosition(
+                chainedEnemies[i].transform,
+                chainedEnemies[i+1].transform);
+        }
+
         foreach(EnemyBaseClass chainedEnemy in chainedEnemies)
             chainedEnemy.TakeDamage(Time.deltaTime * damage);
     }
@@ -195,9 +224,27 @@ public class ArcPylon : AbilityBaseClass
     private void BobUpDown()
     {
         //float up/down with a Sin()
-        tempPos = transform.localPosition;
-        tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency) * amplitude;
+        Vector3 pos = startLocalPos;
+        pos.y += Mathf.Sin(Time.time * Mathf.PI * frequency) * amplitude;
 
-        transform.localPosition = tempPos;
+        transform.localPosition = pos;
+    }
+
+    private void AdjustVFXSpawnRotation(ParticleSystem source, Vector3 target, 
+        float offset)
+    {
+        //find angle between the player and target
+        float lookAngle = AngleBetweenTwoPoints(source.transform.position, 
+            target) + offset;
+
+        //apply target rotation on the z axis
+        var tempSource = source.main;
+        tempSource.startRotation = Mathf.Deg2Rad * lookAngle;
+    }
+
+    private float AngleBetweenTwoPoints(Vector3 point1, Vector3 point2)
+    {
+        return Mathf.Atan2(point1.y - point2.y, point1.x - point2.x) * 
+            Mathf.Rad2Deg;
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class HealthPickup : ItemBaseClass
 {
     public float healAmnt;
+    public GameObject healVFXObj;
 
     // Update is called once per frame
     private void Update()
@@ -29,6 +30,11 @@ public class HealthPickup : ItemBaseClass
                 player.GetHealthBar().UpdateHealth(player.GetCurHealth());
 
                 ItemSpawner.i.DerementItemNum();
+
+                //loads in vfx
+                GameObject healthVFXCopy = ObjectPoolingManager.SpawnObject(
+                    healVFXObj, PlayerController.i.transform.position,
+                    Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
 
                 ObjectPoolingManager.ReturnObjectToPool(gameObject,
                     ObjectPoolingManager.PoolType.Item);

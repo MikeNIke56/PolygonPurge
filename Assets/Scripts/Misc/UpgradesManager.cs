@@ -240,16 +240,24 @@ public class UpgradesManager : MonoBehaviour
         GameObject abilityObjCopy = Instantiate(ability);
 
         Transform playerParentTrans;
-        if (ability.GetComponent<AbilityBaseClass>() is LittleBuddy == false)
+        if (ability.GetComponent<AbilityBaseClass>() is LittleBuddy == false &&
+            ability.GetComponent<AbilityBaseClass>() is ArcPylon == false)
         {
             playerParentTrans = PlayerController.i.
                 abilityPivotPoint.transform;
             abilityObjCopy.transform.SetParent(playerParentTrans);
             abilityObjCopy.transform.localPosition = Vector3.zero;
         }
+        else if (ability.GetComponent<AbilityBaseClass>() is LittleBuddy == true)
+        {
+            abilityObjCopy.transform.SetParent(PlayerController.i.
+                littleBuddyPivotPoint.transform);
+            abilityObjCopy.transform.localPosition = Vector3.zero;
+        }
         else
         {
-            abilityObjCopy.transform.SetParent(PlayerController.i.littleBuddyPivotPoint.transform);
+            abilityObjCopy.transform.SetParent(PlayerController.i.
+                arcPylonPivotPoint.transform);
             abilityObjCopy.transform.localPosition = Vector3.zero;
         }
 

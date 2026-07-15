@@ -4,7 +4,7 @@ using UnityEngine;
 /**
  * once a vfx object is created or re-enabled- wait a bit before returning to pool
  */
-public class VFXDespawner : MonoBehaviour
+public class VFXHandler : MonoBehaviour
 {
     private ParticleSystem partSystem;
     public float despawnBuffer;

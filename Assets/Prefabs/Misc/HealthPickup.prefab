@@ -236,6 +236,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   healAmnt: 100
+  healVFXObj: {fileID: 7163011088925400763, guid: 60020209f2fd241478f3048ba8ade434, type: 3}
 --- !u!61 &769569617508498553
 BoxCollider2D:
   m_ObjectHideFlags: 0

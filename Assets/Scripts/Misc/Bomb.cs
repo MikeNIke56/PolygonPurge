@@ -11,6 +11,7 @@ public class Bomb : ItemBaseClass
     public float range;
     public CircleCollider2D damageCollider;
     public List<Collider2D> colliders;
+    public GameObject explosionVFX;
 
     private void Start()
     {
@@ -38,6 +39,11 @@ public class Bomb : ItemBaseClass
             }
 
             ItemSpawner.i.DerementItemNum();
+
+            //loads in explosion
+            GameObject explosionCopy = ObjectPoolingManager.SpawnObject(
+                explosionVFX, transform.position,
+                Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
 
             ObjectPoolingManager.ReturnObjectToPool(gameObject,
                 ObjectPoolingManager.PoolType.Item);

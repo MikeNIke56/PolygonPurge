@@ -119,7 +119,7 @@ MonoBehaviour:
   maxChainCount: 3
   maxCastTime: 5
   chainedEnemies: []
-  arcChainObj: {fileID: 0}
+  arcChainObj: {fileID: 5009793268254266789, guid: 2bbfb0b80a3574a45a041312bea2d996, type: 3}
   frequency: 1
-  amplitude: 0.01
+  amplitude: 0.1
   followSpeed: 5

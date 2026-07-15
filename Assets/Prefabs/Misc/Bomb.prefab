@@ -57,6 +57,7 @@ MonoBehaviour:
   range: 10
   damageCollider: {fileID: 1378967466833316971}
   colliders: []
+  explosionVFX: {fileID: 6443846829965503947, guid: 926953d9fde6b6b408c1a3d3630602ae, type: 3}
 --- !u!58 &7092919000431273762
 CircleCollider2D:
   m_ObjectHideFlags: 0
