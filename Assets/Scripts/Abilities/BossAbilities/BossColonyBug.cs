@@ -23,6 +23,8 @@ public class BossColonyBug: MonoBehaviour
     private BossColony parent;
     private Rigidbody2D rb;
 
+    public GameObject explosionVFX;
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,8 +42,15 @@ public class BossColonyBug: MonoBehaviour
             target.transform.position) <= damageTriggerRange)
         {
             target.TakeDamage(damage);
+
+            //loads in explosion
+            GameObject explosionCopy = ObjectPoolingManager.SpawnObject(
+                explosionVFX, transform.position,
+                Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
+
             ObjectPoolingManager.ReturnObjectToPool(gameObject,
-            ObjectPoolingManager.PoolType.Bullet);
+                ObjectPoolingManager.PoolType.Bullet);
+
             parent.curBugsActive--;
         }
         RotateOnZ();
@@ -65,6 +74,12 @@ public class BossColonyBug: MonoBehaviour
     {
         yield return new WaitForSeconds(lifetime);
         parent.curBugsActive--;
+
+        //loads in explosion
+        GameObject explosionCopy = ObjectPoolingManager.SpawnObject(
+            explosionVFX, transform.position,
+            Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
+
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Bullet);
     }

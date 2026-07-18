@@ -32,7 +32,6 @@ public class Colony : AbilityBaseClass
     public override void SetUp()
     {
         base.SetUp();
-        maxBugs = 1;
     }
 
     public override void UpgradeAbility(int level)
@@ -40,7 +39,7 @@ public class Colony : AbilityBaseClass
         base.UpgradeAbility(level);
         damage *= damageIncreaseAmnt;
         speed += speedIncreaseAmnt;
-        maxBugs += 2;
+        maxBugs++;
         spawnCooldown /= fireCooldownDecreaseAmnt;
     }
 

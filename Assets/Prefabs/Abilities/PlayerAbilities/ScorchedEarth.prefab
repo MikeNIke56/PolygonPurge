@@ -47,10 +47,11 @@ MonoBehaviour:
   connectedBossAbility: {fileID: 7669118923208172455, guid: 568c1d2734e8ce847a6ec4613b93f359, type: 3}
   burnTickPercentage: 0.8
   burnDamageIncreaseAmnt: 1.075
-  range: 3
+  range: 2
+  burnVFXSize: 0.3
   rangeIncreaseAmnt: 1.15
-  lifetime: 3
-  lifetimeIncreaseAmnt: 0.5
+  lifetime: 1.75
+  lifetimeIncreaseAmnt: 0.15
   rounds: 6
-  castCooldown: 3
+  castCooldown: 5.5
   molotovObj: {fileID: 9106332399272334034, guid: 6bf15c10a0499ed4db4d13dada84e6fd, type: 3}

@@ -239,6 +239,8 @@ MonoBehaviour:
     m_Bits: 64
   burnTickPercentage: 0
   range: 0
+  burnVFXSize: 0
+  burnVFX: {fileID: 7103334186581709280, guid: 9bc9632f5d2a9ba41bc5d7ca3afbc863, type: 3}
 --- !u!50 &6184739247683042902
 Rigidbody2D:
   serializedVersion: 5

@@ -13,8 +13,10 @@ public class BossMolotov: MonoBehaviour
 
     public float burnTickPercentage;
     public float range;
+    public float burnVFXSize;
 
     private CircleCollider2D burnCollider;
+    public GameObject burnVFX;
 
     private void Update()
     {
@@ -79,13 +81,37 @@ public class BossMolotov: MonoBehaviour
             child.color = tempRend;
         }
 
-        yield return StartLifetimeCountdown();
+        //loads in flames
+        GameObject burnCopy = ObjectPoolingManager.SpawnObject(
+            burnVFX, transform.position,
+            Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
+
+        burnCopy.transform.localScale = new Vector3(burnVFXSize, burnVFXSize,
+           burnVFXSize);
+
+        yield return StartLifetimeCountdown(burnCopy);
     }
 
-    protected virtual IEnumerator StartLifetimeCountdown()
+    private IEnumerator StartLifetimeCountdown(GameObject burnCopy)
     {
         yield return new WaitForSeconds(lifeTime);
+
+        ObjectPoolingManager.ReturnObjectToPool(burnCopy,
+            ObjectPoolingManager.PoolType.VFX);
+
         ObjectPoolingManager.ReturnObjectToPool(gameObject,
             ObjectPoolingManager.PoolType.Ability);
+    }
+
+    public void SetValues(float burn, float range, float lifetime,
+        float burnVFXSize)
+    {
+        burnTickPercentage = burn;
+        this.range = range;
+        this.lifeTime = lifetime;
+        this.burnVFXSize = burnVFXSize;
+
+        burnCollider = GetComponent<CircleCollider2D>();
+        burnCollider.radius = range;
     }
 }

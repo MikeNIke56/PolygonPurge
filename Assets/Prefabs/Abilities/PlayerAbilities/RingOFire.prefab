@@ -53,6 +53,11 @@ MonoBehaviour:
   burnDamageIncreaseAmnt: 0.25
   range: 2
   rangeIncreaseAmnt: 0.75
+  burnVFXSize: 0.5
+  burnVFXSizeIncreaseAmnt: 0.2
+  spinSpeed: 120
+  flameCircleVFX: {fileID: 6934334561658940815, guid: 0f2149ccbc5e874449d93816722bccac, type: 3}
+  flameCircleCopyObj: {fileID: 0}
 --- !u!58 &5751325758629070728
 CircleCollider2D:
   m_ObjectHideFlags: 0

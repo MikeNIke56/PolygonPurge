@@ -6,6 +6,7 @@ public class ScorchedEarth : AbilityBaseClass
     public float burnDamageIncreaseAmnt;
 
     public float range;
+    public float burnVFXSize;
     public float rangeIncreaseAmnt;
 
     public float lifetime;
@@ -46,6 +47,7 @@ public class ScorchedEarth : AbilityBaseClass
         base.UpgradeAbility(level);
         burnTickPercentage *= burnDamageIncreaseAmnt;
         range *= rangeIncreaseAmnt;
+        burnVFXSize *= rangeIncreaseAmnt;
         lifetime += lifetimeIncreaseAmnt;
     }
 
@@ -58,9 +60,7 @@ public class ScorchedEarth : AbilityBaseClass
 
         //sets the stats of the molotov
         Molotov molotov = molotovObjCopy.GetComponent<Molotov>();
-        molotov.burnTickPercentage = burnTickPercentage;
-        molotov.range = range;
-        molotov.lifeTime = lifetime;
+        molotov.SetValues(burnTickPercentage, range, lifetime, burnVFXSize);
 
         Vector3 force = Quaternion.Euler(0, 0, angle) * transform.right *
             molotov.speed;

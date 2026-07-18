@@ -217,7 +217,7 @@ MonoBehaviour:
   lowerChance: 0
   upperChance: 100
   rank: 1
-  exp: 100
+  exp: 50
   bulletSize: 1.25
   bulletSpeed: 15
   bulletLifetime: 1.5

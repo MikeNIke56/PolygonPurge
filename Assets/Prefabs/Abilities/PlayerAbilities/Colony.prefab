@@ -55,7 +55,7 @@ MonoBehaviour:
   fireCooldownDecreaseAmnt: 1.1
   colonyBugObj: {fileID: 5743971172652967199, guid: 2eaca3ce6067d2d468392187484c7c65, type: 3}
   curBugsActive: 0
-  maxBugs: 0
+  maxBugs: 1
 --- !u!50 &7416800118735442173
 Rigidbody2D:
   serializedVersion: 5

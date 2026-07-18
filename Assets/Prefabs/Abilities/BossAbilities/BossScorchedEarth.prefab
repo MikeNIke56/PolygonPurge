@@ -48,9 +48,10 @@ MonoBehaviour:
   burnTickPercentage: 0.8
   burnDamageIncreaseAmnt: 1.075
   range: 3
+  burnVFXSize: 0.8
   rangeIncreaseAmnt: 1.15
-  lifetime: 3
+  lifetime: 2
   lifetimeIncreaseAmnt: 0.5
   rounds: 4
-  castCooldown: 3
+  castCooldown: 5
   molotovObj: {fileID: 3879932537962474400, guid: 00733588a574f304e9bcca71dffa302b, type: 3}

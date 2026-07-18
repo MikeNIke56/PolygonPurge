@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
       propertyPath: 'allUpgrades.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 1275059d77e45174b9e4dc589a6087e6, type: 2}
+      objectReference: {fileID: 11400000, guid: 394c7efdf0d3c8a40b1e998786f6c6b1, type: 2}
     - target: {fileID: 7928130075504633158, guid: a080605dcb1ad174687b8ac4b48c178f, type: 3}
       propertyPath: 'allUpgrades.Array.data[1]'
       value: 

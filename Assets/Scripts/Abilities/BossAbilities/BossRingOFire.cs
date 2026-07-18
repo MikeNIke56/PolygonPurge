@@ -11,7 +11,11 @@ public class BossRingOFire: AbilityBaseClass
     public float range;
     public float rangeIncreaseAmnt;
 
+    public float burnVFXSize;
+
     private CircleCollider2D burnCollider;
+    public GameObject flameCircleVFX;
+    public GameObject flameCircleCopyObj;
 
     protected override void Update()
     {
@@ -29,19 +33,23 @@ public class BossRingOFire: AbilityBaseClass
         base.SetUp();
         burnCollider = GetComponent<CircleCollider2D>();
         burnCollider.radius = range;
+
+        //loads in flameVFX
+        GameObject flameCopy = Instantiate(flameCircleVFX, transform);
+        flameCopy.transform.localScale = new Vector3(burnVFXSize, burnVFXSize,
+            burnVFXSize);
+        flameCircleCopyObj = flameCopy;
     }
 
     public override void UpgradeAbility(int level)
     {
         base.UpgradeAbility(level);
         burnTickPercentage += burnDamageIncreaseAmnt;
-
-        if (currentAbilityLevel < 5)
-            range += rangeIncreaseAmnt;
-        else
-            range += (rangeIncreaseAmnt * 2);
-
+        range += rangeIncreaseAmnt;
         GetComponent<CircleCollider2D>().radius = range;
+
+        flameCircleCopyObj.transform.localScale = new Vector3(burnVFXSize,
+            burnVFXSize, burnVFXSize);
     }
 
     private void OnTriggerStay2D(Collider2D collider)
