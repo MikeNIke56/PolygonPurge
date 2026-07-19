@@ -10,6 +10,7 @@ public class CallOfThunder : AbilityBaseClass
     public float damageIncreaseAmnt;
 
     public float range;
+    public float lightningVFXSize;
     public float rangeIncreaseAmnt;
 
     public float delayBetweenStrikes;
@@ -58,9 +59,16 @@ public class CallOfThunder : AbilityBaseClass
         base.UpgradeAbility(level);
         damage *= damageIncreaseAmnt;
         range *= rangeIncreaseAmnt;
+        lightningVFXSize *= rangeIncreaseAmnt;
         numOfLightingStrikes++;
-        lightingObject.GetComponent<LightningObj>().damage = damage;
-        lightingObject.GetComponent<CircleCollider2D>().radius = range;
+
+        LightningObj[] lightnings = FindObjectsByType<
+             LightningObj>(FindObjectsInactive.Include);
+
+        foreach (LightningObj lightning in lightnings)
+        {
+            lightning.SetValues(range, damage, lightningVFXSize);
+        }
     }
 
     private IEnumerator CastLightning()
@@ -81,7 +89,8 @@ public class CallOfThunder : AbilityBaseClass
                 enemy.transform.position.y < screenMax.y &&
                 enemy.transform.position.y > screenMin.y)
             {
-                allEnemiesOnScreen.Add(enemy);
+                if (enemy.isActiveAndEnabled)
+                    allEnemiesOnScreen.Add(enemy);
             }
         }
 
@@ -96,9 +105,10 @@ public class CallOfThunder : AbilityBaseClass
                 Quaternion.identity, 
                 ObjectPoolingManager.PoolType.Ability);
 
-            yield return new WaitForSeconds(delayBetweenStrikes);
+            lightningObjCopy.GetComponent<LightningObj>().SetValues(range,
+                damage, lightningVFXSize);
 
-            Debug.Log("lightning");
+            yield return new WaitForSeconds(delayBetweenStrikes);
         }
 
         isCurrentlyCasting = false;

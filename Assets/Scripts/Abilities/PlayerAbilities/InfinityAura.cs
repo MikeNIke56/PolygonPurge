@@ -9,23 +9,30 @@ public class InfinityAura : AbilityBaseClass
     public float slowIncreaseAmnt;
     public float slowRange;
 
+    public GameObject infinityObj;
+
     public override void SetUp()
     {
         base.SetUp();
         GetComponent<CircleCollider2D>().radius = slowRange;
+
+        //spawns in infinity object
+        GameObject infinityObjCopy = Instantiate(infinityObj, transform);
+
+        infinityObjCopy.transform.localScale = 
+            new Vector3(slowRange * 2, slowRange * 2);
     }
 
     public override void UpgradeAbility(int level)
     {
         base.UpgradeAbility(level);
         slowSpeedPercentage -= slowIncreaseAmnt;
-
-        if(currentAbilityLevel < 5)
-            slowRange += slowIncreaseAmnt;
-        else
-            slowRange += (slowIncreaseAmnt * 2);
+        slowRange += slowIncreaseAmnt;
 
         GetComponent<CircleCollider2D>().radius = slowRange;
+
+        GameObject child = transform.GetChild(0).gameObject;
+        child.transform.localScale = new Vector3(slowRange * 2, slowRange * 2);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

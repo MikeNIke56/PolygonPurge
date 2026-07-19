@@ -48,6 +48,7 @@ MonoBehaviour:
   damage: 10
   damageIncreaseAmnt: 1.2
   range: 1.25
+  lightningVFXSize: 1
   rangeIncreaseAmnt: 1.2
   delayBetweenStrikes: 0.5
   castCooldown: 3.25

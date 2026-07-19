@@ -6,17 +6,27 @@ public class BossLightningObj: MonoBehaviour
 {
     public float damage;
     public float lifeTime;
+    public float damageDelay;
+
+    public GameObject lightningVFX;
+    private CircleCollider2D lightningCollider;
 
     //the layers of objects this object is allowed to apply physics to
     public LayerMask targetLayers;
+    private bool effectSpawned = false;
 
     private void Start()
     {
+        lightningCollider = GetComponent<CircleCollider2D>();
+        lightningCollider.enabled = false;
+
         StartCoroutine(StartLifetimeCountdown());
     }
 
     private void OnEnable()
     {
+        lightningCollider = GetComponent<CircleCollider2D>();
+        lightningCollider.enabled = false;
         StartCoroutine(StartLifetimeCountdown());
     }
 
@@ -38,8 +48,30 @@ public class BossLightningObj: MonoBehaviour
 
     private IEnumerator StartLifetimeCountdown()
     {
-        yield return new WaitForSeconds(lifeTime);
-        ObjectPoolingManager.ReturnObjectToPool(gameObject,
-            ObjectPoolingManager.PoolType.Ability);
+        if (effectSpawned == false)
+        {
+            effectSpawned = true;
+            //loads in lightning
+            GameObject lightningCopy = ObjectPoolingManager.SpawnObject(
+            lightningVFX, transform.position,
+            Quaternion.identity, ObjectPoolingManager.PoolType.VFX);
+
+            //wait a bit before enabling hitbox- gives time so lightning vfx and 
+            //hitbox are synced
+            yield return new WaitForSeconds(damageDelay);
+            lightningCollider.enabled = true;
+
+            lightningCopy.transform.position = new Vector3(
+                lightningCopy.transform.position.x,
+                lightningCopy.transform.position.y + 2.5f);
+
+            yield return new WaitForSeconds(lifeTime - damageDelay);
+
+            effectSpawned = false;
+            lightningCollider.enabled = false;
+
+            ObjectPoolingManager.ReturnObjectToPool(gameObject,
+                ObjectPoolingManager.PoolType.Ability);
+        }
     }
 }

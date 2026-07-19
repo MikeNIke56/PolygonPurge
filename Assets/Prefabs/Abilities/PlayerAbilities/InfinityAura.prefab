@@ -52,6 +52,7 @@ MonoBehaviour:
   slowSpeedPercentage: 0.75
   slowIncreaseAmnt: 0.1
   slowRange: 2
+  infinityObj: {fileID: 8635835821850514691, guid: a230f43b7454014478502e82613a6f53, type: 3}
 --- !u!58 &4281304186867017028
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,10 +9,15 @@ public class BossInfinityAura: AbilityBaseClass
     public float slowIncreaseAmnt;
     public float slowRange;
 
+    public GameObject infinityObj;
+
     public override void SetUp()
     {
         base.SetUp();
         GetComponent<CircleCollider2D>().radius = slowRange;
+
+        //spawns in infinity object
+        GameObject infinityObjCopy = Instantiate(infinityObj, transform);
     }
 
     public override void UpgradeAbility(int level)

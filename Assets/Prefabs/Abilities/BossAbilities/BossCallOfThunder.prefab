@@ -47,11 +47,11 @@ MonoBehaviour:
   connectedBossAbility: {fileID: 0}
   damage: 10
   damageIncreaseAmnt: 1.2
-  range: 1.25
+  range: 2.5
   rangeIncreaseAmnt: 1.2
   minSpawnDistance: 1
   maxSpawnDistance: 10
   delayBetweenStrikes: 0.5
   castCooldown: 3.25
-  numOfLightingStrikes: 3
+  numOfLightingStrikes: 2
   lightingObject: {fileID: 6418778823519729000, guid: 2d53c65aa733e2f4dbc5fca370f2de28, type: 3}

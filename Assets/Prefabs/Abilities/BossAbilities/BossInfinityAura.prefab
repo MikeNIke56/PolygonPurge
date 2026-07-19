@@ -49,9 +49,10 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 320
-  slowSpeedPercentage: 0.35
+  slowSpeedPercentage: 0.2
   slowIncreaseAmnt: 0.1
   slowRange: 10
+  infinityObj: {fileID: 8635835821850514691, guid: a80d33cd189955e43a734fc9258d6222, type: 3}
 --- !u!58 &4809128493409742050
 CircleCollider2D:
   m_ObjectHideFlags: 0
